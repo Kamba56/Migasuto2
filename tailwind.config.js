@@ -15,6 +15,7 @@ export default {
         blue: {
           100: '#26203B'
         },
+        eclipse : '#EEFFF9'
      
       }
     },
