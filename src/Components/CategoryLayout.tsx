@@ -1,15 +1,20 @@
 import React from 'react';
 
 import Bell from "../assets/icons/Notification.svg"
+import Category from "../assets/icons/Category.svg"
 import DefaultPic from "../assets/images/profile_pic.png"
+import Info from "../assets/icons/Info.svg"
+
 import { IoLogOutOutline } from "react-icons/io5";
+import { RxCross2 } from "react-icons/rx";
 
 interface CategoryLayoutProps {
     children: React.ReactNode;
     organization: string;
+    category: string;
 }
 
-export default function CategoryLayout({ children, organization }: CategoryLayoutProps) {
+export default function CategoryLayout({ children, organization, category }: CategoryLayoutProps) {
     return (
         <div>
             <header className="flex justify-between pl-[82px] pr-[42px] pt-[17px] pb-[27px]">
@@ -24,23 +29,31 @@ export default function CategoryLayout({ children, organization }: CategoryLayou
                     />
                     <div className='flex items-center gap-2'>
                         <div className='p-3 bg-eclipse rounded-full'>
-                            <img src={DefaultPic}
-                                className="w-8 h-8"/>
+                            <img src={DefaultPic} className="w-8 h-8" />
                         </div>
                         <h1 className='font-bold'>Moni Roy</h1>
-
-                        <div className=' ml-8 p-[6px] bg-primary rounded-lg'>
-                        <IoLogOutOutline 
-                            className='text-white'
-                            size={"24"}
-                        />
-                        </div>
-
+                        <button className=' ml-8 p-[6px] bg-primary rounded-lg'>
+                            <IoLogOutOutline className='text-white' size={"24"} />
+                        </button>
                     </div>
                 </div>
             </header>
-            <main className='pl-3 pr-8 '
-            >
+            <main className='flex flex-col flex-grow pl-6 pr-4 py-8 bg-blue_fade'>
+                <section className='flex justify-between mb-10'>
+                    
+                    <div className='flex gap-4 items-center'>
+                        <img src={Category}
+                            className='w-4 h-4'
+                            />
+                        <h2 className='text-2xl font-semibold tracking-[0.24px]'>{category}</h2>
+                    </div>
+                    <div className='bg-[#0d6edd1a] rounded-lg flex items-center px-3 py-4 cursor-pointer'>
+                        <img src={Info} />
+                        <p className='ml-2 mr-20'>Please verify your email address</p>
+                        <RxCross2 />
+                    </div>
+                </section>
+
                 {children}
             </main>
         </div>
