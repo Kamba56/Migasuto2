@@ -1,4 +1,4 @@
-import CategoryLayout from "../../Components/CategoryLayout";
+import CategoryLayout from "../../../Components/CategoryLayout"
 
 export default function History(){
     return(
