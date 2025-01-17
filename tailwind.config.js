@@ -10,12 +10,17 @@ export default {
         'poppin': ["Poppins", "sans-serif"]
       },
       colors: {
+        secondary:  '#336DBA',
+        primary : '#465FF1',
         blue: {
           100: '#26203B'
         },
+     
       }
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/forms'),
+  ],
 }
 
