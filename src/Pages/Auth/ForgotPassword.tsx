@@ -69,7 +69,7 @@ export default function ForgotPassword() {
   const validatePassword = (password: string) => {
     const rules = {
       minLength: password.length >= 8,
-      noNameOrEmail: true, // Replace with logic if checking against user info
+      noNameOrEmail: true, // Replace with logic when store context is available
       containsLowercase: /[a-z]/.test(password),
       containsUppercase: /[A-Z]/.test(password),
       containsNumberOrSymbol: /[0-9!@#$%^&*(),.?":{}|<>]/.test(password),
