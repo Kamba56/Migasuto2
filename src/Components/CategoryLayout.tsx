@@ -17,8 +17,8 @@ interface CategoryLayoutProps {
 export default function CategoryLayout({ children, organization, category }: CategoryLayoutProps) {
     return (
         <div>
-            <header className="flex justify-between pl-[82px] pr-[42px] pt-[17px] pb-[27px]">
-                <div>
+            <header className="flex justify-between items pl-[82px] pr-[42px] pt-[17px] pb-[27px]">
+                <div className='flex flex-col justify-center'>
                     <p className='text-[13px]'>Good morning 👋</p>
                     <h3 className='text-[16px] font-bold'>{organization}</h3>
                 </div>
@@ -38,8 +38,8 @@ export default function CategoryLayout({ children, organization, category }: Cat
                     </div>
                 </div>
             </header>
-            <main className='flex flex-col flex-grow pl-6 pr-4 py-8 bg-blue_fade'>
-                <section className='flex justify-between mb-2'>
+            <main className='flex flex-col flex-grow pl-6 pr-4 py-8 gap-4 bg-blue_fade'>
+                <section className='flex justify-between'>
                     
                     <div className='flex gap-4 items-center'>
                         <img src={Category}
