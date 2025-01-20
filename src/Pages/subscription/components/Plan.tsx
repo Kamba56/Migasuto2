@@ -23,7 +23,7 @@ export default function Plan(/*{ title, price, features, upgrade }: PlanProps*/)
   ];
   return (
     <div
-      className="flex flex-col bg-cover bg-center items-center border-[0rem] border-[#979797ff] max-w-[21.85rem] aspect-[5/12] rounded-3xl px-[1.25rem] overflow-hidden"
+      className="flex flex-col bg-cover bg-center items-center border-[0rem] border-[#979797ff] max-w-[21.85rem] aspect-[5/12] rounded-3xl px-[1.25rem] overflow-hidden hover:border-[#336DBA] hover:border-[0.16em]"
       style={{ backgroundImage: `url(${pattern})` }}
     >
       <div className="h-[215px] w-full box-border py-[2.5rem] text-center">
