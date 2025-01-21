@@ -1,6 +1,5 @@
 import Plan from "./components/Plan";
 import logo from "./assets/Category.png";
-import Button from "./components/Button";
 import { subPlans, plantype } from "./assets/dummyData";
 export default function SubscriptionPage() {
   const getAllUniqueFeatures = (plans: plantype[]): string[] => {
@@ -14,19 +13,20 @@ export default function SubscriptionPage() {
   };
 
   const allFeatures = getAllUniqueFeatures(subPlans);
-  console.log(allFeatures);
+
   return (
-    <div className="bg-[#ECF0FF] pt-[1.56em] pl-[1.56em] h-[100vh]">
-      <div className="flex justify-start">
-        <img src={logo} alt="" />
-        <p className="font-semibold text-[1.5rem] text-[#3B4250]">
+    <div className="bg-[#ECF0FF] min-h-screen w-full p-4 md:pt-[1.56em] md:pl-[1.56em]">
+      <div className="flex items-center gap-2 mb-8 md:mb-[3.56em]">
+        <img src={logo} alt="" className="w-8 md:w-auto" />
+        <p className="font-semibold text-xl md:text-[1.5rem] text-[#3B4250]">
           Subscription
         </p>
       </div>
 
-      <div className="mt-[3.56em] flex justify-evenly ">
-        {subPlans.map((plan: plantype) => (
+      <div className="flex flex-col md:flex-row gap-8 md:gap-4 lg:gap-8 md:justify-evenly">
+        {subPlans.map((plan: plantype, index: number) => (
           <Plan
+            key={index}
             title={plan.name}
             price={plan.price}
             planFeatures={plan.features}
