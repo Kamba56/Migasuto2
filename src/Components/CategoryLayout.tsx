@@ -17,7 +17,7 @@ interface CategoryLayoutProps {
 export default function CategoryLayout({ children, organization, category }: CategoryLayoutProps) {
     return (
         <div>
-            <header className="flex justify-between items pl-[82px] pr-[42px] pt-[17px] pb-[27px]">
+            <header className="flex justify-between items md:pl-[82px] px-10 md:pr-[42px] pt-[17px] pb-[27px]">
                 <div className='flex flex-col justify-center'>
                     <p className='text-[13px]'>Good morning 👋</p>
                     <h3 className='text-[16px] font-bold'>{organization}</h3>
@@ -45,9 +45,9 @@ export default function CategoryLayout({ children, organization, category }: Cat
                         <img src={Category}
                             className='w-4 h-4'
                             />
-                        <h2 className='text-2xl font-semibold tracking-[0.24px]'>{category}</h2>
+                        <h2 className='text-lg md:text-2xl font-semibold tracking-[0.24px]'>{category}</h2>
                     </div>
-                    <div className='bg-[#0d6edd1a] rounded-lg flex items-center px-3 py-4 cursor-pointer'>
+                    <div className='bg-[#0d6edd1a] w-[300px] rounded-lg flex items-center px-3 py-4 cursor-pointer'>
                         <img src={Info} />
                         <p className='ml-2 mr-20'>Please verify your email address</p>
                         <RxCross2 />
