@@ -1,9 +1,16 @@
+export interface plantype {
+  name: string;
+  price: string;
+  features: string[];
+  isCurrent: boolean;
+}
+
 export const subPlans = [
   {
     name: "Basic",
     price: "$14.99",
     features: ["Free Setup", "Bandwidth Limit 10 GB", "20 User Connection"],
-    isCurrent: false,
+    isCurrent: true,
   },
   {
     name: "Standard",
