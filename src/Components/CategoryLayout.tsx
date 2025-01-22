@@ -47,7 +47,7 @@ export default function CategoryLayout({ children, organization, category }: Cat
                             />
                         <h2 className='text-lg md:text-2xl font-semibold tracking-[0.24px]'>{category}</h2>
                     </div>
-                    <div className='bg-[#0d6edd1a] w-[300px] rounded-lg flex items-center px-3 py-4 cursor-pointer'>
+                    <div className='bg-[#0d6edd1a] w-[300px] lg:w-auto rounded-lg flex items-center px-3 py-4 cursor-pointer'>
                         <img src={Info} />
                         <p className='ml-2 mr-20'>Please verify your email address</p>
                         <RxCross2 />

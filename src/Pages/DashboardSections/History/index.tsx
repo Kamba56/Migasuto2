@@ -11,7 +11,7 @@ export default function History(){
             organization="Migasuto Team"
             category="Questionnaire History">
             <FilterBar />
-            <table className=" bg-white px-8 rounded-xl border-gray-300">
+            <table className=" bg-white px-8 rounded-xl py-5">
                 <thead>
                     <tr className="grid grid-cols-6 text-left px-4 py-2 border-b border-gray-300">
                         <TableHeader 
@@ -30,7 +30,7 @@ export default function History(){
                 </thead>
                 <tbody className="divide-y divide-gray-300 ">
                     {TableData.map((table, index) => (
-                        <tr className="grid grid-cols-6 items-center px-4 pt-5 pb-2">
+                        <tr className="grid grid-cols-6 items-center px-3 pt-5 pb-2">
                             <TableBody
                                 key={index}
                                 body={table.id}/>
@@ -46,7 +46,7 @@ export default function History(){
                             <TableBody
                                 key={index}
                                 body={table.type}/>
-                            <td className="flex items-center px-4">
+                            <td className="flex items-center sm:px-4 w-full">
                                 <Status
                                     status={table.status}/>
                             </td>

@@ -8,7 +8,7 @@ export default function Status({status}: Status){
             : status === "In Progress" ? "bg-[#BA29FF2f] text-[#BA29FF]" 
             : status === "Rejected" ? "bg-[#ef38262f] text-[#ef3826]"
             : status === "On Hold" ? "bg-[#ffa7562f] text-[#ffa756]": ""}
-            font-semibold w-[125px] py-2 text-center rounded-md`}>
+            text-[13px] sm:text-[16px] sm:font-semibold w-full sm:w-[125px] py-2 text-center rounded-md`}>
             {status}
 
         </div>
