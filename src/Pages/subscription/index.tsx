@@ -15,15 +15,15 @@ export default function SubscriptionPage() {
   const allFeatures = getAllUniqueFeatures(subPlans);
 
   return (
-    <div className="bg-[#ECF0FF] min-h-screen w-full p-4 md:pt-[1.56em] md:pl-[1.56em]">
-      <div className="flex items-center gap-2 mb-8 md:mb-[3.56em]">
+    <div className="bg-[#ECF0FF] h-screen w-full p-4 md:pt-[1.56em] md:px-[1.56em] md:overflow-hidden">
+      <div className="flex items-center gap-2 mb-8 md:mb-[2.5em]">
         <img src={logo} alt="" className="w-8 md:w-auto" />
-        <p className="font-semibold text-xl md:text-[1.5rem] text-[#3B4250]">
+        <p className="font-semibold text-xl md:text-[1.3rem] text-[#3B4250]">
           Subscription
         </p>
       </div>
 
-      <div className="flex flex-col md:flex-row gap-8 md:gap-4 lg:gap-8 md:justify-evenly">
+      <div className="flex flex-col md:flex-row gap-8 md:gap-2 lg:gap-8 md:justify-evenly h-[85vh]">
         {subPlans.map((plan: plantype, index: number) => (
           <Plan
             key={index}
