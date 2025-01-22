@@ -1,4 +1,4 @@
-import FilterItem from "./FilterItem"
+import FilterItem from "../FilterItem"
 import { MdOutlineReplay } from "react-icons/md";
 import Filter from "../../../../assets/icons/Filter.svg"
 export default function FilterBar (){

@@ -4,7 +4,7 @@ import Dashboard from "../Pages/Dashboard";
 import ForgotPassword from "../Pages/Auth/ForgotPassword";
 import PrivateRoute from './PrivateRoute';
 
-import History from "../Pages/DashboardSections/History";
+import History from "../Pages/History";
 
 
 

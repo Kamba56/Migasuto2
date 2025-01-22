@@ -1,9 +1,9 @@
-import CategoryLayout from "../../../Components/CategoryLayout"
-import FilterBar from "./components/FilterBar"
-import Status from "./components/status"
-import TableBody from "./components/TableBody"
-import TableHeader from "./components/TableHeader"
-import TableData from "./Data/TableData"
+import CategoryLayout from "../../Components/CategoryLayout.js"
+import FilterBar from "../../Components/base-components/Filter/FilterBar/index.js"
+import Status from "../../Components/base-components/Table/status.js"
+import TableBody from "../../Components/base-components/Table/TableBody/index.js"
+import TableHeader from "../../Components/base-components/Table/TableHead/index.js"
+import TableData from "../../Data/TableData.js"
 
 export default function History(){
     return(

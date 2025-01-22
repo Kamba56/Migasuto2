@@ -7,6 +7,7 @@ import Info from "../assets/icons/Info.svg"
 
 import { IoLogOutOutline } from "react-icons/io5";
 import { RxCross2 } from "react-icons/rx";
+import { Link } from 'react-router';
 
 interface CategoryLayoutProps {
     children: React.ReactNode;
@@ -23,15 +24,20 @@ export default function CategoryLayout({ children, organization, category }: Cat
                     <h3 className='text-[16px] font-bold'>{organization}</h3>
                 </div>
                 <div className='flex items-center gap-10'>
-                    <img
-                        src={Bell}
-                        className='w-6 h-6'
-                    />
+                    <Link to='/'>
+                        <img
+                            src={Bell}
+                            className='w-6 h-6'
+                        />
+                    </Link>
                     <div className='flex items-center gap-2'>
-                        <div className='p-3 bg-eclipse rounded-full'>
-                            <img src={DefaultPic} className="w-8 h-8" />
-                        </div>
-                        <h1 className='font-bold'>Moni Roy</h1>
+                        <Link to='/' className='flex gap-2 items-center'>
+                            
+                            <div className='p-3 bg-eclipse rounded-full'>
+                                <img src={DefaultPic} className="w-8 h-8" />
+                            </div>
+                            <h1 className='font-bold'>Moni Roy</h1>
+                        </Link>
                         <button className=' ml-8 p-[6px] bg-primary rounded-lg'>
                             <IoLogOutOutline className='text-white' size={"24"} />
                         </button>
