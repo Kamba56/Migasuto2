@@ -1,9 +1,12 @@
-import './App.css'
+import ALLmeeting from './Pages/Allmeeting'
+
 
 function App() {
 
   return (
     <>
+    
+    < ALLmeeting />
     </>
   )
 }
