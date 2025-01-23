@@ -6,6 +6,6 @@
 
 @layer base {
   body {
-    @apply font-poppin font-normal text-sm tracking-wider text-blue-100;
+    @apply font-poppin font-normal text-sm tracking-wider text-blue-100 bg-blue-600/20;
   }
 }
