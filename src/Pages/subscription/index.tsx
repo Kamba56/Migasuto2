@@ -16,15 +16,15 @@ export default function SubscriptionPage() {
 
   return (
     <div className="absolute inset-0 bg-[#ECF0FF]">
-      <div className="bg-[#ECF0FF] h-screen w-full p-4 md:pt-[1.56em] md:px-[1.56em] md:overflow-hidden">
+      <div className="bg-[#ECF0FF] md:max-h-screen p-4 md:pt-[1.56em] md:px-[1.56em] overflow-hidden">
         <div className="flex items-center gap-2 mb-8 md:mb-[2.5em]">
           <img src={logo} alt="" className="w-8 md:w-auto" />
-          <p className="font-semibold text-xl md:text-[1.3rem] text-[#3B4250]">
+          <p className="font-semibold text-xl md:text-[1.1em] text-[#3B4250]">
             Subscription
           </p>
         </div>
 
-        <div className="flex flex-col items-center md:flex-row gap-8 md:gap-2 lg:gap-8 md:justify-evenly h-[85vh]">
+        <div className="flex flex-col items-center md:flex-row gap-8 md:gap-2 lg:gap-8 md:justify-evenly min-h-[53em] md:min-h-[15em]">
           {subPlans.map((plan: plantype, index: number) => (
             <Plan
               key={index}

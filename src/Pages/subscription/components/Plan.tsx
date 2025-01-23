@@ -17,7 +17,7 @@ export default function Plan({
 }: PlanProps) {
   return (
     <div
-      className="flex flex-col mx-2 sm:mx-4 md:mx-1 lg:mx-[1.25rem] bg-cover bg-center items-center border-[0.16em] border-transparent w-full md:w-[30%] lg:w-auto min-w-[280px] rounded-3xl px-4 md:px-3 lg:px-[1.25rem] hover:border-[#336DBA] transition ease-in duration-250 h-full"
+      className="text-[0.8rem] md:min-w-[19em] flex flex-col mx-2 sm:mx-4 md:mx-1 lg:mx-5 bg-cover bg-center items-center border-[0.2em] hover:border-[#336DBA] border-transparent rounded-3xl px-4 md:px-3 lg:px-5 transition ease-in duration-250 md:min-h-[53em]"
       style={{ backgroundImage: `url(${pattern})` }}
     >
       <div className="w-full py-4 md:py-[1.5rem] text-center">
@@ -31,7 +31,7 @@ export default function Plan({
           {price}
         </h1>
       </div>
-      <div className="text-top md:h-[26.75rem] text-top pt-4 px-4 md:px-[0.5em] w-[90%] border-y-[0.12em]">
+      <div className="text-top pt-4 px-4 md:px-[0.5em] max-w-[90%] border-y-[0.12em]">
         {allFeatures.map((feature: string, index: number) => {
           const isIncluded = planFeatures.includes(feature);
           return (
@@ -46,15 +46,15 @@ export default function Plan({
           );
         })}
       </div>
-      <div className="pt-6 md:pt-[1em] flex flex-col w-full items-center">
+      <div className="flex flex-col w-full items-center">
         <button
-          className={`mb-6 md:mb-[0.7em] w-[60.4%] min-w-[160px] py-2 md:aspect-[3/1] rounded-full md:rounded-[2.7em] border-[0.25em] text-xs md:text-[0.8rem] font-semibold
+          className={`mt-[2.5em] mb-[1.25em] w-[11.2em] h-[3.75em] py-2 rounded-full md:rounded-[2.7em] border-[0.2em] text-xs md:text-[0.8rem] font-semibold
             ${
               title.toLowerCase() === "premium"
-                ? "bg-[#4880FF] text-white"
+                ? "bg-[#4880FF] text-white border-transparent"
                 : !isCurrent
                 ? "text-[#4880FF] hover:border-[#336DBA] transition ease-in duration-250"
-                : "text-[#4880FF]"
+                : "text-[#4880FF] border-[#575757]"
             }`}
         >
           {!isCurrent ? "Upgrade" : "Current Plan"}
