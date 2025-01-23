@@ -7,5 +7,7 @@ import Router from "./router";
 import "./assets/styles/index.css";
 
 createRoot(document.getElementById("root") as HTMLElement).render(
-  <BrowserRouter></BrowserRouter>
+  <BrowserRouter>
+    <Router />
+  </BrowserRouter>
 );
