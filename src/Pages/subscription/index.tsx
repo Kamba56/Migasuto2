@@ -1,6 +1,9 @@
-import Plan from "./components/Plan";
-import logo from "./assets/Category.png";
-import { subPlans, plantype } from "./assets/dummyData";
+import Plan from "../../Components/subscriptionPage/Plan";
+import logo from "../../assets/images/subscriptionLogo.png";
+import {
+  subPlans,
+  plantype,
+} from "../../Components/subscriptionPage/dummyData";
 export default function SubscriptionPage() {
   const getAllUniqueFeatures = (plans: plantype[]): string[] => {
     const uniqueFeatures = new Set<string>();

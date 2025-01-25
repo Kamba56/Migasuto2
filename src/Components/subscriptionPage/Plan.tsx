@@ -1,4 +1,4 @@
-import pattern from "../assets/bgImage.png";
+import pattern from "../../assets/images/subscriptionCardBG.png";
 import { Link } from "react-router";
 interface PlanProps {
   title: string;
