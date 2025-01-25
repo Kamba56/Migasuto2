@@ -1,7 +1,7 @@
 import React from "react";
 import { BiSearch } from "react-icons/bi";
 import { BiVideo } from "react-icons/bi";
-import { meetings } from "../../utils";
+import { meetings } from "../../utils/meetinglist";
 
 interface Props {
   onMeetingClick: (id: number) => void;
