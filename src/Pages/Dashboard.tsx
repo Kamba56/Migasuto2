@@ -1,4 +1,4 @@
-import DashboardNav from "../Components/DashboardNav"
+import DashboardNav from "../Components/Dashboard/DashboardNav"
 
 const Dashboard = () => {
   return (

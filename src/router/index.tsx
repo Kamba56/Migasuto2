@@ -14,6 +14,7 @@ function Router() {
     {
       path: "/",
       element: <Dashboard />,
+      children: []
      
     },
     {path: "/forgot-password", element: <ForgotPassword/>},
