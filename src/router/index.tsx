@@ -4,6 +4,7 @@ import Dashboard from "../Pages/Dashboard";
 import ForgotPassword from "../Pages/Auth/ForgotPassword";
 import PrivateRoute from "./PrivateRoute";
 import SubscriptionPage from "../Pages/subscription";
+import History from "../Pages/History";
 
 function Router() {
   const routes = [
@@ -34,6 +35,10 @@ function Router() {
           element: <SubscriptionPage />,
         },
       ],
+    },
+    {
+      path: "/history",
+      element: <History />,
     },
   ];
 
