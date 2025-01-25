@@ -27,18 +27,12 @@ function Router() {
     },
 
     {
-      path: "/subscription",
-      element: <PrivateRoute />,
-      children: [
-        {
-          path: "/subscription",
-          element: <SubscriptionPage />,
-        },
-      ],
-    },
-    {
       path: "/history",
       element: <History />,
+    },
+    {
+      path: "/subscription",
+      element: <SubscriptionPage />,
     },
   ];
 
