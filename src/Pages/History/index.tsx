@@ -29,22 +29,17 @@ export default function History(){
                     </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-300 ">
-                    {TableData.map((table, index) => (
-                        <tr className="grid grid-cols-6 items-center px-3 pt-5 pb-2">
+                    {TableData.map((table) => (
+                        <tr key={table.id} className="grid grid-cols-6 items-center px-3 pt-5 pb-2">
                             <TableBody
-                                key={index}
                                 body={table.id}/>
                             <TableBody
-                                key={index}
                                 body={table.title}/>
                             <TableBody
-                                key={index}
                                 body={table.feedback}/>
                             <TableBody
-                                key={index}
                                 body={table.date}/>
                             <TableBody
-                                key={index}
                                 body={table.type}/>
                             <td className="flex items-center sm:px-4 w-full">
                                 <Status
