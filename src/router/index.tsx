@@ -5,6 +5,7 @@ import ForgotPassword from "../Pages/Auth/ForgotPassword";
 import PrivateRoute from "./PrivateRoute";
 import SubscriptionPage from "../Pages/subscription";
 import History from "../Pages/History";
+import Onboarding from "../Pages/onBoarding";
 
 function Router() {
   const routes = [
@@ -33,6 +34,10 @@ function Router() {
     {
       path: "/subscription",
       element: <SubscriptionPage />,
+    },
+    {
+      path: "/onboarding/:id",
+      element: <Onboarding />,
     },
   ];
 
