@@ -28,7 +28,7 @@ export default function History(){
                             header="Status"/>
                     </tr>
                 </thead>
-                <tbody className="divide-y divide-gray-300 ">
+                <tbody className="divide-y divide-gray ">
                     {TableData.map((table) => (
                         <tr key={table.id} className="grid grid-cols-6 items-center px-3 pt-5 pb-2">
                             <TableBody

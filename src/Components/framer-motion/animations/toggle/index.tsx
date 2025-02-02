@@ -2,16 +2,16 @@ import { motion } from "framer-motion";
 import { Dispatch, SetStateAction, useState } from "react";
 
 const TOGGLE_CLASSES =
-  "w-[135px] text-sm font-medium flex justify-center items-center gap-2 px-5 py-2 transition-colors relative z-10";
+  "w-[135px] text-sm flex justify-center items-center gap-2 px-5 py-2 transition-colors relative z-10";
 
-type ToggleOptionsType = "form" | "history";
+type ToggleOptionsType = "Form" | "Feedback";
 
-const Example = () => {
-  const [selected, setSelected] = useState<ToggleOptionsType>("form");
+const HistoryToggle = () => {
+  const [selected, setSelected] = useState<ToggleOptionsType>("Form");
   return (
     <div
-      className={`grid bg-blue_fade w-fit py-1.5 place-content-center rounded-md px-2 transition-colors ${
-        selected === "form" ? "" : ""
+      className={`grid bg-blue_fade w-fit p-[3px] place-content-center rounded-md transition-colors ${
+        selected === "Form" ? "" : ""
       }`}
     >
       <SliderToggle selected={selected} setSelected={setSelected} />
@@ -30,37 +30,37 @@ const SliderToggle = ({
     <div className="relative flex w-fit">
       <button
         className={`${TOGGLE_CLASSES} ${
-          selected === "form" ? "text-white" : "text-gray"
+          selected === "Form" ? "text-white" : "text-gray"
         }`}
         onClick={() => {
-          setSelected("form");
+          setSelected("Form");
         }}
       >
         <span className="relative z-10">Form</span>
       </button>
       <button
         className={`${TOGGLE_CLASSES} ${
-          selected === "history" ? "text-white" : "text-gray"
+          selected === "Feedback" ? "text-white" : "text-gray"
         }`}
         onClick={() => {
-          setSelected("history");
+          setSelected("Feedback");
         }}
       >
-        <span className="relative z-10">History</span>
+        <span className="relative z-10">Feedback</span>
       </button>
       <div
         className={`absolute inset-0 z-0 flex ${
-          selected === "history" ? "justify-end" : "justify-start"
+          selected === "Feedback" ? "justify-end" : "justify-start"
         }`}
       >
         <motion.span
           layout
           transition={{ type: "spring", damping: 15, stiffness: 250 }}
-          className="h-full w-1/2 rounded-md bg-gradient-to-r from-violet-600 to-indigo-600"
+          className="h-full w-1/2 rounded-md bg-gradient-to-r bg-primary "
         />
       </div>
     </div>
   );
 };
 
-export default Example;
+export default HistoryToggle;

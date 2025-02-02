@@ -15,7 +15,7 @@ function FilterItem({ title, items }: { title: string, items: string[] }) {
     <motion.div
       onClick={() => setIsOpen((prev) => !prev)}
       animate={isOpen ? "open" : "closed"}
-      className="relative flex gap-2 border px-8 items-center cursor-pointer"
+      className="relative flex gap-2 border-x border-gray px-8 items-center cursor-pointer"
     >
       <button type="button" className="flex items-center gap-2">
         <h4>{title}</h4>

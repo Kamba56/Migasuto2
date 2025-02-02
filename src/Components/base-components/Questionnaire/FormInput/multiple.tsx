@@ -1,8 +1,13 @@
 import { useState } from "react";
-import cross from "../../../../assets/icons/cross.svg";
+import Cross from "../../../../assets/icons/cross.svg";
 
 export default function MultipleInput(){
-    const [values, setValues] = useState<string[]>([]);
+    const [values, setValues] = useState<string[]>([
+        'Promise kept',
+        'Goal focused',
+        'Swift speed',
+        'Speed upgrade'
+    ]);
 
 
     const handleAddValue = (event: React.KeyboardEvent<HTMLInputElement>) => {
@@ -21,8 +26,8 @@ export default function MultipleInput(){
     };
 
     return (
-        <div>
-            <label className="text-[16px]">
+        <div className="">
+            <label className="text-[16px] font-medium">
                 What are your core values <span className="text-red-500">*</span>
             </label>
 
@@ -36,18 +41,18 @@ export default function MultipleInput(){
             </div>
 
             {/* Display Added Values */}
-            <div className="flex flex-wrap gap-2 mt-2">
+            <div className="flex max-w-[340px] flex-wrap gap-2 mt-2">
                 {values.map((value, index) => (
                 <div
                     key={index}
-                    className="bg-blue_fade text-primary w-fit p-3 flex gap-4 items-center rounded-md"
+                    className="bg-blue_fade text-primary w-fit p-[10px] flex gap-[10px] items-center rounded-md"
                 >
-                    <span>{value}</span>
+                    <span className="text-[14px]">{value}</span>
                     <button
                     onClick={() => removeValue(index)}
                     className="text-black font-bold"
                     >
-                        <img src={cross} alt="cross" />
+                        <img src={Cross} alt="cross" />
                     </button>
                 </div>
                 ))}

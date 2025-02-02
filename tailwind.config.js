@@ -18,6 +18,8 @@ export default {
           100: '#26203B'
         },
         blue_fade: "#ECF0FF",
+        mig_blue: '#336DBA',
+
         eclipse : '#EEFFF9',
         gray: '#9C9AA5'
      
