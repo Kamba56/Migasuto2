@@ -5,6 +5,7 @@ import ForgotPassword from "../Pages/Auth/ForgotPassword";
 import PrivateRoute from './PrivateRoute';
 
 import History from "../Pages/History";
+import Settings from "../Pages/Settings";
 
 
 
@@ -37,6 +38,10 @@ function Router() {
     {
       path: '/history',
       element: <History />
+    },
+    {
+      path: '/settings',
+      element: <Settings />
     }
 
 
