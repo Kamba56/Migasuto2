@@ -28,7 +28,7 @@ const ChangePasswordForm: React.FC<ChangePasswordFormProps> = ({ onSubmit }) => 
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
             <label htmlFor="password" className="block font-medium mb-2">
-              Enter Password *
+              Enter Password <span className='text-red-500'>*</span>
             </label>
             <input
               type="password"
@@ -37,11 +37,12 @@ const ChangePasswordForm: React.FC<ChangePasswordFormProps> = ({ onSubmit }) => 
               value={password}
               onChange={handlePasswordChange}
               className="w-full border border-gray-300 rounded px-3 py-2"
+              required
             />
           </div>
           <div className="mb-4">
             <label htmlFor="verifyPassword" className="block font-medium mb-2">
-              Verify Password *
+              Verify Password <span className='text-red-500'>*</span>
             </label>
             <input
               type="password"
@@ -50,11 +51,12 @@ const ChangePasswordForm: React.FC<ChangePasswordFormProps> = ({ onSubmit }) => 
               value={verifyPassword}
               onChange={handleVerifyPasswordChange}
               className="w-full border border-gray-300 rounded px-3 py-2"
+              required
             />
           </div>
           <button
             type="submit"
-            className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded w-full"
+            className="bg-indigo-500 hover:bg-indigo-600 text-white px-4 py-2 rounded w-full"
           >
             Change Password
           </button>
