@@ -35,7 +35,7 @@ const ProfileForm: React.FC = () => {
   };
 
   return (
-    <div className="flex justify-between items-start">
+    <div className="flex justify-between items-start w-3/6 mx-auto">
       <div className="profile-image-container">
         <div className="w-32 h-32 bg-gray-200 rounded-full"></div>
         <button className="mt-4 bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">
@@ -43,11 +43,10 @@ const ProfileForm: React.FC = () => {
         </button>
       </div>
       <div className="flex-1 ml-8">
-        <h2 className="text-2xl font-bold mb-6">Profile</h2>
         <form>
           <div className="mb-4">
             <label htmlFor="fullName" className="block font-medium mb-2">
-              Full Name *
+              Full Name <span className='text-red-500'>*</span>
             </label>
             <input
               type="text"
@@ -61,7 +60,7 @@ const ProfileForm: React.FC = () => {
           </div>
           <div className="mb-4">
             <label htmlFor="accountType" className="block font-medium mb-2">
-              Account Type *
+              Account Type <span className='text-red-500'>*</span>
             </label>
             <select
               id="accountType"
@@ -76,7 +75,7 @@ const ProfileForm: React.FC = () => {
           </div>
           <div className="mb-4">
             <label htmlFor="companyName" className="block font-medium mb-2">
-              Company Name *
+              Company Name <span className='text-red-500'>*</span>
             </label>
             <input
               type="text"
@@ -90,7 +89,7 @@ const ProfileForm: React.FC = () => {
           </div>
           <div className="mb-4">
             <label htmlFor="companyType" className="block font-medium mb-2">
-              Company Type *
+              Company Type <span className='text-red-500'>*</span>
             </label>
             <select
               id="companyType"
@@ -107,7 +106,7 @@ const ProfileForm: React.FC = () => {
           </div>
           <div className="mb-4">
             <label htmlFor="teamStrength" className="block font-medium mb-2">
-              Team Strength *
+              Team Strength <span className='text-red-500'>*</span>
             </label>
             <select
               id="teamStrength"
