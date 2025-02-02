@@ -12,12 +12,16 @@ export default {
       colors: {
         secondary:  '#336DBA',
         secondary_dark: "#3B4250",
+        dark: "#4D5154",
         primary : '#465FF1',
         blue: {
           100: '#26203B'
         },
         blue_fade: "#ECF0FF",
-        eclipse : '#EEFFF9'
+        mig_blue: '#336DBA',
+
+        eclipse : '#EEFFF9',
+        gray: '#9C9AA5'
      
       }
     },
