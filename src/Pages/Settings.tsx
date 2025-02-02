@@ -48,7 +48,7 @@ const Settings: React.FC = () => {
 
   return (
     // initially was a col
-    <div className="mt-6 flex flex-col justify-between items-start w-full max-w-4xl">
+    <div className="mt-6 flex flex-col justify-between items-start w-full max-w-4xl rounded-lg">
 
       <div className="flex flex-row justify-between items-center w-full">
         <div className='ml-6'>
@@ -66,7 +66,7 @@ const Settings: React.FC = () => {
               key={tab.id}
               className={`px-4 py-2 font-medium rounded-md ${
                 activeTab === tab.id
-                  ? 'bg-blue-500 text-white'
+                  ? 'bg-indigo-600 text-white'
                   : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
               }`}
               onClick={() => handleTabClick(tab.id)}
