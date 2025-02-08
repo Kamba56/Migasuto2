@@ -16,9 +16,9 @@ const MobileNav = () => {
   };
   return (
 
-    <nav className="bg-white lg:hidden flex flex-col px-4 pb-10 pt-2 w-full max-w-80 items-center h-screen absolute top-0
+    <nav className="bg-white lg:hidden flex flex-col px-4 pb-10 pt-2 w-fit max-w-80 items-center h-fit min-h-22 absolute top-0
      left-0">
-      {!activeNav && <button onClick={openNav} className="w-fit block self-start">
+      {!activeNav && <button onClick={openNav} className="w-fit block self-center mt-4">
         <RxHamburgerMenu size={24} />
       </button>}
 
