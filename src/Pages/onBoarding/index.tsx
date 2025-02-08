@@ -30,7 +30,7 @@ export default function Onboarding() {
           >
             <Link
               to="/onboarding/1/"
-              className="text-[#336DBA] absolute top-12 left-12"
+              className="text-[#336DBA] absolute top-12 left-12 text-[1.2em] font-semibold"
               hidden={id === "1"}
             >
               {"< Back"}
