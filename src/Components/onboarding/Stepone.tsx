@@ -29,7 +29,7 @@ export default function Stepone() {
           Full Name
         </label>
         <input
-          className="border-[#465FF166] border-[0.1em] rounded-[0.5em] placeholder:text-[0.8em] max-h-[2.3em] text-[0.9em] mb-[1.6em] focus:shadow-md focus:ring-0"
+          className="border-[#465FF166] border-[0.1em] rounded-[0.5em] placeholder:text-[1em] max-h-[3.69em] text-[0.9em] mb-[1.6em] focus:shadow-md focus:ring-0"
           type="text"
           id="fullName"
           name="fullName"
@@ -48,7 +48,7 @@ export default function Stepone() {
           value={formData.accountType}
           onChange={handleChange}
           required
-          className="border-[#465FF166] border-[0.1em] rounded-[0.5em] placeholder:text-[0.8em] max-h-[2.3em] text-[0.9em] mb-[1.6em]"
+          className="border-[#465FF166] border-[0.1em] rounded-[0.5em] placeholder:text-[1em] max-h-[3.69em] text-[0.9em] mb-[1.6em]"
         >
           <option value={formData.accountType}>Company</option>
           <option value="option2">Option 2</option>
@@ -61,7 +61,7 @@ export default function Stepone() {
           Company Name
         </label>
         <input
-          className="border-[#465FF166] border-[0.1em] rounded-[0.5em] placeholder:text-[0.8em] max-h-[2.3em] text-[0.9em] mb-[1.6em] focus:shadow-md focus:ring-0"
+          className="border-[#465FF166] border-[0.1em] rounded-[0.5em] placeholder:text-[1em] max-h-[3.69em] text-[0.9em] mb-[1.6em] focus:shadow-md focus:ring-0"
           type="text"
           id="companyName"
           name="companyName"
@@ -80,7 +80,7 @@ export default function Stepone() {
           value={formData.accountType}
           onChange={handleChange}
           required
-          className="border-[#465FF166] border-[0.1em] rounded-[0.5em] placeholder:text-[0.8em] max-h-[2.3em] text-[0.9em] mb-[1.6em]"
+          className="border-[#465FF166] border-[0.1em] rounded-[0.5em] placeholder:text-[0.8em] max-h-[3.69em] text-[0.9em] mb-[1.6em]"
         >
           <option value={formData.companyType}>{formData.companyType}</option>
           <option value="option2">Option 2</option>
@@ -96,7 +96,7 @@ export default function Stepone() {
           value={formData.teamStrength}
           onChange={handleChange}
           required
-          className="border-[#465FF166] border-[0.1em] rounded-[0.5em] placeholder:text-[0.8em] max-h-[2.3em] text-[0.9em] mb-[1.6em]"
+          className="border-[#465FF166] border-[0.1em] rounded-[0.5em] placeholder:text-[0.8em] max-h-[3.69em] text-[0.9em] mb-[1.6em]"
         >
           <option value={formData.teamStrength}>{formData.teamStrength}</option>
           <option value="option2">Option 2</option>
