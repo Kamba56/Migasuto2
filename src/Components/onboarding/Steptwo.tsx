@@ -21,7 +21,7 @@ export default function Steptwo() {
         </label>
       </div>
       <button className="bg-[#465FF1] min-w-[13em] min-h-[3em] rounded-[0.6em] text-[#FFFFFF] font-[500]">
-        continue
+        ontinue
       </button>
     </div>
   );

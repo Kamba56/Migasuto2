@@ -35,7 +35,7 @@ export default function Onboarding() {
             >
               {"< Back"}
             </Link>
-            <div className="m-[2em] max-w-[35em] flex flex-col items-center">
+            <div className="m-[2em] max-w-[45em] flex flex-col items-center">
               <img
                 src="/logo.svg"
                 alt="company logo"
@@ -43,10 +43,10 @@ export default function Onboarding() {
               />
               <p className="mb-[0.8em] text-[#9C9AA5] text-[0.8em]">{id}/2</p>
               <div>
-                <h2 className="text-[1.2em] font-semibold mb-[0.4em]">
+                <h2 className="text-[2em] font-semibold mb-[0.4em]">
                   Customize your Organization
                 </h2>
-                <h3 className="text-[#9C9AA5] mb-[2.5em]">
+                <h3 className="text-[#9C9AA5] mb-[2em] text-[1.6em]">
                   Setup your organization for members that may join later.
                 </h3>
               </div>
