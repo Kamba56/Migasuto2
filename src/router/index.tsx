@@ -6,11 +6,22 @@ import PrivateRoute from './PrivateRoute';
 
 import History from "../Pages/History";
 import HomePage from "../Pages/Home";
+import Login from "../Pages/Auth/Login";
+import SignUp from "../Pages/Auth/Signup";
 
 
 
 function Router() {
   const routes = [
+    {
+      path: "/login",
+      element: <Login />
+    },
+
+    {
+      path: "/signup",
+      element: <SignUp />
+    },
    
     {
       path: "/",
