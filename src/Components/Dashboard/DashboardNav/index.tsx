@@ -1,12 +1,12 @@
 import { IoIosArrowBack } from "react-icons/io";
 import { NavLink } from "react-router";
 import logo from "../../../assets/images/logo.svg";
-import MobileNav from "../MoileNav/inex";
+import MobileNav from "../MoileNav";
 
 const DashboardNav = () => {
   return (
     <>
-    <nav className="bg-white lg:flex flex-col px-4 py-10 w-1/4 max-w-80 items-center h-screen hidden">
+    <nav className="bg-white hidden lg:flex flex-col px-4 py-10 w-1/4 max-w-80 items-center h-screen">
       <figure className="w-full max-w-24 mb-10">
         <img src={logo} alt="Logo" />
       </figure>
