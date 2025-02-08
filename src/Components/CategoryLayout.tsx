@@ -46,7 +46,7 @@ export default function CategoryLayout() {
                     </div>
                 </div>
             </header>
-            <main className='flex flex-col flex-grow px-2 py-5 md:px-5 md:py-8 gap-0 md:gap-4 bg-blue_fade'>
+            <main className='flex flex-col flex-grow py-5 md:py-8 gap-0 md:gap-4 bg-blue_fade'>
                 <section className='flex justify-between'>
                     
                     <div className='flex gap-2 md:gap-4 items-center'>

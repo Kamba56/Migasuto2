@@ -5,6 +5,7 @@ import ForgotPassword from "../Pages/Auth/ForgotPassword";
 import PrivateRoute from './PrivateRoute';
 
 import History from "../Pages/History";
+import HomePage from "../Pages/Home";
 
 
 
@@ -14,7 +15,12 @@ function Router() {
     {
       path: "/",
       element: <Dashboard />,
-      children: []
+      children: [
+        {
+          path: "",
+          element: <HomePage />
+        }
+      ]
      
     },
     {path: "/forgot-password", element: <ForgotPassword/>},

@@ -17,7 +17,11 @@ export default {
           100: '#26203B'
         },
         blue_fade: "#ECF0FF",
-        eclipse : '#EEFFF9'
+        eclipse : '#EEFFF9',
+        home_blue: "#4880FF",
+        home_orange: "#FF8743",
+        home_purple: "#7A6EFE",
+        home_red: "#FF5363"
      
       }
     },
