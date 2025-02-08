@@ -5,6 +5,7 @@ import ForgotPassword from "../Pages/Auth/ForgotPassword";
 import PrivateRoute from "./PrivateRoute";
 import SubscriptionPage from "../Pages/subscription";
 import History from "../Pages/History";
+import Onboarding from "../Pages/onBoarding";
 import Questions from "../Pages/History/Form";
 
 function Router() {
@@ -38,6 +39,10 @@ function Router() {
     {
       path: "/subscription",
       element: <SubscriptionPage />,
+    },
+    {
+      path: "/onboarding/:id",
+      element: <Onboarding />,
     },
   ];
 
