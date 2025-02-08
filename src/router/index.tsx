@@ -6,6 +6,7 @@ import PrivateRoute from "./PrivateRoute";
 import SubscriptionPage from "../Pages/subscription";
 import History from "../Pages/History";
 import Onboarding from "../Pages/onBoarding";
+import Questions from "../Pages/History/Form";
 
 function Router() {
   const routes = [
@@ -30,6 +31,10 @@ function Router() {
     {
       path: "/history",
       element: <History />,
+    },
+    {
+      path: "/question",
+      element: <Questions />
     },
     {
       path: "/subscription",
