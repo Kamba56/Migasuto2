@@ -7,9 +7,11 @@ const Dashboard = () => {
     <div className="flex flex-row gap-0 w-full">
       <DashboardNav />
 
-      <div className="flex flex-col gap-0 w-full bg-blue_fade h-screen overflow-auto px-2 md:px-6">
+      <div className="flex flex-col gap-0 w-full bg-blue_fade h-screen overflow-auto">
         <CategoryLayout />
-        <Outlet />
+        <div className="px-2 md:px-6">
+          <Outlet />
+        </div>
       </div>
     </div>
   )

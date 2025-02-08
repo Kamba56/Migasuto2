@@ -1,4 +1,5 @@
 import { SlCalender } from "react-icons/sl";
+import NewClient from "../../Components/Dashboard/NewClientCard";
 
 const HomePage = () => {
   return (
@@ -52,6 +53,13 @@ const HomePage = () => {
             <p>Meeting Schedule</p>
           </div>
         </div>
+      </section>
+
+      <section className="flex flex-col md:flex-row flex-wrap gap-5">
+        <NewClient />
+        <NewClient />
+        <NewClient />
+        <NewClient />
       </section>
     </main>
   )
