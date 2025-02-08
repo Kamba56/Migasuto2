@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Cross from "../../../../assets/icons/cross.svg";
+import Cross from "../../../../assets/icons/Cross.svg";
 
 export default function MultipleInput(){
     const [values, setValues] = useState<string[]>([
