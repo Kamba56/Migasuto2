@@ -12,7 +12,6 @@ import Onboarding from "../Pages/onBoarding";
 import Questions from "../Pages/History/Form";
 
 
-
 function Router() {
   const routes = [
     {
@@ -44,7 +43,7 @@ function Router() {
         {
           path: "/subscription",
           element: <SubscriptionPage />,
-        },
+        }
       ]
     },
     { path: "/forgot-password", element: <ForgotPassword /> },
