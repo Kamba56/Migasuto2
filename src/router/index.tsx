@@ -32,7 +32,11 @@ function Router() {
         {
           path: "",
           element: <HomePage />
-        }
+        },
+        {
+          path: "/history",
+          element: <History />,
+        },
       ]
     },
     { path: "/forgot-password", element: <ForgotPassword /> },
@@ -49,10 +53,6 @@ function Router() {
       ],
     },
 
-    {
-      path: "/history",
-      element: <History />,
-    },
     {
       path: "/question",
       element: <Questions />
