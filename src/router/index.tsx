@@ -37,6 +37,10 @@ function Router() {
           path: "/history",
           element: <History />,
         },
+        {
+          path: "/question",
+          element: <Questions />
+        },
       ]
     },
     { path: "/forgot-password", element: <ForgotPassword /> },
@@ -53,10 +57,6 @@ function Router() {
       ],
     },
 
-    {
-      path: "/question",
-      element: <Questions />
-    },
     {
       path: "/subscription",
       element: <SubscriptionPage />,
