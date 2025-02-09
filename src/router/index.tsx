@@ -5,14 +5,35 @@ import ForgotPassword from "../Pages/Auth/ForgotPassword";
 import PrivateRoute from "./PrivateRoute";
 import SubscriptionPage from "../Pages/subscription";
 import History from "../Pages/History";
+import HomePage from "../Pages/Home";
+import Login from "../Pages/Auth/Login";
+import SignUp from "../Pages/Auth/Signup";
 import Onboarding from "../Pages/onBoarding";
 import Questions from "../Pages/History/Form";
+
+
 
 function Router() {
   const routes = [
     {
+      path: "/login",
+      element: <Login />
+    },
+
+    {
+      path: "/signup",
+      element: <SignUp />
+    },
+   
+    {
       path: "/",
       element: <Dashboard />,
+      children: [
+        {
+          path: "",
+          element: <HomePage />
+        }
+      ]
     },
     { path: "/forgot-password", element: <ForgotPassword /> },
     // {path: "/scan", element: <QrReader/>},
