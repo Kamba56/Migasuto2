@@ -16,6 +16,7 @@ export default {
       colors: {
         secondary:  '#336DBA',
         secondary_dark: "#3B4250",
+        dark: "#4D5154",
         primary : '#465FF1',
         blue: {
           10: '#465FF1',
@@ -36,7 +37,9 @@ export default {
         },
         red: {
           10: '#E45270',
-        }
+        },
+        mig_blue: '#336DBA',
+        gray: '#9C9AA5'
      
       }
     },
