@@ -1,6 +1,5 @@
 import FormArea from "../../../Components/base-components/Questionnaire/FormArea";
 import FormInput from "../../../Components/base-components/Questionnaire/FormInput";
-import CategoryLayout from "../../../Components/CategoryLayout";
 import MultipleInput from "../../../Components/base-components/Questionnaire/FormInput/multiple";
 import HistoryToggle from "../../../Components/framer-motion/animations/toggle";
 import Back from '../../../assets/icons/Back.svg'
@@ -8,9 +7,7 @@ import Back from '../../../assets/icons/Back.svg'
 export default function Questions() {
     
     return (
-        <CategoryLayout
-            category="Questionnaire History"
-            organization="Migasuto">
+        <section>
             <section className="py-10 px-5 sm:px-10 rounded-3xl bg-white flex flex-col gap-3">
                 <p className="text-lg font-bold flex gap-4">
                 <img src={Back} />Back</p>
@@ -57,6 +54,6 @@ export default function Questions() {
                 </form>
             </section>
             
-        </CategoryLayout>
+        </section>
     )
 }

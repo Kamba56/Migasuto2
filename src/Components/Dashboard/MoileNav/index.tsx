@@ -74,7 +74,7 @@ const MobileNav = () => {
             </NavLink>
           </li>
           <li className="w-full">
-            <NavLink to="/" className={`w-full p-3 px-3 flex gap-4 items-center justify-star border rounded-lg ${({ isActive }: { isActive: boolean }) => ( isActive ? "bg-secondary text-white" : " text-secondary border-secondary bg-transparent" )}`}>
+            <NavLink to="/subscription" className={`w-full p-3 px-3 flex gap-4 items-center justify-star border rounded-lg ${({ isActive }: { isActive: boolean }) => ( isActive ? "bg-secondary text-white" : " text-secondary border-secondary bg-transparent" )}`}>
               <IoIosArrowBack size={20} />
               <p>Subscription</p>
             </NavLink>
@@ -88,7 +88,7 @@ const MobileNav = () => {
 
         </div>
           <li className="w-full">
-            <NavLink to="/" className={`w-full p-3 px-3 flex gap-4 items-center justify-star border rounded-lg ${({ isActive }: { isActive: boolean }) => ( isActive ? "bg-secondary text-white" : " text-secondary border-secondary bg-transparent" )}`}>
+            <NavLink to="/login" className={`w-full p-3 px-3 flex gap-4 items-center justify-star border rounded-lg ${({ isActive }: { isActive: boolean }) => ( isActive ? "bg-secondary text-white" : " text-secondary border-secondary bg-transparent" )}`}>
               <IoIosArrowBack size={20} />
               <p>Logout</p>
             </NavLink>

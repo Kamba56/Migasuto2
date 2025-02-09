@@ -12,7 +12,6 @@ import Onboarding from "../Pages/onBoarding";
 import Questions from "../Pages/History/Form";
 
 
-
 function Router() {
   const routes = [
     {
@@ -37,6 +36,14 @@ function Router() {
           path: "/history",
           element: <History />,
         },
+        {
+          path: "/question",
+          element: <Questions />
+        },
+        {
+          path: "/subscription",
+          element: <SubscriptionPage />,
+        }
       ]
     },
     { path: "/forgot-password", element: <ForgotPassword /> },
@@ -53,14 +60,6 @@ function Router() {
       ],
     },
 
-    {
-      path: "/question",
-      element: <Questions />
-    },
-    {
-      path: "/subscription",
-      element: <SubscriptionPage />,
-    },
     {
       path: "/onboarding/:id",
       element: <Onboarding />,
