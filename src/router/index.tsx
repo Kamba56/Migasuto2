@@ -41,6 +41,10 @@ function Router() {
           path: "/question",
           element: <Questions />
         },
+        {
+          path: "/subscription",
+          element: <SubscriptionPage />,
+        },
       ]
     },
     { path: "/forgot-password", element: <ForgotPassword /> },
@@ -57,10 +61,6 @@ function Router() {
       ],
     },
 
-    {
-      path: "/subscription",
-      element: <SubscriptionPage />,
-    },
     {
       path: "/onboarding/:id",
       element: <Onboarding />,
