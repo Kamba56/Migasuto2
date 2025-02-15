@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import ALLmeeting from './Pages/ALLmeeting';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import "./assets/styles/index.css"
@@ -11,6 +12,11 @@ function App() {
       </Routes>
     </BrowserRouter>
   );
+=======
+
+function App() {
+  return <></>;
+>>>>>>> 48979b422e03693f5529f759fa31c9a935b254a2
 }
 
 export default App;
