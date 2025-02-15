@@ -10,6 +10,7 @@ import Login from "../Pages/Auth/Login";
 import SignUp from "../Pages/Auth/Signup";
 import Onboarding from "../Pages/onBoarding";
 import Questions from "../Pages/History/Form";
+import ALLmeeting from "../Pages/ALLmeeting";
 
 
 function Router() {
@@ -43,6 +44,10 @@ function Router() {
         {
           path: "/subscription",
           element: <SubscriptionPage />,
+        },
+        {
+          path: "/meetingnotes",
+          element: <ALLmeeting />
         }
       ]
     },

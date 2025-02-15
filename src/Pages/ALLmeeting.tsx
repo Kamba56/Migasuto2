@@ -7,7 +7,7 @@ const ALLmeeting: React.FC = () => {
   const [selectedMeetingId, setSelectedMeetingId] = useState<number | null>(null);
   return (
   
-    <div className='w-[100%] bg-blue-600/20'>
+    <div className='w-[100%] bg-transparent'>
       <Meetingnote />
       <div className="flex   h-full">
         <div className="w-[25%] ml-3 rounded-lg ">
