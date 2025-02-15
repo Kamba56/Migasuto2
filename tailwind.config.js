@@ -13,6 +13,7 @@ export default {
         blue: {
           100: '#26203B'
         },
+        'primary-90': 'var(--Primary-90, #084298)',
       }
     },
   },

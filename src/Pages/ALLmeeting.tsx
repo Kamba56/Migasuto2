@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 const ALLmeeting: React.FC = () => {
   const [selectedMeetingId, setSelectedMeetingId] = useState<number | null>(null);
   return (
-  
+  <Link to={"/ALLmeeting"}>
     <div className='w-[100%] bg-blue-600/20'>
       <Meetingnote />
       <div className="flex   h-full">
@@ -19,6 +19,7 @@ const ALLmeeting: React.FC = () => {
         </div>
       </div>
     </div>
+  </Link>
 
  
   )

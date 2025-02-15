@@ -1,12 +1,13 @@
 import ALLmeeting from './Pages/ALLmeeting';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import "./assets/styles/index.css"
+import MeetingSchedule from './Pages/MeetingSchedule';
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        {/* Define your routes here */}
-        <Route  path="/" element={<ALLmeeting />} />
+        <Route  path="/ALLmeeting" element={<ALLmeeting />} />
+        <Route path="/m_schedule" element={<MeetingSchedule />} />
       </Routes>
     </BrowserRouter>
   );
