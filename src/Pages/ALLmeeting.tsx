@@ -2,7 +2,6 @@ import React, { useState} from 'react'
 import Meetingnote from '../Components/Meetingnote'
 import MeetingList from '../Components/MeetingList'
 import MeetingDetails from '../Components/MeetingDetails'
-import { Link } from 'react-router-dom'
 
 const ALLmeeting: React.FC = () => {
   const [selectedMeetingId, setSelectedMeetingId] = useState<number | null>(null);

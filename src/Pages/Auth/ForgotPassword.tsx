@@ -22,6 +22,7 @@ export default function ForgotPassword() {
     containsUppercase: false,
     containsNumberOrSymbol: false,
   });
+  console.log(password);
 
   const schema = yup.object({
     email: yup
