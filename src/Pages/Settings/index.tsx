@@ -16,7 +16,7 @@ export default function Settings2() {
         <div className="flex bg-[#ECF0FF] min-w-[22em] min-h-[3em] text-[1em] justify-around rounded-[0.5em]">
           <button
             className={`${
-              isProfileActive ? "bg-[#336DBA] text-white " : "text-[#9C9AA5] "
+              isProfileActive ? "bg-blue-20 text-white " : "text-[#9C9AA5] "
             } rounded-[0.5em] min-w-[50%]`}
             onClick={() => {
               setIsProfileActive(true);
@@ -27,7 +27,7 @@ export default function Settings2() {
           </button>
           <button
             className={`${
-              isPasswordActive ? "bg-[#465FF1] text-white " : "text-[#9C9AA5] "
+              isPasswordActive ? "bg-blue-10 text-white " : "text-[#9C9AA5] "
             } rounded-[0.5em] min-w-[50%]`}
             onClick={() => {
               setIsProfileActive(false);
@@ -40,7 +40,7 @@ export default function Settings2() {
       </div>
       <div className="mt-[4.62em]  flex justify-center">
         <form action="" className="max-w-[23em]">
-          <FormLabel className="font-[500]">Enter Password</FormLabel>
+          <FormLabel className="font-[500] ">Enter Password</FormLabel>
           <FormInput formInputSize="lg" placeholder="XXXX XXXX X4380" />
 
           <FormLabel className="mt-[2em] font-[500]">Verify Password</FormLabel>
@@ -50,7 +50,7 @@ export default function Settings2() {
             placeholder="XXXX XXXX X4380"
           />
 
-          <button className="w-[23.75em] h-[2.8em] bg-[#336DBA] rounded-[0.5em] text-white">
+          <button className="w-[23.75em] h-[2.8em] bg-blue-20 rounded-[0.5em] text-white">
             Change Password
           </button>
         </form>
