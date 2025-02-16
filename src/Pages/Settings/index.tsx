@@ -5,11 +5,11 @@ export default function Settings2() {
   const [isPasswordActive, setIsPasswordActive] = useState(true);
   const [isProfileActive, setIsProfileActive] = useState(false);
   return (
-    <div className="min-h-[40rem] rounded-[30px] bg-gray text-[16px]  pt-[4.5em] px-[5em]">
-      <div className="flex justify-around items-center">
+    <div className="min-h-full rounded-[30px] bg-white text-[12px] md:text-[16px]  pt-[4.5em] px-[5em]">
+      <div className="flex flex-col md:flex-row justify-around items-center">
         <div>
-          <h1 className="text-[2em] font-[600] mb-[0.22em]">Change Password</h1>
-          <p className="text-[0.8em] font-[400]">
+          <h1 className="text-[2em] font-[600] leading-8">Change Password</h1>
+          <p className="text-[0.8em] font-[400] mb-[0.22em] md:mb-0">
             Add a password to make your account more secure
           </p>
         </div>
