@@ -10,27 +10,27 @@ import Login from "../Pages/Auth/Login";
 import SignUp from "../Pages/Auth/Signup";
 import Onboarding from "../Pages/onBoarding";
 import Questions from "../Pages/History/Form";
-
+import Settings2 from "../Pages/Settings";
 
 function Router() {
   const routes = [
     {
       path: "/login",
-      element: <Login />
+      element: <Login />,
     },
 
     {
       path: "/signup",
-      element: <SignUp />
+      element: <SignUp />,
     },
-   
+
     {
       path: "/",
       element: <Dashboard />,
       children: [
         {
           path: "",
-          element: <HomePage />
+          element: <HomePage />,
         },
         {
           path: "/history",
@@ -38,13 +38,13 @@ function Router() {
         },
         {
           path: "/question",
-          element: <Questions />
+          element: <Questions />,
         },
         {
           path: "/subscription",
           element: <SubscriptionPage />,
-        }
-      ]
+        },
+      ],
     },
     { path: "/forgot-password", element: <ForgotPassword /> },
     // {path: "/scan", element: <QrReader/>},
@@ -63,6 +63,11 @@ function Router() {
     {
       path: "/onboarding/:id",
       element: <Onboarding />,
+    },
+
+    {
+      path: "/settings/password",
+      element: <Settings2 />,
     },
   ];
 
