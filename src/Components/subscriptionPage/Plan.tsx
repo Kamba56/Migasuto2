@@ -17,7 +17,7 @@ export default function Plan({
 }: PlanProps) {
   return (
     <div
-      className="text-[0.8rem] md:min-w-[24em] flex flex-col mx-2 sm:mx-4 md:mx-1 lg:mx-3 bg-cover bg-center items-center border-[0.2em] hover:border-[#336DBA] border-transparent rounded-3xl px-4 md:px-3 lg:px-5 transition ease-in duration-250 md:min-h-[53em]"
+      className="text-[0.8rem] md:min-w-[24em] flex flex-col mx-2 sm:mx-4 md:mx-1 lg:mx-3 bg-cover bg-center items-center border-[0.2em] hover:border-blue-20 border-transparent rounded-3xl px-4 md:px-3 lg:px-5 transition ease-in duration-250 md:min-h-[53em]"
       style={{ backgroundImage: `url(${pattern})` }}
     >
       <div className="w-full py-4 md:py-[1.5rem] text-center">
@@ -27,7 +27,7 @@ export default function Plan({
         <p className="text-sm md:text-[13px] mb-2 md:mb-[0.4em]">
           Monthly Charge
         </p>
-        <h1 className="text-2xl md:text-[2rem] mt-4 md:mt-[0.5em] font-bold text-[#4880ff]">
+        <h1 className="text-2xl md:text-[2rem] mt-4 md:mt-[0.5em] font-bold text-home_blue">
           {price}
         </h1>
       </div>
@@ -51,10 +51,10 @@ export default function Plan({
           className={`mt-[2.5em] mb-[1.25em] w-[11.2em] h-[3.75em] py-2 rounded-full md:rounded-[2.7em] border-[0.2em] text-xs md:text-[0.8rem] font-semibold
             ${
               title.toLowerCase() === "premium"
-                ? "bg-[#4880FF] text-white border-transparent"
+                ? "bg-home_blue text-white border-transparent"
                 : !isCurrent
-                ? "text-[#4880FF] hover:border-[#336DBA] transition ease-in duration-250"
-                : "text-[#4880FF] border-[#575757]"
+                ? "text-home_blue hover:border-blue-20 transition ease-in duration-250"
+                : "text-home_blue border-[#575757]"
             }`}
         >
           {!isCurrent ? "Upgrade" : "Current Plan"}
