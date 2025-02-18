@@ -45,12 +45,12 @@ const MeetingDetails: React.FC<MeetingDetailsProps> = ({ meetingId }) => {
                 </p>
               </div>
             </div>
-            <div className="flex items-center gap-[80px]">
-              <div className="flex flex-col gap-[3px]">
-                <h1 className="text-[#336DBA] font-[600] mb-[8px] text-[16px]">
+            <div className="flex items-center  gap-[20px]">
+              <div className="flex flex-col gap-[3px] ml-[-50px]">
+                <h1 className="text-[#336DBA] font-[600] mb-[8px] text-[15px]">
                   Thursday 25th April, 2024
                 </h1>
-                <p className="text-[16px] text-[#2E2E2E] font-[500]">
+                <p className="text-[15px] text-[#2E2E2E] font-[500]">
                   9:00 AM - 10:00 AM
                 </p>
               </div>

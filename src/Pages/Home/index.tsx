@@ -1,8 +1,10 @@
 import { SlCalender } from "react-icons/sl";
 import NewClient from "../../Components/Dashboard/NewClientCard";
+import CategoryL from "../../Components/CategoryL";
 
 const HomePage = () => {
   return (
+    <><CategoryL />
     <main className="py-4 flex flex-col gap-5">
       <section className="px-9 py-12 flex items-center flex-col bg-home_blue text-white text-left rounded-2xl">
         <div className="w-[70%] min-w-80 flex flex-col gap-2 items-start">
@@ -61,7 +63,7 @@ const HomePage = () => {
         <NewClient />
         <NewClient />
       </section>
-    </main>
+    </main></>
   )
 }
 

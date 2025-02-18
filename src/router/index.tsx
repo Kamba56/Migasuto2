@@ -11,6 +11,7 @@ import SignUp from "../Pages/Auth/Signup";
 import Onboarding from "../Pages/onBoarding";
 import Questions from "../Pages/History/Form";
 import ALLmeeting from "../Pages/ALLmeeting";
+import MeetingSchedule from "../Pages/MeetingSchedule";
 
 
 function Router() {
@@ -48,6 +49,10 @@ function Router() {
         {
           path: "/meetingnotes",
           element: <ALLmeeting />
+        },
+        {
+          path: "/schedule",
+          element: <MeetingSchedule />
         }
       ]
     },
