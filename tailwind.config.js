@@ -24,6 +24,9 @@ export default {
           30: 'rgba(70, 95, 241, 0.40)',
           100: '#26203B'
         },
+<<<<<<< HEAD
+        'primary-90': 'var(--Primary-90, #084298)',
+=======
         blue_fade: "#ECF0FF",
         eclipse : '#EEFFF9',
         home_blue: "#4880FF",
@@ -41,6 +44,7 @@ export default {
         mig_blue: '#336DBA',
         gray: '#9C9AA5'
      
+>>>>>>> 48979b422e03693f5529f759fa31c9a935b254a2
       }
     },
   },

@@ -1,11 +1,21 @@
+<<<<<<< HEAD
 import { BiCategory } from "react-icons/bi";
 import Info from "../../assets/icons/Info.svg";
 
+=======
+import React from "react";
+import { BiCategory } from "react-icons/bi";
+import info from "../../assets/icons/info.svg";
+>>>>>>> 6b8a961cf6058894772c0bc90a6632d84a845834
 
 const M_schedule = () => {
   return (
     <div className="w-full">
+<<<<<<< HEAD
       <main className="flex-1 sm:p-6 ">
+=======
+      <main className="flex-1 p-6 sm:p-6">
+>>>>>>> 6b8a961cf6058894772c0bc90a6632d84a845834
         <header className="flex flex-col sm:flex-row justify-between items-center mb-6">
           <div className="flex mb-[20px] sm:mb-0 gap-3 items-center">
             <BiCategory className="mt-5px" size={20} />
@@ -13,6 +23,7 @@ const M_schedule = () => {
               Meeting Schedule -M938883a
             </h1>
           </div>
+<<<<<<< HEAD
           <div className="relative flex items-center  w-full sm:w-auto">
 
              <div className='bg-[#0d6edd1a] ml-[80px] w-fit lg:w-auto rounded-lg flex items-center p-1 py-2 md:p-3 cursor-pointer'>
@@ -20,6 +31,22 @@ const M_schedule = () => {
                         <p className='md:ml-2 mr-2 md:mr-20 text-xs'>Please verify your email address</p>
                         
                     </div>
+=======
+          <div className="relative flex items-center w-full sm:w-auto">
+            <input
+              type="text"
+              style={{
+                background: "rgba(13, 110, 253, 0.10)"
+              }}
+              placeholder="Please verify your email address"
+              className="flex-1 pl-10 pr-10 border w-[400px] p-2 h-[56px] items-center border-gray-300 rounded-[8px] placeholder-primary-90 placeholder-opacity-100"
+            />
+            <img
+              src={info}
+              alt="info"
+              className="absolute left-3 top-1/2 transform -translate-y-1/2"
+            />
+>>>>>>> 6b8a961cf6058894772c0bc90a6632d84a845834
             <svg
               className="absolute right-3 cursor-pointer"
               xmlns="http://www.w3.org/2000/svg"
