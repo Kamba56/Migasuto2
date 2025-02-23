@@ -16,7 +16,7 @@ const MobileNav = () => {
   };
   return (
 
-    <nav className="bg-white lg:hidden flex flex-col px-4 pb-10 pt-2 w-fit max-w-80 items-center h-fit min-h-22 absolute top-0
+    <nav className="bg-white z-50 lg:hidden flex flex-col px-4 pb-10 pt-2 w-fit max-w-80 items-center h-fit min-h-22 absolute top-0
      left-0">
       {!activeNav && <button onClick={openNav} className="w-fit block self-center mt-4">
         <RxHamburgerMenu size={24} />
@@ -28,7 +28,7 @@ const MobileNav = () => {
         <IoCloseOutline size={30} />
       </button>
       
-      <ul className="flex flex-col justify-between w-full h-full">
+      <ul className="flex flex-col z-40 justify-between w-full h-full">
         <div className="flex flex-col gap-3 items-center w-full">
           <li className="w-full">
             <NavLink to="/" className={`w-full p-3 px-3 flex gap-4 items-center justify-star border rounded-lg ${({ isActive }: { isActive: boolean }) => ( isActive ? "bg-secondary text-white" : " text-secondary border-secondary bg-transparent" )}`}>

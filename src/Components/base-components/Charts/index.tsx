@@ -1,47 +1,83 @@
+import { PieChart, Pie, Cell, Tooltip, Legend } from "recharts";
 
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
-import { Doughnut } from 'react-chartjs-2';
-ChartJS.register(ArcElement, Tooltip, Legend);
+const pieData1 = [
+  { name: "24 weeks", value: 54, color: "#4CAF50" },
+  { name: "Above 24 Weeks", value: 46, color: "#A6D388" },
+];
+
+const pieData2 = [
+  { name: "Partner", value: 20, color: "#F44336" },
+  { name: "Relative", value: 22, color: "#4CAF50" },
+  { name: "Alone 3", value: 12, color: "#FFC107" },
+  { name: "Friend", value: 26, color: "#FF9800" },
+  { name: "Others 5", value: 20, color: "#FF5722" },
+];
 
 export default function MetricChart() {
-    const data ={
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-        datasets: [
-            {
-            label: '# of Votes',
-            data: [12, 19, 3, 5, 2, 3],
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)',
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)',
-            ],
-            borderWidth: 1,
-            },
-        ],
-}
-    return (
-        <div className="max-w-[320px] flex flex-col p-11 divide divide-y-2 divide-gray">
-            <div>
-                <div className="divide-dotted">
-                    <h1>Title</h1>
-                    <p>description</p>
-                </div>
-            </div>
-            <Doughnut data={data} 
-                width={200} 
-                height={200} />
+  return (
+    <div className="flex flex-wrap gap-6 justify-center p-6">
+      {/* Pie Chart 1 */}
+      <div className="shadow-lg p-4 rounded-lg bg-white">
+        <h3 className="text-lg font-semibold">Title</h3>
+        <p className="text-gray-500">Short Description</p>
+        <PieChart width={250} height={250}>
+          <Pie
+            data={pieData1}
+            cx="50%"
+            cy="50%"
+            dataKey="value"
+          >
+            {pieData1.map((entry, index) => (
+              <Cell className="flex" key={`cell-${index}`} fill={entry.color} />
+            ))}
+          </Pie>
+          <Tooltip />
+          <Legend />
+        </PieChart>
+      </div>
 
-        </div>
-    )
+      {/* Pie Chart 2 */}
+      <div className="shadow-lg p-4 rounded-lg bg-white">
+        <h3 className="text-lg font-semibold">Title</h3>
+        <p className="text-gray-500">Short Description</p>
+        <PieChart width={250} height={250}>
+          <Pie
+            data={pieData2}
+            cx="50%"
+            cy="50%"
+            outerRadius={80}
+            dataKey="value"
+          >
+            {pieData2.map((entry, index) => (
+              <Cell key={`cell-${index}`} fill={entry.color} />
+            ))}
+          </Pie>
+          <Tooltip />
+          <Legend />
+        </PieChart>
+      </div>
+
+      {/* Doughnut Chart */}
+      <div className="shadow-lg p-4 rounded-lg bg-white">
+        <h3 className="text-lg font-semibold">Title</h3>
+        <p className="text-gray-500">Short Description</p>
+        <PieChart width={250} height={250}>
+          <Pie
+            data={pieData2}
+            cx="50%"
+            cy="50%"
+            innerRadius={50}
+            outerRadius={80}
+            dataKey="value"
+          >
+            {pieData2.map((entry, index) => (
+              <Cell key={`cell-${index}`} fill={entry.color} />
+            ))}
+          </Pie>
+          <Tooltip />
+          <Legend />
+        </PieChart>
+      </div>
+    </div>
+  );
 }
