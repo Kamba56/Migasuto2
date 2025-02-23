@@ -17,7 +17,7 @@ export default function Plan({
 }: PlanProps) {
   return (
     <div
-      className="text-[0.8rem] md:min-w-[19em] flex flex-col mx-2 sm:mx-4 md:mx-1 lg:mx-5 bg-cover bg-center items-center border-[0.2em] hover:border-[#336DBA] border-transparent rounded-3xl px-4 md:px-3 lg:px-5 transition ease-in duration-250 md:min-h-[53em]"
+      className="text-[0.8rem] md:min-w-[24em] flex flex-col mx-2 sm:mx-4 md:mx-1 lg:mx-5 bg-cover bg-center items-center border-[0.2em] hover:border-[#336DBA] border-transparent rounded-3xl px-4 md:px-3 lg:px-5 transition ease-in duration-250 md:min-h-[53em]"
       style={{ backgroundImage: `url(${pattern})` }}
     >
       <div className="w-full py-4 md:py-[1.5rem] text-center">

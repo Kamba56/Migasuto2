@@ -1,4 +1,4 @@
-import CategoryLayout from "../../Components/CategoryLayout.js"
+
 import FilterBar from "../../Components/base-components/Filter/FilterBar/index.js"
 import Status from "../../Components/base-components/Table/status.js"
 import TableBody from "../../Components/base-components/Table/TableBody/index.js"
@@ -7,9 +7,7 @@ import TableData from "../../Data/TableData.js"
 
 export default function History(){
     return(
-        <CategoryLayout
-            organization="Migasuto Team"
-            category="Questionnaire History">
+        <section className="flex flex-col w-full gap-6">
             <FilterBar />
             <table className=" bg-white px-8 rounded-xl py-5">
                 <thead>
@@ -49,9 +47,8 @@ export default function History(){
                     ))}
                 </tbody>
             </table>
+            </section>
 
             
-
-        </CategoryLayout>
     )
 }

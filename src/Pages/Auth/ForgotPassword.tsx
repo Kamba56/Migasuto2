@@ -5,7 +5,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 
 import { FormInput } from "../../Components/base-components/Form";
-import Logo from "../../assets/images/logo.svg";
+import Logo from "/logo.svg";
 import ValidationItem from "./ValidationItem";
 
 export default function ForgotPassword() {
@@ -22,6 +22,7 @@ export default function ForgotPassword() {
     containsUppercase: false,
     containsNumberOrSymbol: false,
   });
+  console.log(password);
 
   const schema = yup.object({
     email: yup
