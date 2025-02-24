@@ -12,8 +12,8 @@ import Login from "../Pages/Auth/Login";
 import SignUp from "../Pages/Auth/Signup";
 import Onboarding from "../Pages/onBoarding";
 import Questions from "../Pages/History/Form";
+import Metrics from "../Pages/Metrics";
 import ALLmeeting from "../Pages/ALLmeeting";
-
 
 function Router() {
   const routes = [
@@ -50,6 +50,10 @@ function Router() {
         {
           path: "/meetingnotes",
           element: <ALLmeeting />
+        },
+        {
+          path: "/metrics",
+          element: <Metrics />
         },
         {
           path: "/settings",
