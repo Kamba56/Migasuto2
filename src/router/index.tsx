@@ -5,6 +5,8 @@ import ForgotPassword from "../Pages/Auth/ForgotPassword";
 import PrivateRoute from "./PrivateRoute";
 import SubscriptionPage from "../Pages/subscription";
 import History from "../Pages/History";
+import Settings from "../Pages/Settings";
+
 import HomePage from "../Pages/Home";
 import Login from "../Pages/Auth/Login";
 import SignUp from "../Pages/Auth/Signup";
@@ -48,6 +50,10 @@ function Router() {
         {
           path: "/meetingnotes",
           element: <ALLmeeting />
+        },
+        {
+          path: "/settings",
+          element: <Settings />
         }
       ]
     },
@@ -66,6 +72,14 @@ function Router() {
     },
 
     {
+      path: '/history',
+      element: <History />
+    },
+    {
+      path: '/settings',
+      element: <Settings />
+    },
+    {   
       path: "/onboarding/:id",
       element: <Onboarding />,
     },

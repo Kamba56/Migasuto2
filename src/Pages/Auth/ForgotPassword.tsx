@@ -123,7 +123,7 @@ export default function ForgotPassword() {
                 {...register("email")}
               />
               {errors.email && (
-                <p className="text-red-500 text-sm">{errors.email.message}</p>
+                <p className="text-red-500-500 text-sm">{errors.email.message}</p>
               )}
             </div>
           </div>
@@ -150,7 +150,7 @@ export default function ForgotPassword() {
               />
 
               {errors.otp && (
-                <p className="text-red-500 text-sm">{errors.otp.message}</p>
+                <p className="text-red-500-500 text-sm">{errors.otp.message}</p>
               )}
             </div>
           </div>
@@ -180,7 +180,7 @@ export default function ForgotPassword() {
                   })}
                 />
                 {errors.newPassword && (
-                  <p className="text-red-500 text-sm">
+                  <p className="text-red-500-500 text-sm">
                     {errors.newPassword.message}
                   </p>
                 )}
@@ -204,7 +204,7 @@ export default function ForgotPassword() {
                   {...register("confirmPassword")}
                 />
                 {errors.confirmPassword && (
-                  <p className="text-red-500 text-sm">
+                  <p className="text-red-500-500 text-sm">
                     {errors.confirmPassword.message}
                   </p>
                 )}
