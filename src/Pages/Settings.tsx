@@ -48,7 +48,7 @@ const Settings: React.FC = () => {
 
   return (
     // initially was a col
-    <div className="mt-6 flex flex-col justify-between items-start w-full max-w-4xl rounded-lg">
+    <div className="mt-6 flex flex-col justify-between items-start w-full rounded-3xl py-7 px-7 bg-white">
 
       <div className="flex flex-row justify-between items-center w-full">
         <div className='ml-6'>
@@ -60,14 +60,14 @@ const Settings: React.FC = () => {
           )}
           
         </div>
-        <div className='mr-6 pb-5'>
+        <div className='mr-6 rounded-lg bg-blue_fade p-1 flex gap-1'>
           {tabs.map((tab) => (
             <button
               key={tab.id}
-              className={`px-4 py-2 font-medium rounded-md ${
+              className={`px-9 py-2 font-medium rounded-lg ${
                 activeTab === tab.id
-                  ? 'bg-indigo-600 text-white'
-                  : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                  ? 'bg-blue-20 text-white'
+                  : 'bg-blue_fade text-gray'
               }`}
               onClick={() => handleTabClick(tab.id)}
             >

@@ -50,6 +50,10 @@ function Router() {
         {
           path: "/meetingnotes",
           element: <ALLmeeting />
+        },
+        {
+          path: "/settings",
+          element: <Settings />
         }
       ]
     },

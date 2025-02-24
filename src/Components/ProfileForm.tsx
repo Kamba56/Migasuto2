@@ -40,7 +40,7 @@ const ProfileForm: React.FC = () => {
   
 
   return (
-    <div className="flex justify-between items-center w-3/4 mx-auto">
+    <div className="flex justify-between items-center w-3/4 mx-auto  max-w-5xl">
       <div className="flex flex-col justify-center items-center p-5">
         {/* Intially is w-32 h-32 */}
         <div className="bg-gray-200 rounded-full mx-auto">
@@ -62,7 +62,7 @@ const ProfileForm: React.FC = () => {
         <span>Upload Logo</span>
         </button>
       </div>
-      <div className="flex-1 ml-8">
+      <div className="flex-1 ml-8 max-w-xl">
         <form>
           <div className="mb-4">
             <label htmlFor="fullName" className="block font-medium mb-2">

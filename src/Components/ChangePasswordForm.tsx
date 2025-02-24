@@ -23,9 +23,9 @@ const ChangePasswordForm: React.FC<ChangePasswordFormProps> = ({ onSubmit }) => 
   };
 
   return (
-    <div className="flex justify-center items-start w-full">
-      <div className="w-3/6 mx-auto">
-        <form onSubmit={handleSubmit}>
+    <div className="flex justify-center items-start w-full  ">
+      <div className="w-3/6 mx-auto max-w-lg">
+        <form onSubmit={handleSubmit} className='flex flex-col gap-5'>
           <div className="mb-4">
             <label htmlFor="password" className="block font-medium mb-2">
               Enter Password <span className='text-red-500'>*</span>
@@ -56,7 +56,7 @@ const ChangePasswordForm: React.FC<ChangePasswordFormProps> = ({ onSubmit }) => 
           </div>
           <button
             type="submit"
-            className="bg-indigo-500 hover:bg-indigo-600 text-white px-4 py-2 rounded w-full"
+            className="bg-blue-20 hover:bg-blue-10 text-white px-4 py-3 rounded-lg w-full"
           >
             Change Password
           </button>
