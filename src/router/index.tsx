@@ -73,10 +73,6 @@ function Router() {
       path: "/onboarding/:id",
       element: <Onboarding />,
     },
-    {
-      path: "/metrics",
-      element: <Metrics />
-    }
   ];
 
   return useRoutes(routes);
