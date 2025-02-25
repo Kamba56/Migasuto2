@@ -11,27 +11,27 @@ import SignUp from "../Pages/Auth/Signup";
 import Onboarding from "../Pages/onBoarding";
 import Questions from "../Pages/History/Form";
 import ALLmeeting from "../Pages/ALLmeeting";
-
+import Filemanager from "../Pages/fileManager";
 
 function Router() {
   const routes = [
     {
       path: "/login",
-      element: <Login />
+      element: <Login />,
     },
 
     {
       path: "/signup",
-      element: <SignUp />
+      element: <SignUp />,
     },
-   
+
     {
       path: "/",
       element: <Dashboard />,
       children: [
         {
           path: "",
-          element: <HomePage />
+          element: <HomePage />,
         },
         {
           path: "/history",
@@ -39,7 +39,7 @@ function Router() {
         },
         {
           path: "/question",
-          element: <Questions />
+          element: <Questions />,
         },
         {
           path: "/subscription",
@@ -47,9 +47,9 @@ function Router() {
         },
         {
           path: "/meetingnotes",
-          element: <ALLmeeting />
-        }
-      ]
+          element: <ALLmeeting />,
+        },
+      ],
     },
     { path: "/forgot-password", element: <ForgotPassword /> },
     // {path: "/scan", element: <QrReader/>},
@@ -68,6 +68,10 @@ function Router() {
     {
       path: "/onboarding/:id",
       element: <Onboarding />,
+    },
+    {
+      path: "/manager/",
+      element: <Filemanager />,
     },
   ];
 
