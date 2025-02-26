@@ -112,11 +112,11 @@ export default function Filemanager() {
           {dummyData.map((data) => (
             <tr key={data.id} className="border-b border-[#979797]">
               <td className="p-2 pl-[2.5em] py-[1.75em]">{data.id}</td>
-              <td className="p-2 ">{data.name}</td>
-              <td className="p-2">{data.note}</td>
-              <td className="p-2 ">{data.date}</td>
-              <td className="p-2 ">{data.size}</td>
-              <td className="p-2 pr-[2.5em]">
+              <td className="p-2 pl-0 ">{data.name}</td>
+              <td className="p-2 pl-0">{data.note}</td>
+              <td className="p-2 pl-0">{data.date}</td>
+              <td className="p-2 pl-0">{data.size}</td>
+              <td className="p-2 pl-0 pr-[2.5em]">
                 <button className="py-[0.3em] px-[1.5em] text-[0.75em] text-blue-20 bg-blue_fade rounded-[0.5em] font-[500]">
                   Options
                 </button>
