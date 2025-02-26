@@ -12,6 +12,7 @@ import Onboarding from "../Pages/onBoarding";
 import Questions from "../Pages/History/Form";
 import ALLmeeting from "../Pages/ALLmeeting";
 import Filemanager from "../Pages/fileManager";
+import FileUpload from "../Pages/fileUpload";
 
 function Router() {
   const routes = [
@@ -49,6 +50,14 @@ function Router() {
           path: "/meetingnotes",
           element: <ALLmeeting />,
         },
+        {
+          path: "manager",
+          element: <Filemanager />, // Only renders on "/manager"
+        },
+        {
+          path: "manager/upload",
+          element: <FileUpload />, // Separate from Filemanager
+        },
       ],
     },
     { path: "/forgot-password", element: <ForgotPassword /> },
@@ -68,10 +77,6 @@ function Router() {
     {
       path: "/onboarding/:id",
       element: <Onboarding />,
-    },
-    {
-      path: "/manager/",
-      element: <Filemanager />,
     },
   ];
 

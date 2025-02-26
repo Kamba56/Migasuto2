@@ -1,6 +1,7 @@
 import arrow from "../../assets/images/arrowUp.png";
 import filter from "../../assets/images/FilterIcon.png";
 import path from "../../assets/images/Path.png";
+import { useNavigate } from "react-router";
 export default function Filemanager() {
   const dummyData = [
     { id: 1, name: "File A", note: "Note 1", date: "2024-02-24", size: "2MB" },
@@ -22,6 +23,7 @@ export default function Filemanager() {
     },
     { id: 6, name: "File F", note: "Note 6", date: "2024-02-19", size: "1MB" },
   ];
+  const navigate = useNavigate();
 
   return (
     <div className="p-[1.75em] text-[16px] min-w-full bg-blue_fade">
@@ -37,7 +39,10 @@ export default function Filemanager() {
           />
         </form>
 
-        <button className="rounded-[0.5em] bg-blue-20 min-w-[18.5em] min-h-[3em] text-left text-[#FEFEFE] text-[0.87em] pl-[0.75em] flex items-center gap-2">
+        <button
+          onClick={() => navigate("/manager/upload")}
+          className="rounded-[0.5em] bg-blue-20 min-w-[18.5em] min-h-[3em] text-left text-[#FEFEFE] text-[0.87em] pl-[0.75em] flex items-center gap-2"
+        >
           <img src={arrow} className="w-[1.2em] h-auto" alt="" />
           <span>Upload File</span>
         </button>
@@ -92,7 +97,7 @@ export default function Filemanager() {
         </tr>
       </table>
 
-      <table className="rounded-[0.8em] text-left min-w-[90%] bg-white px-[1.9em] border-collapse overflow-hidden mb-[1.5em]">
+      <table className="rounded-[0.8em] text-left min-w-[60em] bg-white px-[1.9em] border-collapse overflow-hidden mb-[1.5em]">
         <thead>
           <tr className="border-b border-[#979797]">
             <th className="min-w-[9em] py-[0.9em] pl-[2.5em]">ID</th>
