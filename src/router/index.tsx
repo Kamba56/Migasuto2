@@ -12,6 +12,7 @@ import Login from "../Pages/Auth/Login";
 import SignUp from "../Pages/Auth/Signup";
 import Onboarding from "../Pages/onBoarding";
 import Questions from "../Pages/History/Form";
+import Metrics from "../Pages/Metrics";
 import ALLmeeting from "../Pages/ALLmeeting";
 import Filemanager from "../Pages/fileManager";
 import FileUpload from "../Pages/fileUpload";
@@ -51,6 +52,10 @@ function Router() {
         {
           path: "/meetingnotes",
           element: <ALLmeeting />
+        },
+        {
+          path: "/metrics",
+          element: <Metrics />
         },
         {
           path: "/settings",
