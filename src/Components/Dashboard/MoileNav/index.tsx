@@ -27,60 +27,59 @@ const MobileNav = () => {
       <button className="absolute top-4 right-0" onClick={closeNav}>
         <IoCloseOutline size={30} />
       </button>
-      
       <ul className="flex flex-col justify-between w-full h-full">
         <div className="flex flex-col gap-3 items-center w-full">
           <li className="w-full">
-            <NavLink to="/" className={`w-full p-3 px-3 flex gap-4 items-center justify-star border rounded-lg ${({ isActive }: { isActive: boolean }) => ( isActive ? "bg-secondary text-white" : " text-secondary border-secondary bg-transparent" )}`}>
+            <NavLink onClick={closeNav} to="/" className={({ isActive }: { isActive: boolean }) => (`${ isActive ? "bg-secondary text-white" : "text-secondary border-secondary bg-transparent" } w-full p-3 px-3 flex gap-4 items-center justify-start border rounded-lg`)}>
               <IoIosArrowBack size={20} />
               <p>Dashboard</p>
             </NavLink>
           </li>
 
           <li className="w-full">
-            <NavLink to="/" className={`w-full p-3 px-3 flex gap-4 items-center justify-star border rounded-lg ${({ isActive }: { isActive: boolean }) => ( isActive ? "bg-secondary text-white" : " text-secondary border-secondary bg-transparent" )}`}>
+            <NavLink onClick={closeNav} to="/schedule" className={({ isActive }: { isActive: boolean }) => (`${ isActive ? "bg-secondary text-white" : "text-secondary border-secondary bg-transparent" } w-full p-3 px-3 flex gap-4 items-center justify-start border rounded-lg`)}>
               <IoIosArrowBack size={20} />
               <p>Meeting Schedule</p>
             </NavLink>
           </li>
           <li className="w-full">
-            <NavLink to="/" className={`w-full p-3 px-3 flex gap-4 items-center justify-star border rounded-lg ${({ isActive }: { isActive: boolean }) => ( isActive ? "bg-secondary text-white" : " text-secondary border-secondary bg-transparent" )}`}>
+            <NavLink onClick={closeNav} to="/meetingnotes" className={({ isActive }: { isActive: boolean }) => (`${ isActive ? "bg-secondary text-white" : "text-secondary border-secondary bg-transparent" } w-full p-3 px-3 flex gap-4 items-center justify-start border rounded-lg`)}>
               <IoIosArrowBack size={20} />
               <p>Meeting Notes</p>
             </NavLink>
           </li>
           <li className="w-full">
-            <NavLink to="/history" className={`w-full p-3 px-3 flex gap-4 items-center justify-star border rounded-lg ${({ isActive }: { isActive: boolean }) => ( isActive ? "bg-secondary text-white" : " text-secondary border-secondary bg-transparent" )}`}>
+            <NavLink onClick={closeNav} to="/history" className={({ isActive }: { isActive: boolean }) => (`${ isActive ? "bg-secondary text-white" : "text-secondary border-secondary bg-transparent" } w-full p-3 px-3 flex gap-4 items-center justify-start border rounded-lg`)}>
               <IoIosArrowBack size={20} />
               <p>Questionnaire History</p>
             </NavLink>
           </li>
           <li className="w-full">
-            <NavLink to="/" className={`w-full p-3 px-3 flex gap-4 items-center justify-star border rounded-lg ${({ isActive }: { isActive: boolean }) => ( isActive ? "bg-secondary text-white" : " text-secondary border-secondary bg-transparent" )}`}>
+            <NavLink onClick={closeNav} to="/metrics" className={({ isActive }: { isActive: boolean }) => (`${ isActive ? "bg-secondary text-white" : "text-secondary border-secondary bg-transparent" } w-full p-3 px-3 flex gap-4 items-center justify-start border rounded-lg`)}>
               <IoIosArrowBack size={20} />
               <p>Performance Metrics</p>
             </NavLink>
           </li>
           <li className="w-full">
-            <NavLink to="/" className={`w-full p-3 px-3 flex gap-4 items-center justify-star border rounded-lg ${({ isActive }: { isActive: boolean }) => ( isActive ? "bg-secondary text-white" : " text-secondary border-secondary bg-transparent" )}`}>
+            <NavLink onClick={closeNav} to="/manager" className={({ isActive }: { isActive: boolean }) => (`${ isActive ? "bg-secondary text-white" : "text-secondary border-secondary bg-transparent" } w-full p-3 px-3 flex gap-4 items-center justify-start border rounded-lg`)}>
               <IoIosArrowBack size={20} />
               <p>File Manager</p>
             </NavLink>
           </li>
           <li className="w-full">
-            <NavLink to="/" className={`w-full p-3 px-3 flex gap-4 items-center justify-star border rounded-lg ${({ isActive }: { isActive: boolean }) => ( isActive ? "bg-secondary text-white" : " text-secondary border-secondary bg-transparent" )}`}>
+            <NavLink onClick={closeNav} to="/support" className={({ isActive }: { isActive: boolean }) => (`${ isActive ? "bg-secondary text-white" : "text-secondary border-secondary bg-transparent" } w-full p-3 px-3 flex gap-4 items-center justify-start border rounded-lg`)}>
               <IoIosArrowBack size={20} />
               <p>Chat Support</p>
             </NavLink>
           </li>
           <li className="w-full">
-            <NavLink to="/subscription" className={`w-full p-3 px-3 flex gap-4 items-center justify-star border rounded-lg ${({ isActive }: { isActive: boolean }) => ( isActive ? "bg-secondary text-white" : " text-secondary border-secondary bg-transparent" )}`}>
+            <NavLink onClick={closeNav} to="/subscription" className={({ isActive }: { isActive: boolean }) => (`${ isActive ? "bg-secondary text-white" : "text-secondary border-secondary bg-transparent" } w-full p-3 px-3 flex gap-4 items-center justify-start border rounded-lg`)}>
               <IoIosArrowBack size={20} />
               <p>Subscription</p>
             </NavLink>
           </li>
           <li className="w-full">
-            <NavLink to="/" className={`w-full p-3 px-3 flex gap-4 items-center justify-star border rounded-lg ${({ isActive }: { isActive: boolean }) => ( isActive ? "bg-secondary text-white" : " text-secondary border-secondary bg-transparent" )}`}>
+            <NavLink onClick={closeNav} to="/settings" className={({ isActive }: { isActive: boolean }) => (`${ isActive ? "bg-secondary text-white" : "text-secondary border-secondary bg-transparent" } w-full p-3 px-3 flex gap-4 items-center justify-start border rounded-lg`)}>
               <IoIosArrowBack size={20} />
               <p>Settings</p>
             </NavLink>
@@ -88,7 +87,7 @@ const MobileNav = () => {
 
         </div>
           <li className="w-full">
-            <NavLink to="/login" className={`w-full p-3 px-3 flex gap-4 items-center justify-star border rounded-lg ${({ isActive }: { isActive: boolean }) => ( isActive ? "bg-secondary text-white" : " text-secondary border-secondary bg-transparent" )}`}>
+            <NavLink onClick={closeNav} to="/login" className={({ isActive }: { isActive: boolean }) => (`${ isActive ? "bg-secondary text-white" : "text-secondary border-secondary bg-transparent" } w-full p-3 px-3 flex gap-4 items-center justify-start border rounded-lg`)}>
               <IoIosArrowBack size={20} />
               <p>Logout</p>
             </NavLink>
