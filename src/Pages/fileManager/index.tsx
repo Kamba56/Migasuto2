@@ -2,6 +2,8 @@ import arrow from "../../assets/images/arrowUp.png";
 import filter from "../../assets/images/FilterIcon.png";
 import path from "../../assets/images/Path.png";
 import { useNavigate } from "react-router";
+import { useEffect, useState } from "react";
+import axios, { AxiosError } from "axios";
 export default function Filemanager() {
   const dummyData = [
     { id: 1, name: "File A", note: "Note 1", date: "2024-02-24", size: "2MB" },
@@ -24,6 +26,19 @@ export default function Filemanager() {
     { id: 6, name: "File F", note: "Note 6", date: "2024-02-19", size: "1MB" },
   ];
   const navigate = useNavigate();
+  const [files, setFiles] = useState<File[]>([]); //this variable is for storing all the files we get from the api
+  useEffect(() => {
+    axios
+      .get("https://migasutoapi-production.up.railway.app/filemanager")
+      .then((response) => {
+        console.log(response.data);
+        //set the file to this stuff later.
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
+  
 
   return (
     <div className="p-[1.75em] text-[16px] min-w-full bg-blue_fade">
