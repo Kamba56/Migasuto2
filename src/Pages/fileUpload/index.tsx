@@ -6,12 +6,10 @@ import close from "../../assets/images/close.png";
 import { Link } from "react-router";
 import { useState } from "react";
 import Dropzone from "react-dropzone";
+import axios from "axios";
 
 export default function FileUpload() {
-  const [files, setFiles] = useState<File[]>([]);
-  const [progress, setProgress] = useState<
-    { filename: string; progress: number; visible: boolean }[]
-  >([]); //just here for testing
+  const [files, setFiles] = useState<(File & { progress: number })[]>([]); //adding a field for the progress of each file
   return (
     <div className="min-w-[67em] min-h-[30em] rounded-[1.87em] bg-white p-[1.75em] relative">
       <Link to={"/manager"} className="inline-block">
@@ -25,15 +23,10 @@ export default function FileUpload() {
         <div>
           <Dropzone
             onDrop={(acceptedFiles) => {
-              setFiles((previtems) => [...previtems, ...acceptedFiles]);
-              setProgress((prev) => [
-                ...prev,
-                ...acceptedFiles.map((file) => ({
-                  filename: file.name,
-                  progress: Math.floor(Math.random() * 101),
-                  visible: true,
-                })),
-              ]);
+              const newFiles = acceptedFiles.map((file) =>
+                Object.assign(file, { progress: 0 })
+              ); //making sure the accepted files array has the progress field. Doing this by making it a new array and assigning the field
+              setFiles((previtems) => [...previtems, ...newFiles]);
               console.log(acceptedFiles);
               console.log(files);
             }}
@@ -92,27 +85,21 @@ export default function FileUpload() {
                 Uploading - 1/{files.length} files
               </p>
               {files
-                .slice()
+                .slice(0, 3)
                 .reverse()
                 .map((file) => (
                   <div
-                    className={`w-full h-[3em] mb-3 border-[#E3E3E3] border-[1px] rounded-[0.25em] text-[0.75em] flex flex-col justify-end ${
-                      progress.find((prog) => prog.filename === file.name)
-                        ?.visible === false
-                        ? " hidden"
-                        : ""
-                    }`}
+                    className={`w-full h-[3em] mb-3 border-[#E3E3E3] border-[1px] rounded-[0.25em] text-[0.75em] flex flex-col justify-end`}
                   >
                     <div className="flex justify-between pr-3">
                       <p className="ml-2">{file.name}</p>
                       <button
                         onClick={() => {
-                          setProgress((prev) =>
-                            prev.map((prog) =>
-                              prog.filename === file.name
-                                ? { ...prog, visible: false }
-                                : prog
-                            )
+                          setFiles((prev) =>
+                            prev.filter((lefile) => lefile.name !== file.name)
+                          );
+                          setFiles((prev) =>
+                            prev.filter((item) => item.name !== file.name)
                           );
                         }}
                       >
@@ -123,7 +110,7 @@ export default function FileUpload() {
                     <div
                       style={{
                         width: `${
-                          progress.find((prog) => prog.filename === file.name)
+                          files.find((lefile) => lefile.name === file.name)
                             ?.progress || 0
                         }%`,
                       }}
