@@ -11,7 +11,43 @@ export default function FileUpload() {
   const [files, setFiles] = useState<File[]>([]);
   const [progress, setProgress] = useState<
     { filename: string; progress: number; visible: boolean }[]
-  >([]); //just here for testing
+  >([]);
+  const [note, setNote] = useState(""); // State for the note
+
+  const ENDPOINT = "https://migasutoapi-production.up.railway.app/filemanager"; // Adjust to your backend URL
+
+  const handleSubmit = async () => {
+    if (files.length === 0) {
+      alert("Please upload at least one file.");
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append("files", files[0]); // Send only the first file
+    formData.append("note", note);
+    formData.append("userId", "1"); // Replace with actual user ID (e.g., from auth)
+
+    try {
+      const response = await fetch(ENDPOINT, {
+        method: "POST",
+        body: formData,
+      });
+
+      if (!response.ok) {
+        throw new Error("Upload failed");
+      }
+
+      const result = await response.json();
+      console.log("Upload successful:", result);
+      setFiles([]);
+      setProgress([]);
+      setNote("");
+    } catch (error) {
+      console.error("Error submitting files:", error);
+      alert("Failed to upload files.");
+    }
+  };
+
   return (
     <div className="min-w-[67em] min-h-[30em] rounded-[1.87em] bg-white p-[1.75em] relative">
       <Link to={"/manager"} className="inline-block">
@@ -30,12 +66,10 @@ export default function FileUpload() {
                 ...prev,
                 ...acceptedFiles.map((file) => ({
                   filename: file.name,
-                  progress: Math.floor(Math.random() * 101),
+                  progress: 0, // Start at 0
                   visible: true,
                 })),
               ]);
-              console.log(acceptedFiles);
-              console.log(files);
             }}
           >
             {({ getRootProps, getInputProps }) => (
@@ -59,7 +93,7 @@ export default function FileUpload() {
                     </Link>
                   </p>
                   <p className="text-[0.75em]">
-                    Supported formates: JPEG, PNG, GIF, MP4, PDF, PSD, AI, Word,
+                    Supported formats: JPEG, PNG, GIF, MP4, PDF, PSD, AI, Word,
                     PPT
                   </p>
                 </div>
@@ -72,12 +106,14 @@ export default function FileUpload() {
           </button>
         </div>
         <div className="ml-[3.68em] min-h-[40em]">
-          <form action="" className="flex flex-col items-end">
+          <div className="flex flex-col items-end">
             <label className="self-start font-semibold">Note</label>
             <textarea
               name="note"
               id="note"
               required
+              value={note}
+              onChange={(e) => setNote(e.target.value)}
               className="min-h-[10.5rem] mb-[1.43em] min-w-[23.75rem] border-[1px] border-[#E3E3E3] rounded-[0.5em] text-[1em] placeholder:text-[1em]"
               placeholder="Enter your response"
             ></textarea>
@@ -85,7 +121,7 @@ export default function FileUpload() {
               <img src={bPlus} alt="" className="w-[1.25em] h-auto mr-2" />
               Request A Meeting on File
             </button>
-          </form>
+          </div>
           {files.length > 0 && (
             <div className="flex flex-col w-[27.8em] max-h-[10em] overflow-hidden">
               <p className="text-[0.87em] font-[500] mb-3">
@@ -116,10 +152,9 @@ export default function FileUpload() {
                           );
                         }}
                       >
-                        <img src={close} alt="" className=" w-4 h-4" />
+                        <img src={close} alt="" className="w-4 h-4" />
                       </button>
                     </div>
-
                     <div
                       style={{
                         width: `${
@@ -136,6 +171,7 @@ export default function FileUpload() {
         </div>
       </div>
       <button
+        onClick={handleSubmit}
         className={`absolute right-[14.5em] bottom-[6.25em] min-w-[9.6em] box-content min-h-[3em] text-white bg-blue-20 px-[0.95em] py-[0.37em] rounded-lg text-[0.75em] ${
           files.length === 0 ? "hidden" : ""
         }`}
