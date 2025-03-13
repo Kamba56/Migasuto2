@@ -3,42 +3,23 @@ import filter from "../../assets/images/FilterIcon.png";
 import path from "../../assets/images/Path.png";
 import { useNavigate } from "react-router";
 import { useEffect, useState } from "react";
-import axios, { AxiosError } from "axios";
+import axios from "axios";
 export default function Filemanager() {
-  const dummyData = [
-    { id: 1, name: "File A", note: "Note 1", date: "2024-02-24", size: "2MB" },
-    { id: 2, name: "File B", note: "Note 2", date: "2024-02-23", size: "1MB" },
-    { id: 3, name: "File C", note: "Note 3", date: "2024-02-22", size: "3MB" },
-    {
-      id: 4,
-      name: "File D",
-      note: "Note 4",
-      date: "2024-02-21",
-      size: "1.5MB",
-    },
-    {
-      id: 5,
-      name: "File E",
-      note: "Note 5",
-      date: "2024-02-20",
-      size: "2.5MB",
-    },
-    { id: 6, name: "File F", note: "Note 6", date: "2024-02-19", size: "1MB" },
-  ];
+  const endpoint = "https://migasutoapi-production.up.railway.app/filemanager";
   const navigate = useNavigate();
-  const [files, setFiles] = useState<File[]>([]); //this variable is for storing all the files we get from the api
+  const [files, setFiles] = useState([]); //this variable is for storing all the files we get from the api
   useEffect(() => {
     axios
-      .get("https://migasutoapi-production.up.railway.app/filemanager")
+      .get(endpoint)
       .then((response) => {
         console.log(response.data);
-        //set the file to this stuff later.
+        setFiles(response.data);
+        console.log("files is: ", files);
       })
       .catch((error) => {
         console.error(error);
       });
   }, []);
-  
 
   return (
     <div className="p-[1.75em] text-[16px] min-w-full bg-blue_fade">
@@ -124,20 +105,33 @@ export default function Filemanager() {
           </tr>
         </thead>
         <tbody>
-          {dummyData.map((data) => (
-            <tr key={data.id} className="border-b border-[#979797]">
-              <td className="p-2 pl-[2.5em] py-[1.75em]">{data.id}</td>
-              <td className="p-2 pl-0 ">{data.name}</td>
-              <td className="p-2 pl-0">{data.note}</td>
-              <td className="p-2 pl-0">{data.date}</td>
-              <td className="p-2 pl-0">{data.size}</td>
-              <td className="p-2 pl-0 pr-[2.5em]">
-                <button className="py-[0.3em] px-[1.5em] text-[0.75em] text-blue-20 bg-blue_fade rounded-[0.5em] font-[500]">
-                  Options
-                </button>
-              </td>
-            </tr>
-          ))}
+          {files.map(
+            (data: {
+              filename: string;
+              id: number;
+              note: string;
+              size: number;
+            }) => (
+              <tr key={data.id} className="border-b border-[#979797]">
+                <td className="p-2 pl-[2.5em] py-[1.75em]">{data.id}</td>
+                <td className="p-2 pl-0 ">
+                  {data.filename.length > 15
+                    ? `${data.filename.slice(0, 15)}...`
+                    : data.filename}
+                </td>
+                <td className="p-2 pl-0">{data.note}</td>
+                <td className="p-2 pl-0">{"date"}</td>
+                <td className="p-2 pl-0">
+                  {(data.size / 1024 / 1024).toPrecision(2)}MB
+                </td>
+                <td className="p-2 pl-0 pr-[2.5em]">
+                  <button className="py-[0.3em] px-[1.5em] text-[0.75em] text-blue-20 bg-blue_fade rounded-[0.5em] font-[500]">
+                    Options
+                  </button>
+                </td>
+              </tr>
+            )
+          )}
         </tbody>
       </table>
 

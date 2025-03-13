@@ -165,3 +165,38 @@ export default function FileUpload() {
     </div>
   );
 }
+
+// const uploadFile = async (file, index) => {
+//   const formdata = new FormData();
+//   formdata.append("note", note || "");
+//   formdata.append(`file`, file); // Send one file per request
+
+//   try {
+//     const response = await axios.post(endpoint, formdata, {
+//       headers: {
+//         "Content-Type": "multipart/form-data",
+//       },
+//       onUploadProgress: (progressEvent) => {
+//         const percentCompleted = Math.round(
+//           (progressEvent.loaded * 100) / progressEvent.total
+//         );
+//         console.log(`File ${index + 1}: ${percentCompleted}%`);
+//       },
+//     });
+
+//     console.log(`File ${index + 1} uploaded successfully:`, response.data);
+//   } catch (error) {
+//     console.error(`Error uploading file ${index + 1}:`, error.response?.data || error.message);
+//   }
+// };
+
+// const handleSubmit = async () => {
+//   if (!files || files.length === 0) {
+//     alert("Please upload at least one file.");
+//     return;
+//   }
+
+//   for (let i = 0; i < files.length; i++) {
+//     await uploadFile(files[i], i); // Upload files sequentially
+//   }
+// };
