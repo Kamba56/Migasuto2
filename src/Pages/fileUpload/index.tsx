@@ -105,7 +105,9 @@ export default function FileUpload() {
               required
               className="min-h-[10.5rem] mb-[1.43em] min-w-[23.75rem] border-[1px] border-[#E3E3E3] rounded-[0.5em] text-[1em] placeholder:text-[1em]"
               placeholder="Enter your response"
-            ></textarea>
+            >
+              {note}
+            </textarea>
             <button className="min-w-[18.5em] text-left flex text-[0.87em] rounded-[0.5em] border-[1px] border-blue-20 text-blue-20 font-[500] bg-white p-[0.75em] mb-10">
               <img src={bPlus} alt="" className="w-[1.25em] h-auto mr-2" />
               Request A Meeting on File

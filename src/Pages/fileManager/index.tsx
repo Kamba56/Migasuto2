@@ -5,21 +5,30 @@ import { useNavigate } from "react-router";
 import { useEffect, useState } from "react";
 import axios from "axios";
 export default function Filemanager() {
+  const [currentPage, setCurrentPage] = useState(1);
+  const [maxPage, setMaxPage] = useState(1); //this state stores the max number of pages we can have based on the file length
   const endpoint = "https://migasutoapi-production.up.railway.app/filemanager";
   const navigate = useNavigate();
+  const pageItems = 6;
   const [files, setFiles] = useState([]); //this variable is for storing all the files we get from the api
+  const startIndex = (currentPage - 1) * pageItems;
+  const currentItems = files.slice(startIndex, startIndex + pageItems);
   useEffect(() => {
     axios
       .get(endpoint)
       .then((response) => {
         console.log(response.data);
         setFiles(response.data);
-        console.log("files is: ", files);
       })
       .catch((error) => {
         console.error(error);
       });
   }, []);
+
+  useEffect(() => {
+    //this function sets the max number of pages by dividing by the file length
+    setMaxPage(Math.ceil(files.length / pageItems)); //6 is the total items per page
+  }, [files]);
 
   return (
     <div className="p-[1.75em] text-[16px] min-w-full bg-blue_fade">
@@ -105,7 +114,7 @@ export default function Filemanager() {
           </tr>
         </thead>
         <tbody>
-          {files.map(
+          {currentItems.map(
             (data: {
               filename: string;
               id: number;
@@ -136,10 +145,20 @@ export default function Filemanager() {
       </table>
 
       <div className="flex justify-between min-w-[90%]">
-        <button className="bg-[#FAFBFD] min-w-[7em] min-h-[2em] rounded-[0.5em] text-[0.87em] text-[#202224]">
+        <button
+          className="bg-[#FAFBFD] min-w-[7em] min-h-[2em] rounded-[0.5em] text-[0.87em] text-[#202224]"
+          onClick={() => {
+            currentPage != 1 && setCurrentPage((prev) => prev - 1);
+          }}
+        >
           {"< "}Prev.
         </button>
-        <button className="bg-[#FAFBFD] min-w-[7em] min-h-[2em] rounded-[0.5em] text-[0.87em] text-[#202224]">
+        <button
+          className="bg-[#FAFBFD] min-w-[7em] min-h-[2em] rounded-[0.5em] text-[0.87em] text-[#202224]"
+          onClick={() => {
+            currentPage < maxPage && setCurrentPage((prev) => prev + 1);
+          }}
+        >
           Next{" >"}
         </button>
       </div>
