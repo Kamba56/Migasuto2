@@ -9,21 +9,36 @@ import Dropzone from "react-dropzone";
 import axios from "axios";
 
 export default function FileUpload() {
-  const endpoint = "https://migasutoapi-production.up.railway.app/";
+  const endpoint = "https://migasutoapi-production.up.railway.app/filemanager";
   const [files, setFiles] = useState<(File & { progress: number })[]>([]); //adding a field for the progress of each file
   const [note, setNote] = useState("");
-  const formdata = new FormData();
+
   const handleSubmit = async () => {
+    const formdata = new FormData();
+
+    if (files.length === 0) {
+      alert("Please upload at least one file.");
+      return;
+    }
     formdata.append("note", note);
-    files.forEach((file) => formdata.append("file", file));
+    formdata.append("userid", "1");
+    files.forEach((file) => formdata.append("files", file));
+    console.log("sending data: ", formdata);
 
     try {
-      const response = await axios.post(`${endpoint}filemanager`, { formdata });
+      const response = await axios.post(endpoint, formdata, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
       console.log("response: ", response);
+      setFiles([]);
+      setNote("");
     } catch (error) {
       console.error(error);
     }
   };
+
   return (
     <div className="min-w-[67em] min-h-[30em] rounded-[1.87em] bg-white p-[1.75em] relative">
       <Link to={"/manager"} className="inline-block">
