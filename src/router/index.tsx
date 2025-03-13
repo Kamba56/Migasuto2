@@ -11,7 +11,7 @@ import HomePage from "../Pages/Home";
 import Login from "../Pages/Auth/Login";
 import SignUp from "../Pages/Auth/Signup";
 import Onboarding from "../Pages/onBoarding";
-import Questions from "../Pages/History/Form";
+import Questionnaire from "../Pages/History/Form";
 import Metrics from "../Pages/Metrics";
 import ALLmeeting from "../Pages/ALLmeeting";
 import Filemanager from "../Pages/fileManager";
@@ -43,7 +43,7 @@ function Router() {
         },
         {
           path: "/question",
-          element: <Questions />,
+          element: <Questionnaire />,
         },
         {
           path: "/subscription",

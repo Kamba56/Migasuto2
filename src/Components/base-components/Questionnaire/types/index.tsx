@@ -3,3 +3,4 @@ export default interface FormInputProps {
     placeholder: string;
     type: string;
 }
+
