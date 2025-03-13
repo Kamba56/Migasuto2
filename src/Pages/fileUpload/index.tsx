@@ -9,7 +9,21 @@ import Dropzone from "react-dropzone";
 import axios from "axios";
 
 export default function FileUpload() {
+  const endpoint = "https://migasutoapi-production.up.railway.app/";
   const [files, setFiles] = useState<(File & { progress: number })[]>([]); //adding a field for the progress of each file
+  const [note, setNote] = useState("");
+  const formdata = new FormData();
+  const handleSubmit = async () => {
+    formdata.append("note", note);
+    files.forEach((file) => formdata.append("file", file));
+
+    try {
+      const response = await axios.post(`${endpoint}filemanager`, { formdata });
+      console.log("response: ", response);
+    } catch (error) {
+      console.error(error);
+    }
+  };
   return (
     <div className="min-w-[67em] min-h-[30em] rounded-[1.87em] bg-white p-[1.75em] relative">
       <Link to={"/manager"} className="inline-block">
@@ -68,6 +82,9 @@ export default function FileUpload() {
           <form action="" className="flex flex-col items-end">
             <label className="self-start font-semibold">Note</label>
             <textarea
+              onChange={(e) => {
+                setNote(e.target.value);
+              }}
               name="note"
               id="note"
               required
@@ -126,6 +143,7 @@ export default function FileUpload() {
         className={`absolute right-[14.5em] bottom-[6.25em] min-w-[9.6em] box-content min-h-[3em] text-white bg-blue-20 px-[0.95em] py-[0.37em] rounded-lg text-[0.75em] ${
           files.length === 0 ? "hidden" : ""
         }`}
+        onClick={handleSubmit}
       >
         Submit File
       </button>
