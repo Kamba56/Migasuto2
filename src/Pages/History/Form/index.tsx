@@ -7,10 +7,10 @@ import CreatorFirstPage from "./CreatorPages/page1";
 import CreatorSecondPage from "./CreatorPages/page2";
 
 export default function Questionnaire() {
-    const [page, setPage] = useState(2)
+    const [page, setPage] = useState(1)
 
     const handleNextPage = () => {
-        setPage(2)
+        setPage(1)
     }
     
     return (

@@ -1,7 +1,12 @@
 import { useState } from "react";
 import Cross from "../../../../assets/icons/Cross.svg";
 
-export default function MultipleInput(){
+interface MultipleInputProps {
+    register: any;
+    error?: string;
+}
+
+export default function MultipleInput({ register, error }: MultipleInputProps) {
     const [values, setValues] = useState<string[]>([
         'Promise kept',
         'Goal focused',
@@ -37,8 +42,11 @@ export default function MultipleInput(){
                 placeholder="Enter your core values, press enter to add"
                 onKeyDown={handleAddValue}
                 className="w-full p-0 text-[13px] h-[21px] border-0 focus:ring-0"
+                {...register}
                 />
             </div>
+            {error && <p className="text-red-500 text-sm">{error}</p>}
+
 
             {/* Display Added Values */}
             <div className="flex max-w-[340px] flex-wrap gap-2 mt-2">
