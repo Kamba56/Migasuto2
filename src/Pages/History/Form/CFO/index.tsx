@@ -8,6 +8,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import Page1 from "./page1";
 import schemas from "./schemas";
+import Page2 from "./page2";
 
 
 export default function CFO() {
@@ -19,7 +20,7 @@ export default function CFO() {
         resolver: yupResolver(schemas)
     })
 
-    const [page, setPage] = useState(1)
+    const [page, setPage] = useState(2)
     
     const onSubmit = (data: any) => {
         console.log("Form data: ", data)
@@ -43,7 +44,7 @@ export default function CFO() {
 
                 <form onSubmit={handleSubmit(onSubmit)} className="">
                     {page === 1 && <Page1 register={register} errors={errors} />}
-
+                    {page === 2 && <Page2 register={register} errors={errors} /> }
                     <button>sasd</button>
 
                 </form>

@@ -7,7 +7,11 @@ const schemas = yup.object().shape({
     targetMarket: yup.string().required("Field is required"),
     problems: yup.string().required("Field is required"),
     standOut: yup.string().required("Field is required"),
-    growth: yup.string().required("Field is required")
+    growth: yup.string().required("Field is required"),
+
+    businessModel: yup.string().required("Field is required"),
+    streams: yup.string().required("Field is required"),
+    pricing: yup.string().required("Field is required")
 })
 
 export default schemas
