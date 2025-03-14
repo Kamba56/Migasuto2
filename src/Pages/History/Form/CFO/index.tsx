@@ -7,10 +7,23 @@ import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import Page1 from "./page1";
+import schemas from "./schemas";
 
 
 export default function CFO() {
+    const {
+        register,
+        handleSubmit,
+        formState: { errors }
+    } = useForm({
+        resolver: yupResolver(schemas)
+    })
 
+    const [page, setPage] = useState(1)
+    
+    const onSubmit = (data: any) => {
+        console.log("Form data: ", data)
+    }
 
     
     return (
@@ -28,9 +41,10 @@ export default function CFO() {
                 </div>
                 <p className="text-center text-gray">Please provide  your response below</p>
 
-                <form className="flex flex-col items-start lg:grid grid-cols-2 gap-10">
-                    <Page1 />
+                <form onSubmit={handleSubmit(onSubmit)} className="">
+                    {page === 1 && <Page1 register={register} errors={errors} />}
 
+                    <button>sasd</button>
 
                 </form>
             </section>

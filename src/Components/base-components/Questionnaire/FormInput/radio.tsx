@@ -8,7 +8,7 @@ export default function RadioField({heading, options, required, register, error}
                 {options.map((option, index) => (
                     <div className='flex gap-2 items-center' key={index}>
                         
-                        <input required={required} {...register} type="radio" name="" value={option.value} />
+                        <input required={required} {...register} type="radio" name="item" value={option.value} />
                         <label htmlFor="">{option.label}</label>
                     </div>
                 ))}

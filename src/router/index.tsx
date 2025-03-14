@@ -16,6 +16,7 @@ import Metrics from "../Pages/Metrics";
 import ALLmeeting from "../Pages/ALLmeeting";
 import Filemanager from "../Pages/fileManager";
 import FileUpload from "../Pages/fileUpload";
+import CFO from "../Pages/History/Form/CFO";
 
 function Router() {
   const routes = [
@@ -69,6 +70,10 @@ function Router() {
           path: "manager/upload",
           element: <FileUpload />, // Separate from Filemanager
         },
+        {
+          path: "cfo",
+          element: <CFO />
+        }
       ]
     },
     { path: "/forgot-password", element: <ForgotPassword /> },
