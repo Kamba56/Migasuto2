@@ -1,14 +1,14 @@
-import FormInput from "../../../../Components/base-components/Questionnaire/FormInput";
 import HistoryToggle from "../../../../Components/framer-motion/animations/toggle";
 
 import Back from '../../../../assets/icons/Back.svg'
 import { useState } from "react";
-import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import Page1 from "./page1";
 import schemas from "./schemas";
 import Page2 from "./page2";
+import FinancialAssumption from "./pages/FinancialAssumption";
+import Funding from "./pages/Funding";
 
 
 export default function CFO() {
@@ -20,7 +20,7 @@ export default function CFO() {
         resolver: yupResolver(schemas)
     })
 
-    const [page, setPage] = useState(2)
+    const [page, setPage] = useState(4)
     
     const onSubmit = (data: any) => {
         console.log("Form data: ", data)
@@ -45,6 +45,8 @@ export default function CFO() {
                 <form onSubmit={handleSubmit(onSubmit)} className="">
                     {page === 1 && <Page1 register={register} errors={errors} />}
                     {page === 2 && <Page2 register={register} errors={errors} /> }
+                    {page === 3 && <FinancialAssumption register={register} errors={errors} /> }
+                    {page === 4 && <Funding register={register} errors={errors} /> }
                     <button>sasd</button>
 
                 </form>

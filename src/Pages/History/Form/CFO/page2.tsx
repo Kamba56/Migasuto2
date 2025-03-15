@@ -4,7 +4,7 @@ import FormInput from "../../../../Components/base-components/Questionnaire/Form
 export default function Page2({register, errors}: any) {
     return (
         
-        <div className="flex flex-col items-start lg:grid grid-cols-2 gap-10">
+        <div className="flex flex-col items-center lg:grid grid-cols-1 gap-10">
             <FormInput 
                 title="What is your planned business model?"
                 placeholder="Enter your response"
