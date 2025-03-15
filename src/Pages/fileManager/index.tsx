@@ -153,6 +153,7 @@ export default function Filemanager() {
         >
           {"< "}Prev.
         </button>
+        <span className="text-[0.87em] text-[#202224]">{`${currentPage}/${maxPage}`}</span>
         <button
           className="bg-[#FAFBFD] min-w-[7em] min-h-[2em] rounded-[0.5em] text-[0.87em] text-[#202224]"
           onClick={() => {
