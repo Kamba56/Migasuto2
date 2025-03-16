@@ -39,7 +39,9 @@ export default {
           10: '#E45270',
         },
         mig_blue: '#336DBA',
-        gray: '#9C9AA5'
+        gray: '#9C9AA5',
+        ghost_white: '#f4f4f8',
+        platinum: '#e6e6ea'
      
       }
     },

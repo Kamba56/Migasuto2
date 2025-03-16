@@ -10,6 +10,7 @@ interface FileUploadProps {
   maxFiles: number;
   maxSize: number;
   required?: boolean;
+  register: any;
   name: string;
   error?: string;
 }
@@ -20,6 +21,7 @@ const FileUpload: React.FC<FileUploadProps> = ({
   maxFiles,
   maxSize,
   required = false,
+  register,
   name,
   error,
 }) => {
@@ -28,26 +30,27 @@ const FileUpload: React.FC<FileUploadProps> = ({
 
   const onDrop = useCallback(
     (acceptedFiles: File[]) => {
-      const validFiles = acceptedFiles.filter((file) => {
-        const fileExtension = file.name.split(".").pop()?.toLowerCase();
-        return (
-          fileExtension &&
-          formats.includes(fileExtension) &&
-          file.size <= maxSize * 1024 * 1024
-        );
-      });
-  
-      if (files.length + validFiles.length > maxFiles) {
-        alert(`You can only upload up to ${maxFiles} files.`);
-        return;
-      }
-  
-      const updatedFiles = [...files, ...validFiles];
-      setFiles(updatedFiles);
-      setValue(name, updatedFiles, { shouldValidate: true }); // Ensure validation runs
+        const validFiles = acceptedFiles.filter((file) => {
+            const fileExtension = file.name.split(".").pop()?.toLowerCase();
+            return (
+                fileExtension &&
+                formats.includes(fileExtension) &&
+                file.size <= maxSize * 1024 * 1024
+            );
+        });
+
+        if (files.length + validFiles.length > maxFiles) {
+            alert(`You can only upload up to ${maxFiles} files.`);
+            return;
+        }
+
+        const updatedFiles = [...files, ...validFiles];
+        setFiles(updatedFiles);
+        setValue(name, updatedFiles, { shouldValidate: true });
     },
     [files, formats, maxFiles, maxSize, setValue, name]
-  );
+);
+
   
 
   const removeFile = (index: number) => {
@@ -58,10 +61,10 @@ const FileUpload: React.FC<FileUploadProps> = ({
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop,
-    accept: Object.fromEntries(formats.map((ext) => [`.${ext}`, []])),
     multiple: true,
     maxSize: maxSize * 1024 * 1024,
-  });
+    accept: formats.reduce((acc, ext) => ({ ...acc, [`.${ext}`]: [] }), {}),
+});
 
   return (
     <div className="p-4 rounded-lg shadow-md bg-white">
@@ -79,7 +82,7 @@ const FileUpload: React.FC<FileUploadProps> = ({
           isDragActive ? "border-primary bg-blue-50" : "border-gray-300 bg-gray-100"
         }`}
       >
-        <input {...getInputProps()} />
+        <input {...getInputProps()} {...register(name)}/>
         {isDragActive ? (
           <div>
             <MdCloudUpload
@@ -130,6 +133,7 @@ const FileUpload: React.FC<FileUploadProps> = ({
 
 function FileUploadForm({}: any) {
   const {
+    register,
     formState: { errors },
   } = useFormContext();
   return (
@@ -139,8 +143,9 @@ function FileUploadForm({}: any) {
         formats={["pdf", "xls", "xlsx"]}
         maxFiles={10}
         maxSize={10}
-        name="backStatement"
-        error={errors.backStatement?.message?.toString()}
+        register={register}
+        name="bakStatement"
+        error={errors.bankStatement?.message?.toString()}
         required
       />
       <FileUpload
@@ -148,6 +153,7 @@ function FileUploadForm({}: any) {
         formats={["pdf", "xls", "xlsx"]}
         maxFiles={10}
         maxSize={10}
+        register={register}
         name="cashFlow"
         error={errors.cashFlow?.message?.toString()}
       />
@@ -156,6 +162,7 @@ function FileUploadForm({}: any) {
         formats={["pdf", "xls", "xlsx"]}
         maxFiles={5}
         maxSize={100}
+        register={register}
         name="budgeting"
         error={errors.budgeting?.message?.toString()}
       />

@@ -20,8 +20,10 @@ import Schema5 from "./schemas/schemas5";
 import Schema6 from "./schemas/schemas6";
 import Schema7 from "./schemas/schemas7";
 import Schema8 from "./schemas/schemas8";
+import Schema9 from "./schemas/schemas9";
+import FileUploadForm from "./pages/FinancialDocument";
 
-const schemas: Array<any> = [Schema1, Schema2, Schema3, Schema4, Schema5, Schema6, Schema7, Schema8];
+const schemas: Array<any> = [Schema1, Schema2, Schema3, Schema4, Schema5, Schema6, Schema7, Schema8, Schema9];
 
 const pageVariants = {
     initial: {
@@ -57,7 +59,7 @@ const pageVariantsReversed = {
 const pageTransition = {
     type: "tween",
     ease: "anticipate",
-    duration: 0.95,
+    duration: 0.4,
 };
 
 export default function CFO() {
@@ -86,8 +88,18 @@ export default function CFO() {
     };
 
     const onSubmit = (data: any) => {
-        console.log("Form data: ", data);
+        console.log("Form Data Submitted: ", data.businessName);
+        if (data.bankStatement) {
+            console.log("Bank Statements: ", data.bankStatement);
+        }
+        if (data.cashFlow) {
+            console.log("Cash Flow Statements: ", data.cashFlow);
+        }
+        if (data.budgeting) {
+            console.log("Budgeting Documents: ", data.budgeting);
+        }
     };
+
 
     return (
         <FormProvider {...methods}>
@@ -107,13 +119,13 @@ export default function CFO() {
 
                     <form onSubmit={handleSubmit(onSubmit)} className="">
                         <AnimatePresence mode="wait">
-                            <h2>{page}/8</h2>
+                            <h2>{page}/9</h2>
                             <motion.div
                                 key={page}
                                 initial="initial"
                                 animate="in"
                                 exit="out"
-                                variants={isReversed ? pageVariantsReversed : pageVariants}
+                                variants={pageVariants}
                                 transition={pageTransition}
                             >
                                 {page === 1 && <Page1 register={register} errors={errors} />}
@@ -124,11 +136,12 @@ export default function CFO() {
                                 {page === 6 && <Projection register={register} errors={errors} />}
                                 {page === 7 && <RiskManagement register={register} errors={errors} />}
                                 {page === 8 && <FinancialSuccess register={register} errors={errors} />}
+                                {page === 9 && <FileUploadForm register={register} errors={errors} />}
                             </motion.div>
                         </AnimatePresence>
                         {page > 1 && <button type="button" onClick={prevPage} className="bg-primary text-white py-2 px-4 rounded-lg">Previous</button>}
-                        {page < 8 && <button type="button" onClick={handleSubmit(nextPage)} className="bg-primary text-white py-2 px-4 rounded-lg">Next</button>}
-                        {page === 8 && <button type="submit" className="bg-primary text-white py-2 px-4 rounded-lg">Submit</button>}
+                        {page < 9 && <button type="button" onClick={handleSubmit(nextPage)} className="bg-primary text-white py-2 px-4 rounded-lg">Next</button>}
+                        {page === 9 && <button type="submit" className="bg-primary text-white py-2 px-4 rounded-lg">Submit</button>}
                     </form>
                 </section>
             </section>

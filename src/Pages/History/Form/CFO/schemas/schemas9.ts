@@ -1,6 +1,6 @@
 import * as yup from "yup";
 const Schema9 = yup.object().shape({
-    backStatement: yup
+    bankStatement: yup
       .mixed()
       .test("fileRequired", "File is required", (value) => {
         return value instanceof FileList ? value.length > 0 : !!value;
