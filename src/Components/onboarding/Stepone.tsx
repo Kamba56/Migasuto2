@@ -32,21 +32,18 @@ export default function Stepone() {
           <label htmlFor="accounttype" className="font-[550]">
             Account Type
           </label>
-          <select
+          <input
+            className="border-[#465FF166] border-[0.1em] rounded-[0.5em] placeholder:text-[1em] max-h-[3.69em] text-[0.9em] mb-[1.6em] focus:shadow-md focus:ring-0"
+            type="text"
+            id="accountType"
+            name="accountType"
             value={signupData.accountType}
             onChange={(e) => {
               setSignupData({ accountType: e.target.value });
             }}
+            placeholder="Enter Account Type."
             required
-            className="border-[#465FF166] border-[0.1em] rounded-[0.5em] placeholder:text-[1em] max-h-[3.69em] text-[0.9em] mb-[1.6em]"
-          >
-            <option value="" disabled hidden>
-              Select Account Type
-            </option>
-            <option value="option1">Company</option>
-            <option value="option2">Option 2</option>
-            <option value="option3">Option 3</option>
-          </select>
+          />
         </div>
 
         <div className="flex flex-col text-start">
@@ -71,42 +68,36 @@ export default function Stepone() {
           <label htmlFor="accounttype" className="font-[550]">
             Company Type
           </label>
-          <select
+          <input
+            className="border-[#465FF166] border-[0.1em] rounded-[0.5em] placeholder:text-[1em] max-h-[3.69em] text-[0.9em] mb-[1.6em] focus:shadow-md focus:ring-0"
+            type="text"
+            id="companyType"
+            name="companyType"
             value={signupData.companyType}
             onChange={(e) => {
               setSignupData({ companyType: e.target.value });
             }}
+            placeholder="Enter Company Type."
             required
-            className="border-[#465FF166] border-[0.1em] rounded-[0.5em] placeholder:text-[0.8em] max-h-[3.69em] text-[0.9em] mb-[1.6em]"
-          >
-            <option value="" disabled hidden>
-              Select Company Type
-            </option>
-            <option value="option1">Option 1</option>
-            <option value="option2">Option 2</option>
-            <option value="option3">Option 3</option>
-          </select>
+          />
         </div>
 
         <div className="flex flex-col text-start">
           <label htmlFor="accounttype" className="font-[550]">
             Team Strength
           </label>
-          <select
+          <input
+            className="border-[#465FF166] border-[0.1em] rounded-[0.5em] placeholder:text-[1em] max-h-[3.69em] text-[0.9em] mb-[1.6em] focus:shadow-md focus:ring-0"
+            type="text"
+            id="teamStrength"
+            name="teamStrength"
             value={signupData.teamStrength}
             onChange={(e) => {
               setSignupData({ teamStrength: e.target.value });
             }}
+            placeholder="Enter your Team Strength."
             required
-            className="border-[#465FF166] border-[0.1em] rounded-[0.5em] placeholder:text-[0.8em] max-h-[3.69em] text-[0.9em] mb-[1.6em]"
-          >
-            <option value="" disabled hidden>
-              Select Team Strength
-            </option>
-            <option value="option1">Option1</option>
-            <option value="option2">Option 2</option>
-            <option value="option3">Option 3</option>
-          </select>
+          />
         </div>
 
         <button
