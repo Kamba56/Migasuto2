@@ -5,9 +5,13 @@ import "./assets/styles/index.css";
 import { BrowserRouter } from "react-router-dom";
 import Router from "./router";
 import "./assets/styles/index.css";
+import { Provider } from "react-redux";
+import store from "./Store/Slice/store";
 
 createRoot(document.getElementById("root") as HTMLElement).render(
-  <BrowserRouter>
-    <Router />
-  </BrowserRouter>
+  <Provider store={store}>
+    <BrowserRouter>
+      <Router />
+    </BrowserRouter>
+  </Provider>
 );

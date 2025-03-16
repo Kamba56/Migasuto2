@@ -22,6 +22,11 @@ import Schema7 from "./schemas/schemas7";
 import Schema8 from "./schemas/schemas8";
 import Schema9 from "./schemas/schemas9";
 import FileUploadForm from "./pages/FinancialDocument";
+import { Provider, useDispatch, useSelector } from "react-redux";
+import FormProp from "../../../../Store/Slice/formType";
+import { RootState, AppDispatch } from '../../../../Store/Slice/store';
+
+import { submitForm } from "../../../../Store/Slice/formSlice";
 
 const schemas: Array<any> = [Schema1, Schema2, Schema3, Schema4, Schema5, Schema6, Schema7, Schema8, Schema9];
 
@@ -76,6 +81,10 @@ export default function CFO() {
         handleSubmit,
         formState: { errors },
     } = methods;
+    
+    const dispatch = useDispatch<AppDispatch>();
+    const { loading, error, success } = useSelector((state: RootState) => state.form);
+
 
     const nextPage = (data: any) => {
         setIsReversed(false);
@@ -87,64 +96,61 @@ export default function CFO() {
         setPage(page - 1);
     };
 
-    const onSubmit = (data: any) => {
-        console.log("Form Data Submitted: ", data.businessName);
-        if (data.bankStatement) {
-            console.log("Bank Statements: ", data.bankStatement);
-        }
-        if (data.cashFlow) {
-            console.log("Cash Flow Statements: ", data.cashFlow);
-        }
-        if (data.budgeting) {
-            console.log("Budgeting Documents: ", data.budgeting);
-        }
+    const onSubmit = async (data: any) => {
+        dispatch(submitForm(data));
     };
 
 
     return (
-        <FormProvider {...methods}>
-            <section>
-                <section className="py-10 px-5 sm:px-10 rounded-3xl bg-white flex flex-col gap-3">
-                    <p className="text-lg font-bold flex gap-4">
-                        <img src={Back} alt="Back" />Back
-                    </p>
-                    <div className="sm:pl-16 flex flex-col md:flex-row gap-2 justify-between items-center">
-                        <div className="">
-                            <h1 className="text-2xl text-dark font-semibold">New Client Questionnaire</h1>
-                            <p className="text-[13px] text-secondary_dark sm:w-[400px]">Please endeavour to complete all the sections that are relevant to you</p>
+            <FormProvider {...methods}>
+                <section>
+                    <section className="py-10 px-5 sm:px-10 rounded-3xl bg-white flex flex-col gap-3">
+                        <p className="text-lg font-bold flex gap-4">
+                            <img src={Back} alt="Back" />Back
+                        </p>
+                        <div className="sm:pl-16 flex flex-col md:flex-row gap-2 justify-between items-center">
+                            <div className="">
+                                <h1 className="text-2xl text-dark font-semibold">New Client Questionnaire</h1>
+                                <p className="text-[13px] text-secondary_dark sm:w-[400px]">Please endeavour to complete all the sections that are relevant to you</p>
+                            </div>
+                            <HistoryToggle />
                         </div>
-                        <HistoryToggle />
-                    </div>
-                    <p className="text-center text-gray">Please provide your response below</p>
+                        <p className="text-center text-gray">Please provide your response below</p>
 
-                    <form onSubmit={handleSubmit(onSubmit)} className="">
-                        <AnimatePresence mode="wait">
-                            <h2>{page}/9</h2>
-                            <motion.div
-                                key={page}
-                                initial="initial"
-                                animate="in"
-                                exit="out"
-                                variants={pageVariants}
-                                transition={pageTransition}
-                            >
-                                {page === 1 && <Page1 register={register} errors={errors} />}
-                                {page === 2 && <Page2 register={register} errors={errors} />}
-                                {page === 3 && <FinancialAssumption register={register} errors={errors} />}
-                                {page === 4 && <Funding register={register} errors={errors} />}
-                                {page === 5 && <FinancialNeeds register={register} errors={errors} />}
-                                {page === 6 && <Projection register={register} errors={errors} />}
-                                {page === 7 && <RiskManagement register={register} errors={errors} />}
-                                {page === 8 && <FinancialSuccess register={register} errors={errors} />}
-                                {page === 9 && <FileUploadForm register={register} errors={errors} />}
-                            </motion.div>
-                        </AnimatePresence>
-                        {page > 1 && <button type="button" onClick={prevPage} className="bg-primary text-white py-2 px-4 rounded-lg">Previous</button>}
-                        {page < 9 && <button type="button" onClick={handleSubmit(nextPage)} className="bg-primary text-white py-2 px-4 rounded-lg">Next</button>}
-                        {page === 9 && <button type="submit" className="bg-primary text-white py-2 px-4 rounded-lg">Submit</button>}
-                    </form>
+                        <form onSubmit={handleSubmit(onSubmit)} className="">
+                            <AnimatePresence mode="wait">
+                                <h2>{page}/9</h2>
+                                <motion.div
+                                    key={page}
+                                    initial="initial"
+                                    animate="in"
+                                    exit="out"
+                                    variants={pageVariants}
+                                    transition={pageTransition}
+                                >
+                                    {page === 1 && <Page1 register={register} errors={errors} />}
+                                    {page === 2 && <Page2 register={register} errors={errors} />}
+                                    {page === 3 && <FinancialAssumption register={register} errors={errors} />}
+                                    {page === 4 && <Funding register={register} errors={errors} />}
+                                    {page === 5 && <FinancialNeeds register={register} errors={errors} />}
+                                    {page === 6 && <Projection register={register} errors={errors} />}
+                                    {page === 7 && <RiskManagement register={register} errors={errors} />}
+                                    {page === 8 && <FinancialSuccess register={register} errors={errors} />}
+                                    {page === 9 && <FileUploadForm register={register} errors={errors} />}
+                                </motion.div>
+                            </AnimatePresence>
+                            {page > 1 && <button type="button" onClick={prevPage} className="bg-primary text-white py-2 px-4 rounded-lg">Previous</button>}
+                            {page < 9 && <button type="button" onClick={handleSubmit(nextPage)} className="bg-primary text-white py-2 px-4 rounded-lg">Next</button>}
+
+<button type="submit" disabled={loading} className="bg-blue-500 text-white px-4 py-2">
+  {loading ? "Submitting..." : "Submit"}
+</button>
+
+{error && <p className="text-red-500">{error}</p>}
+{success && <p className="text-green-500">Form submitted successfully!</p>}
+                        </form>
+                    </section>
                 </section>
-            </section>
-        </FormProvider>
+            </FormProvider>
     );
 }

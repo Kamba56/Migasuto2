@@ -7,14 +7,14 @@ export default function Projection({register, errors}: any) {
             <FormArea 
                 title="Have you set initial sales targets for the first 12 months and thereafter? If so, what are they?"
                 placeholder="Enter your response"
-                register={register("salesTargets")}
-                error={errors.salesTargets?.message}
+                register={register("sale_target")}
+                error={errors.sale_target?.message}
             />
             <FormArea 
                 title="How do you plan to market and promote your product or service?"
                 placeholder="Enter your response"
-                register={register("adPlan")}
-                error={errors.adPlan?.message}
+                register={register("marketing")}
+                error={errors.marketing?.message}
             />
         </div>
     )

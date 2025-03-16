@@ -1,16 +1,16 @@
 import * as yup from "yup";
 const Schema9 = yup.object().shape({
-    bankStatement: yup
+    bank_statement: yup
       .mixed()
       .test("fileRequired", "File is required", (value) => {
         return value instanceof FileList ? value.length > 0 : !!value;
       }),
-    cashFlow: yup
+    cash_flow_statement: yup
       .mixed()
       .test("fileRequired", "File is required", (value) => {
         return value instanceof FileList ? value.length > 0 : !!value;
       }),
-    budgeting: yup.mixed().nullable(), // Optional field
+    budget_document: yup.mixed().nullable(), // Optional field
   });
   
 
