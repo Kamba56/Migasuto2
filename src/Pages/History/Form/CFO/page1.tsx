@@ -29,7 +29,8 @@ export default function Page1({ register, errors }: any) {
             <RadioField 
                 heading="Country of domacile"
                 options={countryOption}
-                register={register("domicileCountry")}
+                register={register}
+                name="domicileCountry"
                 error={errors.domicileCountry?.message}
             />
 

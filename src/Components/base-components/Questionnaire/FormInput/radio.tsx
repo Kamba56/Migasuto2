@@ -1,14 +1,14 @@
 import RadioProp from '../types/radioProp'
-export default function RadioField({heading, options, required, register, error}: RadioProp) {
+export default function RadioField({heading, options, required, name, register, error}: RadioProp) {
     return (
-        <div className='flex flex-col gap-1'>
+        <div className='w-[280px] sm:w-[348px] flex flex-col gap-1'>
             <label className="text-[16px] font-medium">{heading}</label>
 
             <div className='flex flex-col gap-2'>
-                {options.map((option, index) => (
-                    <div className='flex gap-2 items-center' key={index}>
+                {options.map((option) => (
+                    <div className='flex gap-2 items-center' key={option.value}>
                         
-                        <input required={required} {...register} type="radio" name="item" value={option.value} />
+                        <input required={required} {...register(name)} type="radio" id={option.value} value={option.value} />
                         <label htmlFor="">{option.label}</label>
                     </div>
                 ))}

@@ -2,7 +2,7 @@ import FormInputProps from "../types";
 
 export default function FormInput({ title, placeholder, type, required, register, error }: FormInputProps) {
     return (
-        <div className="w-[280px]">
+        <div className="w-[280px] sm:w-[348px]">
             <label className="text-[16px] font-medium" htmlFor={title}>
                 {title} {required && <span className="text-red-500">*</span>}
             </label>

@@ -1,29 +1,21 @@
-import * as yup from "yup";
+import page1Schema from "./schemas1";
+import page2Schema from "./schemas2";
+import page3Schema from "./schemas3";
+import page4Schema from "./schemas4";
+import page5Schema from "./schemas5";
+import page6Schema from "./schemas6";
+import page7Schema from "./schemas7";
+import page8Schema from "./schemas8";
 
-const schemas = yup.object().shape({
-    businessName: yup.string().required("Field is required"),
-    domicileCountry: yup.string().required("Field is required"),
-    inspiration: yup.string().required("Field is required"),
-    targetMarket: yup.string().required("Field is required"),
-    problems: yup.string().required("Field is required"),
-    standOut: yup.string().required("Field is required"),
-    growth: yup.string().required("Field is required"),
+const schemas = [
+    page1Schema,
+    page2Schema,
+    page3Schema,
+    page4Schema,
+    page5Schema,
+    page6Schema,
+    page7Schema,
+    page8Schema,
+];
 
-    businessModel: yup.string().required("Field is required"),
-    streams: yup.string().required("Field is required"),
-    pricing: yup.string().required("Field is required"),
-
-    startupCost: yup.string().required("Field is required"),
-    capitalExpenditures: yup.string().required("Field is required"),
-    profit: yup.string().required("Field is required"),
-
-    capital: yup.string().required("Field is required"),
-    investors: yup.string().required("Field is required"),
-    selfFunding: yup.string().required("Field is required"),
-    capitalInvest: yup.string().required("Field is required"),
-    capitalRaised: yup.string().required("Field is required"),
-
-    
-})
-
-export default schemas
+export default schemas;

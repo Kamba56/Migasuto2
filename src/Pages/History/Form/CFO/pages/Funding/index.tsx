@@ -22,14 +22,16 @@ export default function Funding({register, errors}: any) {
             <RadioField 
                 heading=" Do you have any committed investors?"
                 options={options}
-                register={register("investors")}
+                register={register}
+                name="investors"
                 error={errors.investors?.message}
             />
 
             <RadioField 
                 heading="Are you planning on self-funding initially?"
                 options={options}
-                register={register("selfFunding")}
+                register={register}
+                name="selfFunding"
                 error={errors.selfFunding?.message}
             />
 
