@@ -1,7 +1,9 @@
 import { useParams } from "react-router";
 import Stepone from "../../Components/onboarding/Stepone";
 import Steptwo from "../../Components/onboarding/Steptwo";
+import Stepthree from "../../Components/onboarding/Stepthree";
 import { Link } from "react-router";
+
 export default function Onboarding() {
   const { id } = useParams();
 
@@ -13,6 +15,8 @@ export default function Onboarding() {
         return <Stepone />;
       case "2":
         return <Steptwo />;
+      case "3":
+        return <Stepthree />;
       default:
         return <></>;
     }
@@ -41,12 +45,21 @@ export default function Onboarding() {
                 alt="company logo"
                 className="w-[5em] mb-[0.8em]"
               />
-              <p className="mb-[0.8em] text-[#9C9AA5] text-[0.8em]">{id}/2</p>
-              <div>
+              <p
+                className="mb-[0.8em] text-[#9C9AA5] text-[0.8em]"
+                hidden={id === "3"}
+              >
+                {id}/2
+              </p>
+              <div className={`${id === "3" ? "text-transparent " : ""}`}>
                 <h2 className="text-[2em] font-semibold mb-[0.4em]">
                   Customize your Organization
                 </h2>
-                <h3 className="text-[#9C9AA5] mb-[2em] text-[1.6em]">
+                <h3
+                  className={`text-[#9C9AA5] mb-[2em] text-[1.6em] ${
+                    id === "3" ? "text-transparent " : ""
+                  }`}
+                >
                   Setup your organization for members that may join later.
                 </h3>
               </div>
