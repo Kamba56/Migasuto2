@@ -1,7 +1,7 @@
 import logo from "../../assets/images/workLogo.png";
 import editlogo from "../../assets/images/editLogo.png";
 import upload from "../../assets/images/uploadLogo.png";
-import { useSignup } from "./signupContext";
+import { useSignup } from "./SignupContext";
 import { useState } from "react";
 import axios from "axios";
 

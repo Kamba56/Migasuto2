@@ -6,7 +6,7 @@ import { FcGoogle } from "react-icons/fc";
 import { FaApple } from "react-icons/fa";
 import TextField from "../../../Components/Common/TextField";
 import BlueButton from "../../../Components/Common/BlueButton";
-import { useSignup } from "../../../Components/onboarding/signupContext";
+import { useSignup } from "../../../Components/onboarding/SignupContext";
 
 const SignUp = () => {
   const { signupData, setSignupData } = useSignup();

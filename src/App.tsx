@@ -1,5 +1,5 @@
 import { BrowserRouter } from "react-router";
-import { SignupProvider } from "./Components/onboarding/signupContext";
+import { SignupProvider } from "./Components/onboarding/SignupContext";
 import Router from "./router";
 function App() {
   return (
