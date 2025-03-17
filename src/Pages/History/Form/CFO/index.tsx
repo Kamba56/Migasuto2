@@ -22,6 +22,9 @@ import Schema7 from "./schemas/schemas7";
 import Schema8 from "./schemas/schemas8";
 import Schema9 from "./schemas/schemas9";
 import FileUploadForm from "./pages/FinancialDocument";
+import { AppDispatch, RootState } from "../../../../stores/store";
+import { useDispatch, useSelector } from "react-redux";
+import { submitCFOForm } from "../../../../stores/CFO/Slice";
 
 const schemas: Array<any> = [Schema1, Schema2, Schema3, Schema4, Schema5, Schema6, Schema7, Schema8, Schema9];
 
@@ -65,6 +68,9 @@ const pageTransition = {
 export default function CFO() {
     const [page, setPage] = useState(1);
     const [isReversed, setIsReversed] = useState(false);
+    const dispatch = useDispatch<AppDispatch>();
+    const { loading, error } = useSelector((state: RootState) => state.cfo);
+
 
     const methods = useForm({
         resolver: yupResolver(schemas[page - 1]),
@@ -89,6 +95,7 @@ export default function CFO() {
 
     const onSubmit = (data: any) => {
         console.log("Form Data Submitted: ", data)
+        dispatch(submitCFOForm(data))
     };
 
 
@@ -134,6 +141,9 @@ export default function CFO() {
                         {page < 9 && <button type="button" onClick={handleSubmit(nextPage)} className="bg-primary text-white py-2 px-4 rounded-lg">Next</button>}
                         {page === 9 && <button type="submit" className="bg-primary text-white py-2 px-4 rounded-lg">Submit</button>}
                     </form>
+                    {loading && <p>Loading...</p>}
+                    {error && <p className="text-red-500">{typeof error === 'string' ? error : JSON.stringify(error)}</p>}
+                
                 </section>
             </section>
         </FormProvider>

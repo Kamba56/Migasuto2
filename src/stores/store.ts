@@ -1,8 +1,9 @@
 import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
-
+import cfoReducer from "./CFO/Slice/index"
 
 export const store = configureStore({
   reducer: {
+    cfo: cfoReducer,
    
   },
 });
@@ -15,3 +16,5 @@ export type AppThunk<ReturnType = void> = ThunkAction<
   unknown,
   Action<string>
 >;
+
+export default store
