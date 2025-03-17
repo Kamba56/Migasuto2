@@ -8,15 +8,15 @@ export default function FinancialSuccess({register, errors}: any) {
             <FormArea 
                 title="What financial metrics (e.g., gross margin, net profit) do you see as key indicators of success for this business?"
                 placeholder="Enter your response"
-                register={register("financialMetrics")}
-                error={errors.financialMetrics?.message}
+                register={register("financial_metrics")}
+                error={errors.financial_metrics?.message}
             />
             <FormInput
                 title="What time frame are you considering for reaching profitability or achieving a stable cash flow?"
                 placeholder="Enter your response"
                 type="text"
-                register={register("timeFrame")}
-                error={errors.timeFrame?.message}
+                register={register("cash_flow_time")}
+                error={errors.cash_flow_time?.message}
             />
         </div>
     )

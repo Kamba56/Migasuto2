@@ -22,16 +22,16 @@ export default function Page1({ register, errors }: any) {
                 title="Client Name"
                 placeholder="Enter your name"
                 type="text"
-                register={register("businessName")}
-                error={errors.businessName?.message}
+                register={register("name")}
+                error={errors.name?.message}
             />
 
             <RadioField 
                 heading="Country of domacile"
                 options={countryOption}
                 register={register}
-                name="domicileCountry"
-                error={errors.domicileCountry?.message}
+                name="country"
+                error={errors.cuntry?.message}
             />
 
             <FormArea 
@@ -45,29 +45,36 @@ export default function Page1({ register, errors }: any) {
                 title="What is your core product or service, and who is your target market?"
                 placeholder="Enter your response"
                 type="text"
-                register={register("targetMarket")}
-                error={errors.targetMarket?.message}
+                register={register("product")}
+                error={errors.product?.message}
             />
 
             <FormArea 
                 title="What problems does your business aim to solve?"
                 placeholder="Enter your response"
-                register={register("problems")}
-                error={errors.problems?.message}
+                register={register("solutions")}
+                error={errors.solutions?.message}
             />
 
             <FormArea 
                 title="How does your idea stand out from competitors?"
                 placeholder="Enter your response"
-                register={register("standOut")}
-                error={errors.standOut?.message}
+                register={register("advantage")}
+                error={errors.advantage?.message}
             />
 
             <FormArea 
                 title="How do you envision your business growing in the first few years?"
                 placeholder="Enter your response"
-                register={register("growth")}
-                error={errors.growth?.message}
+                register={register("envision")}
+                error={errors.envision?.message}
+            />
+
+            <FormArea 
+                title="How do you envision your business growing in the first few years?"
+                placeholder="Enter your response"
+                register={register("goals")}
+                error={errors.goals?.message}
             />
             
 

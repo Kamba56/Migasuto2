@@ -144,8 +144,8 @@ function FileUploadForm({}: any) {
         maxFiles={10}
         maxSize={10}
         register={register}
-        name="bakStatement"
-        error={errors.bankStatement?.message?.toString()}
+        name="bank_statement"
+        error={errors.bank_statement?.message?.toString()}
         required
       />
       <FileUpload
@@ -154,8 +154,8 @@ function FileUploadForm({}: any) {
         maxFiles={10}
         maxSize={10}
         register={register}
-        name="cashFlow"
-        error={errors.cashFlow?.message?.toString()}
+        name="cash_flow_statement"
+        error={errors.cash_flow_statement?.message?.toString()}
       />
       <FileUpload
         title="Forecasting/Budgeting Documents (Format Required: PDF or Excel)"
@@ -163,8 +163,8 @@ function FileUploadForm({}: any) {
         maxFiles={5}
         maxSize={100}
         register={register}
-        name="budgeting"
-        error={errors.budgeting?.message?.toString()}
+        name="budget_document"
+        error={errors.budget_document?.message?.toString()}
       />
     </div>
   );

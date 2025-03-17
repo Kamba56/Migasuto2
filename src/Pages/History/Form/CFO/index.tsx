@@ -88,16 +88,7 @@ export default function CFO() {
     };
 
     const onSubmit = (data: any) => {
-        console.log("Form Data Submitted: ", data.businessName);
-        if (data.bankStatement) {
-            console.log("Bank Statements: ", data.bankStatement);
-        }
-        if (data.cashFlow) {
-            console.log("Cash Flow Statements: ", data.cashFlow);
-        }
-        if (data.budgeting) {
-            console.log("Budgeting Documents: ", data.budgeting);
-        }
+        console.log("Form Data Submitted: ", data)
     };
 
 

@@ -9,15 +9,15 @@ export default function Page2({register, errors}: any) {
                 title="What is your planned business model?"
                 placeholder="Enter your response"
                 type="text"
-                register={register("businessModel")}
-                error={errors.businessModel?.message}
+                register={register("business_model")}
+                error={errors.business_model?.message}
             />
 
             <FormArea 
                 title="Have you identified any potential revenue streams? If so, please describe."
                 placeholder="Enter your response"
-                register={register("streams")}
-                error={errors.streams?.message}
+                register={register("revenue_stream")}
+                error={errors.revenue_stream?.message}
             />
 
             <FormArea 

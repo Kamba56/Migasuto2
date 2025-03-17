@@ -23,31 +23,31 @@ export default function Funding({register, errors}: any) {
                 heading=" Do you have any committed investors?"
                 options={options}
                 register={register}
-                name="investors"
-                error={errors.investors?.message}
+                name="investor"
+                error={errors.investor?.message}
             />
 
             <RadioField 
                 heading="Are you planning on self-funding initially?"
                 options={options}
                 register={register}
-                name="selfFunding"
-                error={errors.selfFunding?.message}
+                name="self_funding"
+                error={errors.self_funding?.message}
             />
 
             <FormInput 
                 title="How much of your capital are you willing to invest initially?"
                 placeholder="Enter your response"
                 type="number"
-                register={register("capitalInvest")}
-                error={errors.capitalInvest?.message}
+                register={register("capital_invest")}
+                error={errors.capital_invest?.message}
             />
 
             <FormArea 
                 title="How do you plan to allocate any initial capital raised?"
                 placeholder="Enter your response"
-                register={register("capitalRaised")}
-                error={errors.capitalRaised?.message}
+                register={register("capital_raised")}
+                error={errors.capital_raised?.message}
             />
         </div>
     )

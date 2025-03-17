@@ -7,14 +7,14 @@ export default function RiskManagement({register, errors}: any) {
             <FormArea  
                 title="What do you see as the biggest risks or challenges to getting your business off the ground?"
                 placeholder="Enter your response"
-                register={register("challenges")}
-                error={errors.challenges?.message}
+                register={register("risk")}
+                error={errors.risk?.message}
             />
             <FormArea 
                 title="Are there legal, regulatory, or compliance concerns specific to your industry?"
                 placeholder="Enter your response"
-                register={register("legalConcerns")}
-                error={errors.legalConcerns?.message}
+                register={register("compliance_concern")}
+                error={errors.compliance_concern?.message}
             />
         </div>
     )
