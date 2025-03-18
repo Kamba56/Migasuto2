@@ -1,4 +1,3 @@
-import FormArea from "../../../../../../Components/base-components/Questionnaire/FormArea";
 import FormInput from "../../../../../../Components/base-components/Questionnaire/FormInput";
 
 
@@ -9,23 +8,23 @@ export default function FinancialAssumption({register, errors}: any) {
             <FormInput
                 title="Have you estimated the initial start-up costs required to bring your idea to market?"
                 placeholder="Enter your response"
-                type="text"
+                type="number"
                 register={register("startup_cost")}
                 error={errors.startup_cost?.message}
             />
-
-            <FormArea
+            <FormInput
                 title="Do you anticipate any significant capital expenditures in the near term (e.g., equipment, software, real estate)?"
                 placeholder="Enter your response"
+                type="number"
                 register={register("expenditure")}
                 error={errors.expenditure?.message}
             />
-
-            <FormArea 
+            <FormInput
                 title="What are your assumptions for your business’s break-even point and time frame for profitability?"
                 placeholder="Enter your response"
+                type="number"
                 register={register("profitability")}
-                error={errors.profitablilty?.message}
+                error={errors.profitability?.message}
             />
         </div>
     )

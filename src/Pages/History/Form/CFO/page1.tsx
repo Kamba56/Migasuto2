@@ -1,8 +1,5 @@
-import { useForm } from "react-hook-form";
 import FormInput from "../../../../Components/base-components/Questionnaire/FormInput";
 
-import * as yup from "yup";
-import { yupResolver } from "@hookform/resolvers/yup";
 import RadioField from "../../../../Components/base-components/Questionnaire/FormInput/radio";
 import FormArea from "../../../../Components/base-components/Questionnaire/FormArea";
 
@@ -31,7 +28,7 @@ export default function Page1({ register, errors }: any) {
                 options={countryOption}
                 register={register}
                 name="country"
-                error={errors.cuntry?.message}
+                error={errors.country?.message}
             />
 
             <FormArea 

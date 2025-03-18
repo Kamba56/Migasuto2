@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import { useDropzone } from "react-dropzone";
 import { useFormContext } from "react-hook-form";
 import { FaFile } from "react-icons/fa";
@@ -10,7 +10,6 @@ interface FileUploadProps {
   maxFiles: number;
   maxSize: number;
   required?: boolean;
-  register: any;
   name: string;
   error?: string;
 }
@@ -21,50 +20,52 @@ const FileUpload: React.FC<FileUploadProps> = ({
   maxFiles,
   maxSize,
   required = false,
-  register,
   name,
   error,
 }) => {
   const [files, setFiles] = useState<File[]>([]);
-  const { setValue } = useFormContext();
+  const { setValue, register, watch } = useFormContext();
 
+  // Ensure form data is updated when files change
+  useEffect(() => {
+    setValue(name, files, { shouldValidate: true });
+  }, [files, name, setValue]);
+
+  // File drop handler
   const onDrop = useCallback(
     (acceptedFiles: File[]) => {
-        const validFiles = acceptedFiles.filter((file) => {
-            const fileExtension = file.name.split(".").pop()?.toLowerCase();
-            return (
-                fileExtension &&
-                formats.includes(fileExtension) &&
-                file.size <= maxSize * 1024 * 1024
-            );
-        });
+      const validFiles = acceptedFiles.filter((file) => {
+        const fileExtension = file.name.split(".").pop()?.toLowerCase();
+        return (
+          fileExtension &&
+          formats.includes(fileExtension) &&
+          file.size <= maxSize * 1024 * 1024
+        );
+      });
 
-        if (files.length + validFiles.length > maxFiles) {
-            alert(`You can only upload up to ${maxFiles} files.`);
-            return;
-        }
+      if (files.length + validFiles.length > maxFiles) {
+        alert(`You can only upload up to ${maxFiles} files.`);
+        return;
+      }
 
-        const updatedFiles = [...files, ...validFiles];
-        setFiles(updatedFiles);
-        setValue(name, updatedFiles, { shouldValidate: true });
+      setFiles([...files, ...validFiles]);
     },
-    [files, formats, maxFiles, maxSize, setValue, name]
-);
+    [files, formats, maxFiles, maxSize]
+  );
 
-  
-
+  // Remove a file
   const removeFile = (index: number) => {
     const newFiles = files.filter((_, i) => i !== index);
     setFiles(newFiles);
-    setValue(name, newFiles);
   };
 
+  // React Dropzone Configuration
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop,
     multiple: true,
     maxSize: maxSize * 1024 * 1024,
     accept: formats.reduce((acc, ext) => ({ ...acc, [`.${ext}`]: [] }), {}),
-});
+  });
 
   return (
     <div className="p-4 rounded-lg shadow-md bg-white">
@@ -72,7 +73,7 @@ const FileUpload: React.FC<FileUploadProps> = ({
         {title} {required && <span className="text-red-500">*</span>}
       </label>
       <p className="text-sm text-gray-500 mb-2">
-        Upload up to {maxFiles} supported files. Max {maxSize} MB per file.
+        Upload up to {maxFiles} files. Max {maxSize} MB per file.
       </p>
 
       {/* Dropzone Area */}
@@ -82,7 +83,7 @@ const FileUpload: React.FC<FileUploadProps> = ({
           isDragActive ? "border-primary bg-blue-50" : "border-gray-300 bg-gray-100"
         }`}
       >
-        <input {...getInputProps()} {...register(name)}/>
+        <input {...getInputProps()} />
         {isDragActive ? (
           <div>
             <MdCloudUpload
@@ -131,43 +132,35 @@ const FileUpload: React.FC<FileUploadProps> = ({
   );
 };
 
-function FileUploadForm({}: any) {
-  const {
-    register,
-    formState: { errors },
-  } = useFormContext();
+function FileUploadForm({errors}: any){
   return (
-    <div className="w-full mx-auto space-y-6">
-      <FileUpload
-        title="Business Bank Statements (Format Required: Excel and PDF)"
-        formats={["pdf", "xls", "xlsx"]}
-        maxFiles={10}
-        maxSize={10}
-        register={register}
-        name="bank_statement"
-        error={errors.bank_statement?.message?.toString()}
-        required
-      />
-      <FileUpload
-        title="Cash Flow Statements (Format Required: PDF or Excel)"
-        formats={["pdf", "xls", "xlsx"]}
-        maxFiles={10}
-        maxSize={10}
-        register={register}
-        name="cash_flow_statement"
-        error={errors.cash_flow_statement?.message?.toString()}
-      />
-      <FileUpload
-        title="Forecasting/Budgeting Documents (Format Required: PDF or Excel)"
-        formats={["pdf", "xls", "xlsx"]}
-        maxFiles={5}
-        maxSize={100}
-        register={register}
-        name="budget_document"
-        error={errors.budget_document?.message?.toString()}
-      />
+    <div>
+       <FileUpload
+          title="Business Bank Statements (Format: Excel, PDF)"
+          formats={["pdf", "xls", "xlsx"]}
+          maxFiles={10}
+          maxSize={10}
+          name="bank_statement"
+          error={errors.bank_statement?.message?.toString()}
+        />
+        <FileUpload
+          title="Cash Flow Statements (Format: PDF, Excel)"
+          formats={["pdf", "xls", "xlsx"]}
+          maxFiles={10}
+          maxSize={10}
+          name="cash_flow_statement"
+          error={errors.cash_flow_statement?.message?.toString()}
+        />
+        <FileUpload
+          title="Budget Documents (Format: PDF, Excel)"
+          formats={["pdf", "xls", "xlsx"]}
+          maxFiles={5}
+          maxSize={100}
+          name="budget_document"
+          error={errors.budget_document?.message?.toString()}
+        />
     </div>
-  );
+  )
 }
 
 export default FileUploadForm;

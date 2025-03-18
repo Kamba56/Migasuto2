@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import CFOFormData from './type';
 
 interface CFOState {
   loading: boolean;
@@ -13,15 +14,27 @@ const initialState: CFOState = {
 
 export const submitCFOForm = createAsyncThunk(
   'cfo/submitForm',
-  async (formData: any, { rejectWithValue }) => {
+  async (formData: CFOFormData, { rejectWithValue }) => {
     try {
       const response = await axios.post('https://migasutoapi-production.up.railway.app/cfo/create', formData);
+      
       if (response.status === 200) {
-        console.log('Response is okay:', response.data);
+        console.log('Form submitted successfully:', response.data);
       }
+      
       return response.data;
     } catch (error: any) {
-      return rejectWithValue(error.response.data);
+      console.error("CFO Form Submission Error:", error);
+
+      if (!error.response) {
+        // Handle network errors (no response from server)
+        return rejectWithValue("Network error. Please check your connection.");
+      }
+
+      return rejectWithValue(
+        error.response.data?.message || 
+        "An error occurred while submitting the form. Please try again."
+      );
     }
   }
 );
@@ -41,7 +54,7 @@ const cfoSlice = createSlice({
       })
       .addCase(submitCFOForm.rejected, (state, action) => {
         state.loading = false;
-        state.error = typeof action.payload === 'string' ? action.payload : JSON.stringify(action.payload);
+        state.error = action.payload as string;
       });
   },
 });

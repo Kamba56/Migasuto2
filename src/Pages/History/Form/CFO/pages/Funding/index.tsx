@@ -43,8 +43,9 @@ export default function Funding({register, errors}: any) {
                 error={errors.capital_invest?.message}
             />
 
-            <FormArea 
+            <FormInput
                 title="How do you plan to allocate any initial capital raised?"
+                type="number"
                 placeholder="Enter your response"
                 register={register("capital_raised")}
                 error={errors.capital_raised?.message}
