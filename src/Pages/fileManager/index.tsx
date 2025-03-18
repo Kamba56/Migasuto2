@@ -10,7 +10,7 @@ export default function Filemanager() {
   const endpoint = "https://migasutoapi-production.up.railway.app/filemanager";
   const navigate = useNavigate();
   const pageItems = 6;
-  const [files, setFiles] = useState([]); //this variable is for storing all the files we get from the api
+  const [files, setFiles] = useState<any[]>([]); //this variable is for storing all the files we get from the api
   const startIndex = (currentPage - 1) * pageItems;
   const currentItems = files.slice(startIndex, startIndex + pageItems);
   useEffect(() => {
@@ -18,7 +18,7 @@ export default function Filemanager() {
       .get(endpoint)
       .then((response) => {
         console.log(response.data);
-        setFiles(response.data);
+        Array.isArray(response.data) && setFiles(response.data);
       })
       .catch((error) => {
         console.error(error);
