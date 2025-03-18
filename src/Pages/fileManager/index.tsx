@@ -4,13 +4,21 @@ import path from "../../assets/images/Path.png";
 import { useNavigate } from "react-router";
 import { useEffect, useState } from "react";
 import axios from "axios";
+
+interface responseType {
+  filename: string;
+  id: number;
+  note: string;
+  size: number;
+  userId: number;
+}
 export default function Filemanager() {
   const [currentPage, setCurrentPage] = useState(1);
   const [maxPage, setMaxPage] = useState(1); //this state stores the max number of pages we can have based on the file length
   const endpoint = "https://migasutoapi-production.up.railway.app/filemanager";
   const navigate = useNavigate();
   const pageItems = 6;
-  const [files, setFiles] = useState<any[]>([]); //this variable is for storing all the files we get from the api
+  const [files, setFiles] = useState<responseType[]>([]); //this variable is for storing all the files we get from the api
   const startIndex = (currentPage - 1) * pageItems;
   const currentItems = files.slice(startIndex, startIndex + pageItems);
   useEffect(() => {
@@ -29,6 +37,19 @@ export default function Filemanager() {
     //this function sets the max number of pages by dividing by the file length
     setMaxPage(Math.ceil(files.length / pageItems)); //6 is the total items per page
   }, [files]);
+
+  const handleFileOption = async (id: number, action: string) => {
+    //this function determines whether to hit the delete route or the edit route. Takes in the id and the action/route to hit
+    if (action === "delete") {
+      try {
+        const response = await axios.delete(`${endpoint}/${id}`);
+        console.log(response);
+        setFiles((prev) => prev.filter((item) => item.id != id));
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  };
 
   return (
     <div className="p-[1.75em] text-[16px] min-w-full bg-blue_fade">
@@ -134,9 +155,28 @@ export default function Filemanager() {
                   {(data.size / 1024 / 1024).toPrecision(2)}MB
                 </td>
                 <td className="p-2 pl-0 pr-[2.5em]">
-                  <button className="py-[0.3em] px-[1.5em] text-[0.75em] text-blue-20 bg-blue_fade rounded-[0.5em] font-[500]">
-                    Options
-                  </button>
+                  <select
+                    onChange={(e) => handleFileOption(data.id, e.target.value)}
+                    className="py-[0.3em] px-[1.5em] text-[0.75em] text-blue-20 bg-blue_fade rounded-[0.5em] font-[500] appearance-none border-transparent relative"
+                    style={
+                      {
+                        backgroundImage: "none",
+                        paddingRight: "1.5em", // Ensure enough space for text
+                      } /**these styles are just here to get rid of the arrow in the select tab */
+                    }
+                  >
+                    <option value="Options" hidden>
+                      Options
+                    </option>
+                    <option value="delete" className="text-[#EA0234]">
+                      Delete
+                    </option>
+                  </select>
+                  {/* <div>
+                    <select name="" id="">
+                      <option value="Delete">Delete</option>
+                    </select>
+                  </div> */}
                 </td>
               </tr>
             )
