@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import { useDropzone } from "react-dropzone";
 import { useFormContext } from "react-hook-form";
 import { FaFile } from "react-icons/fa";
@@ -7,10 +7,8 @@ import { MdCloudUpload } from "react-icons/md";
 interface FileUploadProps {
   title: string;
   formats: string[];
-  maxFiles: number;
   maxSize: number;
   required?: boolean;
-  register: any;
   name: string;
   error?: string;
 }
@@ -18,53 +16,51 @@ interface FileUploadProps {
 const FileUpload: React.FC<FileUploadProps> = ({
   title,
   formats,
-  maxFiles,
   maxSize,
   required = false,
-  register,
   name,
   error,
 }) => {
-  const [files, setFiles] = useState<File[]>([]);
+  const [file, setFile] = useState<File | null>(null);
   const { setValue } = useFormContext();
 
+  // Ensure form data is updated when file changes
+  useEffect(() => {
+    setValue(name, file, { shouldValidate: true });
+  }, [file, name, setValue]);
+
+  // File drop handler
   const onDrop = useCallback(
     (acceptedFiles: File[]) => {
-        const validFiles = acceptedFiles.filter((file) => {
-            const fileExtension = file.name.split(".").pop()?.toLowerCase();
-            return (
-                fileExtension &&
-                formats.includes(fileExtension) &&
-                file.size <= maxSize * 1024 * 1024
-            );
-        });
+      const validFile = acceptedFiles.find((file) => {
+        const fileExtension = file.name.split(".").pop()?.toLowerCase();
+        return (
+          fileExtension &&
+          formats.includes(fileExtension) &&
+          file.size <= maxSize * 1024 * 1024
+        );
+      });
 
-        if (files.length + validFiles.length > maxFiles) {
-            alert(`You can only upload up to ${maxFiles} files.`);
-            return;
-        }
+      if (!validFile) {
+        alert(`Invalid file. Only ${formats.join(", ")} up to ${maxSize}MB are allowed.`);
+        return;
+      }
 
-        const updatedFiles = [...files, ...validFiles];
-        setFiles(updatedFiles);
-        setValue(name, updatedFiles, { shouldValidate: true });
+      setFile(validFile);
     },
-    [files, formats, maxFiles, maxSize, setValue, name]
-);
+    [formats, maxSize]
+  );
 
-  
+  // Remove file
+  const removeFile = () => setFile(null);
 
-  const removeFile = (index: number) => {
-    const newFiles = files.filter((_, i) => i !== index);
-    setFiles(newFiles);
-    setValue(name, newFiles);
-  };
-
+  // React Dropzone Configuration
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop,
-    multiple: true,
+    multiple: false, // Ensure only one file is selected
     maxSize: maxSize * 1024 * 1024,
     accept: formats.reduce((acc, ext) => ({ ...acc, [`.${ext}`]: [] }), {}),
-});
+  });
 
   return (
     <div className="p-4 rounded-lg shadow-md bg-white">
@@ -72,97 +68,70 @@ const FileUpload: React.FC<FileUploadProps> = ({
         {title} {required && <span className="text-red-500">*</span>}
       </label>
       <p className="text-sm text-gray-500 mb-2">
-        Upload up to {maxFiles} supported files. Max {maxSize} MB per file.
+        Upload a single file (Max {maxSize} MB).
       </p>
 
       {/* Dropzone Area */}
       <div
         {...getRootProps()}
-        className={`p-6 py-28 border-[3px] border-gray border-dashed transition duration-300 rounded-lg text-center cursor-pointer ${
+        className={`p-6 py-28 border-[3px] border-dashed transition duration-300 rounded-lg text-center cursor-pointer ${
           isDragActive ? "border-primary bg-blue-50" : "border-gray-300 bg-gray-100"
         }`}
       >
-        <input {...getInputProps()} {...register(name)}/>
+        <input {...getInputProps()} />
         {isDragActive ? (
           <div>
-            <MdCloudUpload
-              size={48}
-              className="text-secondary mx-auto animate-bounce"
-            />
-            <p className="text-blue-500">Drop the files here...</p>
+            <MdCloudUpload size={48} className="text-secondary mx-auto animate-bounce" />
+            <p className="text-blue-500">Drop the file here...</p>
           </div>
         ) : (
           <div>
-            <MdCloudUpload
-              size={48}
-              className="text-secondary mx-auto animate-bounce"
-            />
+            <MdCloudUpload size={48} className="text-secondary mx-auto animate-bounce" />
             <p className="text-secondary_dark">
-              Drag and drop some files here, or click to select files
+              Drag and drop a file here, or click to select one
             </p>
           </div>
         )}
       </div>
       {error && <p className="text-red-500 text-lg">{error}</p>}
 
-      {/* List of Uploaded Files */}
-      {files.length > 0 && (
-        <ul className="mt-3 text-sm text-gray-600">
-          {files.map((file, index) => (
-            <li
-              key={index}
-              className="border-2 border-platinum rounded-lg bg-ghost_white px-3 py-2 mt-1 flex items-center"
-            >
-              <div className="p-2 border-platinum border-2 rounded-2xl mr-3">
-                <FaFile size={24} className="text-secondary_dark" />
-              </div>
-              {file.name} ({(file.size / 1024 / 1024).toFixed(2)} MB)
-              <button
-                onClick={() => removeFile(index)}
-                className=" ml-auto text-red-500 hover:text-red-700"
-              >
-                ✖
-              </button>
-            </li>
-          ))}
-        </ul>
+      {/* Display Selected File */}
+      {file && (
+        <div className="mt-3 text-sm text-gray-600 border-2 border-platinum rounded-lg bg-ghost_white px-3 py-2 flex items-center">
+          <div className="p-2 border-platinum border-2 rounded-2xl mr-3">
+            <FaFile size={24} className="text-secondary_dark" />
+          </div>
+          {file.name} ({(file.size / 1024 / 1024).toFixed(2)} MB)
+          <button onClick={removeFile} className="ml-auto text-red-500 hover:text-red-700">
+            ✖
+          </button>
+        </div>
       )}
     </div>
   );
 };
 
-function FileUploadForm({}: any) {
-  const {
-    register,
-    formState: { errors },
-  } = useFormContext();
+function FileUploadForm({ errors }: any) {
   return (
-    <div className="w-full mx-auto space-y-6">
+    <div>
       <FileUpload
-        title="Business Bank Statements (Format Required: Excel and PDF)"
+        title="Business Bank Statement (Format: Excel, PDF)"
         formats={["pdf", "xls", "xlsx"]}
-        maxFiles={10}
         maxSize={10}
-        register={register}
         name="bank_statement"
         error={errors.bank_statement?.message?.toString()}
-        required
       />
       <FileUpload
-        title="Cash Flow Statements (Format Required: PDF or Excel)"
+        title="Cash Flow Statement (Format: PDF, Excel)"
         formats={["pdf", "xls", "xlsx"]}
-        maxFiles={10}
         maxSize={10}
-        register={register}
         name="cash_flow_statement"
         error={errors.cash_flow_statement?.message?.toString()}
       />
       <FileUpload
-        title="Forecasting/Budgeting Documents (Format Required: PDF or Excel)"
+        title="Budget Document (Format: PDF, Excel)"
         formats={["pdf", "xls", "xlsx"]}
-        maxFiles={5}
         maxSize={100}
-        register={register}
         name="budget_document"
         error={errors.budget_document?.message?.toString()}
       />

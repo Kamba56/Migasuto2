@@ -1,4 +1,4 @@
-import { motion, AnimatePresence, transform } from "framer-motion";
+import { motion, AnimatePresence, m } from "framer-motion";
 import HistoryToggle from "../../../../Components/framer-motion/animations/toggle";
 import Back from '../../../../assets/icons/Back.svg'
 import { useState } from "react";
@@ -22,7 +22,7 @@ import Schema7 from "./schemas/schemas7";
 import Schema8 from "./schemas/schemas8";
 import Schema9 from "./schemas/schemas9";
 import FileUploadForm from "./pages/FinancialDocument";
-import { AppDispatch, RootState } from "../../../../stores/store";
+import { useSubmitCFOForm } from "../../../../stores/store";
 import { useDispatch, useSelector } from "react-redux";
 import { submitCFOForm } from "../../../../stores/CFO/Slice";
 
@@ -43,22 +43,6 @@ const pageVariants = {
     },
 };
 
-const pageVariantsReversed = {
-    initial: {
-        opacity: 0,
-        x: "50vw",
-    },
-    in: {
-        opacity: 1,
-        x: 0,
-    },
-    out: {
-        opacity: 0,
-        x: "50vw",
-        scale: 0.8
-    },
-};
-
 const pageTransition = {
     type: "tween",
     ease: "anticipate",
@@ -67,11 +51,7 @@ const pageTransition = {
 
 export default function CFO() {
     const [page, setPage] = useState(1);
-    const [isReversed, setIsReversed] = useState(false);
-    const dispatch = useDispatch<AppDispatch>();
-    const { loading, error } = useSelector((state: RootState) => state.cfo);
-
-
+    const { mutate, isLoading, isError, error } = useSubmitCFOForm();
     const methods = useForm({
         resolver: yupResolver(schemas[page - 1]),
         mode: "onChange",
@@ -83,21 +63,22 @@ export default function CFO() {
         formState: { errors },
     } = methods;
 
-    const nextPage = (data: any) => {
-        setIsReversed(false);
-        setPage(page + 1);
-    };
-
-    const prevPage = () => {
-        setIsReversed(true);
-        setPage(page - 1);
-    };
 
     const onSubmit = (data: any) => {
-        console.log("Form Data Submitted: ", data)
-        dispatch(submitCFOForm(data))
+        mutate(data, {
+            onError: (err: any) => {
+                console.error("Submission error:", err);
+                alert(
+                    err?.response?.data?.message ||
+                    "An error occurred while submitting the form."
+                );
+            },
+            onSuccess: (response: any) => {
+                console.log("Form submitted successfully:", response);
+                alert("Form submitted successfully!");
+            },
+        });
     };
-
 
     return (
         <FormProvider {...methods}>
@@ -134,14 +115,13 @@ export default function CFO() {
                                 {page === 6 && <Projection register={register} errors={errors} />}
                                 {page === 7 && <RiskManagement register={register} errors={errors} />}
                                 {page === 8 && <FinancialSuccess register={register} errors={errors} />}
-                                {page === 9 && <FileUploadForm register={register} errors={errors} />}
+                                {page === 9 && <FileUploadForm errors={errors} />}
                             </motion.div>
                         </AnimatePresence>
-                        {page > 1 && <button type="button" onClick={prevPage} className="bg-primary text-white py-2 px-4 rounded-lg">Previous</button>}
-                        {page < 9 && <button type="button" onClick={handleSubmit(nextPage)} className="bg-primary text-white py-2 px-4 rounded-lg">Next</button>}
-                        {page === 9 && <button type="submit" className="bg-primary text-white py-2 px-4 rounded-lg">Submit</button>}
+                        {page > 1 && <button type="button" onClick={() =>{setPage(page - 1)}} className="bg-primary text-white py-2 px-4 rounded-lg">Previous</button>}
+                        {page < 9 && <button type="button" onClick={handleSubmit( () =>{setPage(page + 1)} )} className="bg-primary text-white py-2 px-4 rounded-lg">Next</button>}
+                        {page === 9 && <button type="submit" className="bg-primary text-white py-2 px-4 rounded-lg">{isLoading ? "Submitting..." : "Submit"}</button>}
                     </form>
-                    {loading && <p>Loading...</p>}
                     {error && <p className="text-red-500">{typeof error === 'string' ? error : JSON.stringify(error)}</p>}
                 
                 </section>
