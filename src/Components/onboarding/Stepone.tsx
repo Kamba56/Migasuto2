@@ -1,4 +1,5 @@
-import { useSignup } from "./signupContext";
+import { Link } from "react-router";
+import { useSignup } from "./SignupContext";
 
 export default function Stepone() {
   const { signupData, setSignupData } = useSignup();
@@ -100,12 +101,14 @@ export default function Stepone() {
           />
         </div>
 
-        <button
-          type="submit"
-          className="bg-[#465FF1] min-w-[13em] min-h-[3em] rounded-[0.6em] text-[#FFFFFF] font-[550]"
-        >
-          Continue
-        </button>
+        <Link to={"/onboarding/2"}>
+          <button
+            type="submit"
+            className="bg-[#465FF1] min-w-[13em] min-h-[3em] rounded-[0.6em] text-[#FFFFFF] font-[550]"
+          >
+            Continue
+          </button>
+        </Link>
       </form>
     </div>
   );

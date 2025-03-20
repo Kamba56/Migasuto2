@@ -16,6 +16,7 @@ import Metrics from "../Pages/Metrics";
 import ALLmeeting from "../Pages/ALLmeeting";
 import Filemanager from "../Pages/fileManager";
 import FileUpload from "../Pages/fileUpload";
+import { SignupProvider } from "../Components/onboarding/SignupContext";
 
 function Router() {
   const routes = [
@@ -26,7 +27,11 @@ function Router() {
 
     {
       path: "/signup",
-      element: <SignUp />,
+      element: (
+        <SignupProvider>
+          <SignUp />
+        </SignupProvider>
+      ),
     },
 
     {
@@ -51,15 +56,15 @@ function Router() {
         },
         {
           path: "/meetingnotes",
-          element: <ALLmeeting />
+          element: <ALLmeeting />,
         },
         {
           path: "/metrics",
-          element: <Metrics />
+          element: <Metrics />,
         },
         {
           path: "/settings",
-          element: <Settings />
+          element: <Settings />,
         },
         {
           path: "manager",
@@ -69,7 +74,7 @@ function Router() {
           path: "manager/upload",
           element: <FileUpload />, // Separate from Filemanager
         },
-      ]
+      ],
     },
     { path: "/forgot-password", element: <ForgotPassword /> },
     // {path: "/scan", element: <QrReader/>},
@@ -86,16 +91,20 @@ function Router() {
     },
 
     {
-      path: '/history',
-      element: <History />
+      path: "/history",
+      element: <History />,
     },
     {
-      path: '/settings',
-      element: <Settings />
+      path: "/settings",
+      element: <Settings />,
     },
-    {   
+    {
       path: "/onboarding/:id",
-      element: <Onboarding />,
+      element: (
+        <SignupProvider>
+          <Onboarding />
+        </SignupProvider>
+      ),
     },
   ];
 

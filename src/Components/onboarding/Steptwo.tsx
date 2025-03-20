@@ -1,13 +1,19 @@
 import logo from "../../assets/images/workLogo.png";
 import editlogo from "../../assets/images/editLogo.png";
 import upload from "../../assets/images/uploadLogo.png";
-import { useSignup } from "./SignupContext";
+import { SignupDataType, useSignup } from "./SignupContext";
 import { useState } from "react";
 import axios from "axios";
 
 export default function Steptwo() {
   const { signupData, setSignupData } = useSignup();
   const [logoPreview, setPreview] = useState("");
+  const handleSubmit = () => {
+    const data = signupData;
+    try{
+      const response = await axios.post
+    }
+  };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];

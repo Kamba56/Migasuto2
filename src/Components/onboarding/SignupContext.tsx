@@ -1,6 +1,6 @@
-import { createContext, useContext, useState } from "react";
+import { useEffect, useState, createContext, useContext } from "react";
 
-interface signupDataType {
+export interface SignupDataType {
   name: string;
   email: string;
   password: string;
@@ -11,41 +11,75 @@ interface signupDataType {
   logo: null | File;
 }
 
-const signupdata: signupDataType = {
-  name: "",
-  email: "",
-  password: "",
-  accountType: "",
-  companyType: "",
-  companyName: "",
-  teamStrength: "",
-  logo: null,
+const SIGNUP_STORAGE_KEY = "signupData";
+
+// Load initial state from localStorage if available
+const loadSignupData = (): SignupDataType => {
+  const storedData = localStorage.getItem(SIGNUP_STORAGE_KEY);
+  return storedData
+    ? JSON.parse(storedData)
+    : {
+        name: "",
+        email: "",
+        password: "",
+        accountType: "",
+        companyType: "",
+        companyName: "",
+        teamStrength: "",
+        logo: null,
+      };
 };
 
-const signupContext = createContext<{
-  signupData: signupDataType;
-  setSignupData: (data: Partial<signupDataType>) => void;
-}>({
-  signupData: signupdata,
-  setSignupData: () => {},
-});
+// Create the context with proper typing
+interface SignupContextType {
+  signupData: SignupDataType;
+  setSignupData: (data: Partial<SignupDataType>) => void;
+  resetSignupData: () => void;
+}
 
-export const SignupProvider = ({ children }: { children: React.ReactNode }) => {
-  const [signupData, setSignupDataState] = useState(signupdata);
+const SignupContext = createContext<SignupContextType | undefined>(undefined);
 
-  const setSignupData = (data: Partial<signupDataType>) => {
-    setSignupDataState((prev) => ({ ...prev, ...data }));
+// Provider component
+export const SignupProvider: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
+  const [signupData, setSignupDataState] = useState<SignupDataType>(
+    loadSignupData()
+  );
+
+  // Save to localStorage whenever signupData changes
+  useEffect(() => {
+    localStorage.setItem(SIGNUP_STORAGE_KEY, JSON.stringify(signupData));
+  }, [signupData]);
+
+  const setSignupData = (data: Partial<SignupDataType>) => {
+    setSignupDataState((prevData) => {
+      const newData = { ...prevData, ...data };
+      return newData;
+    });
   };
+
+  const resetSignupData = () => {
+    localStorage.removeItem(SIGNUP_STORAGE_KEY);
+    setSignupDataState(loadSignupData());
+  };
+
+  const value = {
+    signupData,
+    setSignupData,
+    resetSignupData,
+  };
+
   return (
-    <signupContext.Provider value={{ signupData, setSignupData }}>
-      {children}
-    </signupContext.Provider>
+    <SignupContext.Provider value={value}>{children}</SignupContext.Provider>
   );
 };
-export const useSignup = () => {
-  const context = useContext(signupContext);
 
-  if (!context) {
+// Custom hook to use the context
+export const useSignup = (): SignupContextType => {
+  const context = useContext(SignupContext);
+
+  if (context === undefined) {
     throw new Error("useSignup must be used within a SignupProvider");
   }
 
