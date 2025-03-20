@@ -1,17 +1,29 @@
 import logo from "../../assets/images/workLogo.png";
 import editlogo from "../../assets/images/editLogo.png";
 import upload from "../../assets/images/uploadLogo.png";
-import { SignupDataType, useSignup } from "./SignupContext";
+import { useSignup } from "./SignupContext";
 import { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router";
 
 export default function Steptwo() {
-  const { signupData, setSignupData } = useSignup();
+  const navigate = useNavigate();
+  const endpoint = "https://migasutoapi-production.up.railway.app/auth/signup";
+  const { signupData, setSignupData, resetSignupData } = useSignup();
   const [logoPreview, setPreview] = useState("");
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     const data = signupData;
-    try{
-      const response = await axios.post
+    try {
+      const response = await axios.post(endpoint, data, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      console.log(response.data);
+      resetSignupData();
+      navigate("/onboarding/3");
+    } catch (error) {
+      console.log(error);
     }
   };
 
@@ -76,7 +88,10 @@ export default function Steptwo() {
           <input type="file" className="hidden" />
         </label>
       </div>
-      <button className="bg-[#465FF1] min-w-[13em] min-h-[3em] rounded-[0.6em] text-[#FFFFFF] font-[500]">
+      <button
+        className="bg-[#465FF1] min-w-[13em] min-h-[3em] rounded-[0.6em] text-[#FFFFFF] font-[500]"
+        onClick={handleSubmit}
+      >
         Continue
       </button>
     </div>

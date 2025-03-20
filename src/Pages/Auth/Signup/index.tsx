@@ -7,23 +7,17 @@ import { FaApple } from "react-icons/fa";
 import TextField from "../../../Components/Common/TextField";
 import BlueButton from "../../../Components/Common/BlueButton";
 import { useSignup } from "../../../Components/onboarding/SignupContext";
-import { useEffect } from "react";
 
 const SignUp = () => {
   const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log("Email changed to:", e.target.value);
     setSignupData({ email: e.target.value });
   };
 
   const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log("Password changed to:", e.target.value);
     setSignupData({ password: e.target.value });
   };
   const { signupData, setSignupData } = useSignup();
   const navigate = useNavigate();
-  useEffect(() => {
-    console.log("Current signup data:", signupData);
-  }, [signupData]);
 
   return (
     <section className="bg-white p-2 xl:p-6 flex justify-center items-center h-screen">
