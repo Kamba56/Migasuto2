@@ -18,7 +18,7 @@ const Login = () => {
     console.log("submitting");
     try {
       const response = await axios.post(endpoint, login);
-      localStorage.setItem("token", response.data.token);
+      sessionStorage.setItem("token", response.data.token);
       navigate("/");
     } catch (error) {
       console.log(error);

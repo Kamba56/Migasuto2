@@ -13,9 +13,9 @@ export interface SignupDataType {
 
 const SIGNUP_STORAGE_KEY = "signupData";
 
-// Load initial state from localStorage if available
+// Load initial state from sessionStorage if available
 const loadSignupData = (): SignupDataType => {
-  const storedData = localStorage.getItem(SIGNUP_STORAGE_KEY);
+  const storedData = sessionStorage.getItem(SIGNUP_STORAGE_KEY);
   return storedData
     ? JSON.parse(storedData)
     : {
@@ -47,9 +47,9 @@ export const SignupProvider: React.FC<{ children: React.ReactNode }> = ({
     loadSignupData()
   );
 
-  // Save to localStorage whenever signupData changes
+  // Save to sessionStorage whenever signupData changes
   useEffect(() => {
-    localStorage.setItem(SIGNUP_STORAGE_KEY, JSON.stringify(signupData));
+    sessionStorage.setItem(SIGNUP_STORAGE_KEY, JSON.stringify(signupData));
   }, [signupData]);
 
   const setSignupData = (data: Partial<SignupDataType>) => {
@@ -60,7 +60,7 @@ export const SignupProvider: React.FC<{ children: React.ReactNode }> = ({
   };
 
   const resetSignupData = () => {
-    localStorage.removeItem(SIGNUP_STORAGE_KEY);
+    sessionStorage.removeItem(SIGNUP_STORAGE_KEY);
     setSignupDataState(loadSignupData());
   };
 
