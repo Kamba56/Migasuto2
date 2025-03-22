@@ -6,11 +6,15 @@ import { FaApple } from "react-icons/fa";
 import TextField from "../../../Components/Common/TextField";
 import BlueButton from "../../../Components/Common/BlueButton";
 import axios from "axios";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useNavigate } from "react-router";
+import { UserContext } from "../../../stores/context/userContect";
 
 const Login = () => {
   const navigate = useNavigate();
+  const context = useContext(UserContext);
+  const userDispatch = context.userDispatch;
+
   const endpoint = "https://migasutoapi-production.up.railway.app/auth/login";
   const [login, setlogin] = useState({ email: "", password: "" });
   const handleSubmit = async (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -18,8 +22,15 @@ const Login = () => {
     console.log("submitting");
     try {
       const response = await axios.post(endpoint, login);
-      sessionStorage.setItem("token", response.data.token);
-      navigate("/");
+
+      console.log(response.data);
+      const tempuser = { user: login.email, token: response.data?.token };
+      localStorage.setItem("user", JSON.stringify(tempuser));
+      if (userDispatch) {
+        console.log("setting user dispatch");
+        userDispatch({ type: "STORE_USER_DATA", user: tempuser });
+      }
+      navigate("/dashboard");
     } catch (error) {
       console.log(error);
     }

@@ -19,9 +19,9 @@ const PrivateRoute: React.FC = () => {
   const location = useLocation();
 
   console.log("PrivateRoute - user:", user);
-  console.log("PrivateRoute - loading:" );
+  console.log("PrivateRoute - loading:");
 
-  if (!user?.token || !user?.user ) {
+  if (!user?.token) {
     console.log("Redirecting to login...");
     return <Navigate to="/login" replace state={{ from: location }} />;
   }

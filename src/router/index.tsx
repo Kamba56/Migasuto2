@@ -17,12 +17,17 @@ import ALLmeeting from "../Pages/ALLmeeting";
 import Filemanager from "../Pages/fileManager";
 import FileUpload from "../Pages/fileUpload";
 import { SignupProvider } from "../Components/onboarding/SignupContext";
+import UserContextProvider from "../stores/context/userContect";
 
 function Router() {
   const routes = [
     {
       path: "/login",
-      element: <Login />,
+      element: (
+        <UserContextProvider>
+          <Login />
+        </UserContextProvider>
+      ),
     },
 
     {
@@ -80,13 +85,55 @@ function Router() {
     // {path: "/scan", element: <QrReader/>},
 
     {
-      // path: "/dashboard",
-      element: <PrivateRoute />,
+      path: "/dashboard",
+      element: (
+        <UserContextProvider>
+          <PrivateRoute />
+        </UserContextProvider>
+      ),
       children: [
-        // {
-        //   path: "/dashboard",
-        //   element: <Dashboard />,
-        // },
+        {
+          path: "/dashboard",
+          element: <Dashboard />,
+          children: [
+            {
+              path: "",
+              element: <HomePage />,
+            },
+            {
+              path: "history",
+              element: <History />,
+            },
+            {
+              path: "question",
+              element: <Questions />,
+            },
+            {
+              path: "subscription",
+              element: <SubscriptionPage />,
+            },
+            {
+              path: "meetingnotes",
+              element: <ALLmeeting />,
+            },
+            {
+              path: "metrics",
+              element: <Metrics />,
+            },
+            {
+              path: "settings",
+              element: <Settings />,
+            },
+            {
+              path: "manager",
+              element: <Filemanager />, // Only renders on "/manager"
+            },
+            {
+              path: "manager/upload",
+              element: <FileUpload />, // Separate from Filemanager
+            },
+          ],
+        },
       ],
     },
 
