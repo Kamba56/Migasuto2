@@ -61,9 +61,7 @@ export default function Filemanager() {
               name="date"
               className="text-[0.87em] border-0 focus:outline-none focus:ring-0 focus:border-transparent"
             >
-              <option value="" disabled selected>
-                Date
-              </option>
+              <option value="Date" disabled selected></option>
             </select>
           </td>
           <td className="border-l-[0.01em] border-[#979797] text-center">

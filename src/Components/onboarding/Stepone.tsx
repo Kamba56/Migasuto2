@@ -1,25 +1,11 @@
-import { useState, ChangeEvent } from "react";
+import { Link } from "react-router";
+import { useSignup } from "./SignupContext";
 
 export default function Stepone() {
-  const [formData, setFormData] = useState({
-    fullName: "",
-    accountType: "Company",
-    companyName: "",
-    companyType: "",
-    teamStrength: "",
-  });
+  const { signupData, setSignupData } = useSignup();
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-  };
-  const handleChange = (
-    e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
-  ) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value, // Dynamically update the input field
-    }));
   };
 
   return (
@@ -34,8 +20,10 @@ export default function Stepone() {
             type="text"
             id="fullName"
             name="fullName"
-            value={formData.fullName}
-            onChange={handleChange}
+            value={signupData.name}
+            onChange={(e) => {
+              setSignupData({ name: e.target.value });
+            }}
             placeholder="Enter your full name."
             required
           />
@@ -45,16 +33,18 @@ export default function Stepone() {
           <label htmlFor="accounttype" className="font-[550]">
             Account Type
           </label>
-          <select
-            value={formData.accountType}
-            onChange={handleChange}
+          <input
+            className="border-[#465FF166] border-[0.1em] rounded-[0.5em] placeholder:text-[1em] max-h-[3.69em] text-[0.9em] mb-[1.6em] focus:shadow-md focus:ring-0"
+            type="text"
+            id="accountType"
+            name="accountType"
+            value={signupData.accountType}
+            onChange={(e) => {
+              setSignupData({ accountType: e.target.value });
+            }}
+            placeholder="Enter Account Type."
             required
-            className="border-[#465FF166] border-[0.1em] rounded-[0.5em] placeholder:text-[1em] max-h-[3.69em] text-[0.9em] mb-[1.6em]"
-          >
-            <option value={formData.accountType}>Company</option>
-            <option value="option2">Option 2</option>
-            <option value="option3">Option 3</option>
-          </select>
+          />
         </div>
 
         <div className="flex flex-col text-start">
@@ -66,8 +56,10 @@ export default function Stepone() {
             type="text"
             id="companyName"
             name="companyName"
-            value={formData.companyName}
-            onChange={handleChange}
+            value={signupData.companyName}
+            onChange={(e) => {
+              setSignupData({ companyName: e.target.value });
+            }}
             placeholder="Enter your company name."
             required
           />
@@ -77,42 +69,46 @@ export default function Stepone() {
           <label htmlFor="accounttype" className="font-[550]">
             Company Type
           </label>
-          <select
-            value={formData.accountType}
-            onChange={handleChange}
+          <input
+            className="border-[#465FF166] border-[0.1em] rounded-[0.5em] placeholder:text-[1em] max-h-[3.69em] text-[0.9em] mb-[1.6em] focus:shadow-md focus:ring-0"
+            type="text"
+            id="companyType"
+            name="companyType"
+            value={signupData.companyType}
+            onChange={(e) => {
+              setSignupData({ companyType: e.target.value });
+            }}
+            placeholder="Enter Company Type."
             required
-            className="border-[#465FF166] border-[0.1em] rounded-[0.5em] placeholder:text-[0.8em] max-h-[3.69em] text-[0.9em] mb-[1.6em]"
-          >
-            <option value={formData.companyType}>{formData.companyType}</option>
-            <option value="option2">Option 2</option>
-            <option value="option3">Option 3</option>
-          </select>
+          />
         </div>
 
         <div className="flex flex-col text-start">
           <label htmlFor="accounttype" className="font-[550]">
             Team Strength
           </label>
-          <select
-            value={formData.teamStrength}
-            onChange={handleChange}
+          <input
+            className="border-[#465FF166] border-[0.1em] rounded-[0.5em] placeholder:text-[1em] max-h-[3.69em] text-[0.9em] mb-[1.6em] focus:shadow-md focus:ring-0"
+            type="text"
+            id="teamStrength"
+            name="teamStrength"
+            value={signupData.teamStrength}
+            onChange={(e) => {
+              setSignupData({ teamStrength: e.target.value });
+            }}
+            placeholder="Enter your Team Strength."
             required
-            className="border-[#465FF166] border-[0.1em] rounded-[0.5em] placeholder:text-[0.8em] max-h-[3.69em] text-[0.9em] mb-[1.6em]"
-          >
-            <option value={formData.teamStrength}>
-              {formData.teamStrength}
-            </option>
-            <option value="option2">Option 2</option>
-            <option value="option3">Option 3</option>
-          </select>
+          />
         </div>
 
-        <button
-          type="submit"
-          className="bg-[#465FF1] min-w-[13em] min-h-[3em] rounded-[0.6em] text-[#FFFFFF] font-[550]"
-        >
-          Continue
-        </button>
+        <Link to={"/onboarding/2"}>
+          <button
+            type="submit"
+            className="bg-[#465FF1] min-w-[13em] min-h-[3em] rounded-[0.6em] text-[#FFFFFF] font-[550]"
+          >
+            Continue
+          </button>
+        </Link>
       </form>
     </div>
   );
