@@ -136,7 +136,7 @@ function FileUploadForm({ errors }: any) {
         error={errors.budget_document?.message?.toString()}
       />
     </div>
-  );
+  )
 }
 
 export default FileUploadForm;

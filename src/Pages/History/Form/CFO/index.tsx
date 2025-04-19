@@ -1,4 +1,4 @@
-import { motion, AnimatePresence, m } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import HistoryToggle from "../../../../Components/framer-motion/animations/toggle";
 import Back from '../../../../assets/icons/Back.svg'
 import { useState } from "react";
@@ -25,6 +25,7 @@ import FileUploadForm from "./pages/FinancialDocument";
 import { useSubmitCFOForm } from "../../../../stores/store";
 import { useDispatch, useSelector } from "react-redux";
 import { submitCFOForm } from "../../../../stores/CFO/Slice";
+import CFOFormData from "../../../../stores/CFO/Slice/type";
 
 const schemas: Array<any> = [Schema1, Schema2, Schema3, Schema4, Schema5, Schema6, Schema7, Schema8, Schema9];
 
@@ -52,7 +53,7 @@ const pageTransition = {
 export default function CFO() {
     const [page, setPage] = useState(1);
     const { mutate, isLoading, isError, error } = useSubmitCFOForm();
-    const methods = useForm({
+    const methods = useForm<CFOFormData>({
         resolver: yupResolver(schemas[page - 1]),
         mode: "onChange",
     });
@@ -63,8 +64,7 @@ export default function CFO() {
         formState: { errors },
     } = methods;
 
-
-    const onSubmit = (data: any) => {
+    const onSubmit = (data: CFOFormData) => {
         mutate(data, {
             onError: (err: any) => {
                 console.error("Submission error:", err);
