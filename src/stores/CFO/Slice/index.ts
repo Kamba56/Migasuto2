@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { create } from 'zustand';
+import CFOFormData from './type';
 // Removed unused import as CFOFormData is not being used directly in the form
 
 interface CFOUIState {
@@ -16,7 +17,7 @@ const useCFOStore = create<CFOUIState>((set) => ({
   setError: (error) => set({ error }),
 }));
 
-export const submitCFOForm = async (formData: any) => {
+export const submitCFOForm = async (formData: CFOFormData) => {
   const response = await axios.post(
     'https://migasutoapi-production.up.railway.app/cfo/create',
     formData

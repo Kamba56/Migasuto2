@@ -4,13 +4,15 @@ import "./assets/styles/index.css";
 
 import { BrowserRouter } from "react-router-dom";
 import Router from "./router";
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import "./assets/styles/index.css";
-import { Provider } from "react-redux";
-import store from "./stores/store";
+
+const queryClient = new QueryClient()
+
 createRoot(document.getElementById("root") as HTMLElement).render(
-  <Provider store={store}>
-    <BrowserRouter>
-    <Router />
-  </BrowserRouter>
-  </Provider>
+    <QueryClientProvider client={queryClient}>
+        <BrowserRouter>
+            <Router />
+        </BrowserRouter>
+    </QueryClientProvider>
 );

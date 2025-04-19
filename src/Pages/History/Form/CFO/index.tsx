@@ -23,8 +23,6 @@ import Schema8 from "./schemas/schemas8";
 import Schema9 from "./schemas/schemas9";
 import FileUploadForm from "./pages/FinancialDocument";
 import { useSubmitCFOForm } from "../../../../stores/store";
-import { useDispatch, useSelector } from "react-redux";
-import { submitCFOForm } from "../../../../stores/CFO/Slice";
 import CFOFormData from "../../../../stores/CFO/Slice/type";
 
 const schemas: Array<any> = [Schema1, Schema2, Schema3, Schema4, Schema5, Schema6, Schema7, Schema8, Schema9];

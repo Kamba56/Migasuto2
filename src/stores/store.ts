@@ -32,3 +32,5 @@ export const useSubmitCFOForm = () => {
     },
   });
 };
+
+export default useSubmitCFOForm
