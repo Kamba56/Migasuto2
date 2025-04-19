@@ -22,8 +22,10 @@ import Schema7 from "./schemas/schemas7";
 import Schema8 from "./schemas/schemas8";
 import Schema9 from "./schemas/schemas9";
 import FileUploadForm from "./pages/FinancialDocument";
-import { useSubmitCFOForm } from "../../../../stores/store";
-import CFOFormData from "../../../../stores/CFO/Slice/type";
+import CFOFormData from "../../../../types/cfo";
+import { useCFOStore } from "../../../../stores/CFO";
+import { useSubmitCFOForm } from "../../../../api/cfo";
+
 
 const schemas: Array<any> = [Schema1, Schema2, Schema3, Schema4, Schema5, Schema6, Schema7, Schema8, Schema9];
 
@@ -50,7 +52,8 @@ const pageTransition = {
 
 export default function CFO() {
     const [page, setPage] = useState(1);
-    const { mutate, isLoading, isError, error } = useSubmitCFOForm();
+    const { mutate, isLoading, error } = useSubmitCFOForm(); // Use React Query mutation hook
+    const { loading, error: storeError } = useCFOStore();
     const methods = useForm<CFOFormData>({
         resolver: yupResolver(schemas[page - 1]),
         mode: "onChange",
@@ -63,19 +66,7 @@ export default function CFO() {
     } = methods;
 
     const onSubmit = (data: CFOFormData) => {
-        mutate(data, {
-            onError: (err: any) => {
-                console.error("Submission error:", err);
-                alert(
-                    err?.response?.data?.message ||
-                    "An error occurred while submitting the form."
-                );
-            },
-            onSuccess: (response: any) => {
-                console.log("Form submitted successfully:", response);
-                alert("Form submitted successfully!");
-            },
-        });
+        mutate(data);
     };
 
     return (
@@ -120,8 +111,10 @@ export default function CFO() {
                         {page < 9 && <button type="button" onClick={handleSubmit( () =>{setPage(page + 1)} )} className="bg-primary text-white py-2 px-4 rounded-lg">Next</button>}
                         {page === 9 && <button type="submit" className="bg-primary text-white py-2 px-4 rounded-lg">{isLoading ? "Submitting..." : "Submit"}</button>}
                     </form>
-                    {error && <p className="text-red-500">{typeof error === 'string' ? error : JSON.stringify(error)}</p>}
-                
+                    
+                    {loading && <p>Loading...</p>} {/* Display loading from Zustand or React Query */}
+                    {storeError && <p className="error">{storeError}</p>} {/* Display error from Zustand */}
+
                 </section>
             </section>
         </FormProvider>
